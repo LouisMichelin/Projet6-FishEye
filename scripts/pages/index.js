@@ -1,8 +1,7 @@
 async function getPhotographers() {
-    // importe les datas du document .JSON
+    // Importe les datas du document .JSON
     const response = await fetch('/data/photographers.json');
     const photographers = await response.json();
-
     console.log(photographers);
     return photographers;
 }
@@ -13,6 +12,7 @@ async function displayData(photographers) {
     photographers.forEach((photographer) => {
         const photographerModel = photographerFactory(photographer);
         const userCardDOM = photographerModel.getUserCardDOM();
+        console.log(photographerModel.id);
         photographersSection.appendChild(userCardDOM);
     });
 };

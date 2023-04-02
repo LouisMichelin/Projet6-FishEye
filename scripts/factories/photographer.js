@@ -1,37 +1,51 @@
 function photographerFactory(data) {
-    const { name, portrait, id, city, country, tagline, price } = data;
-    const picture = `assets/photographers/${portrait}`;
+    console.log("data:", data)
+    const {id, name, portrait, city, country, tagline, price} = data;
+    const picture = `/assets/photographers/${portrait}`;
 
-    // création des profils photographes
+    // Création des profils photographes
     function getUserCardDOM() {
-        // balise <article>
-        const article = document.createElement( 'article' );
-        // photo de profil
-        const img = document.createElement( 'img' );
-        img.setAttribute("src", picture);
-        // prénom et nom
-        const h2 = document.createElement( 'h2' );
+        // Balise <a>
+        const link = document.createElement('a');
+        link.setAttribute("href", `/photographer.html?${id}`)
+        // Balise <article>
+        const article = document.createElement('article');
+        // Conteneur de Photo de profil
+        const imgContainer = document.createElement('div');
+        imgContainer.setAttribute('class', 'img-container');
+        // Photo de profil
+        const img = document.createElement('img');
+        img.setAttribute('src', picture);
+        img.setAttribute('alt', `Photo de ${name}`);
+        img.setAttribute('aria-label', `Photo de ${name}`);
+        // Prénom + Nom
+        const h2 = document.createElement('h2');
         h2.textContent = name;
         
-        // ville et pays
-        const villePays = document.createElement( 'h3' );
-        villePays.innerText = `${city}, ${country}`;
+        // Ville + Pays
+        const villePays = document.createElement('h3');
+        villePays.textContent = `${city}, ${country}`;
         
-        // tagline
-        const dicton = document.createElement( 'p' );
+        // Tagline
+        const dicton = document.createElement('p');
+        dicton.setAttribute('class', 'dicton')
         dicton.textContent = tagline;
 
-        // tarifs
-        const prix = document.createElement( 'p' );
-        prix.innerText = `${price}€/jour`;
+        // Tarifs
+        const prix = document.createElement('p');
+        prix.setAttribute('class', 'tarif')
+        prix.textContent = `${price}€/jour`;
 
-        // finalisation
-        article.appendChild(img);
+        // Finalisation
+        article.appendChild(imgContainer)
+        imgContainer.appendChild(img);
         article.appendChild(h2);
         article.appendChild(villePays);
         article.appendChild(dicton);
         article.appendChild(prix);
-        return (article);
+
+        link.appendChild(article);
+        return (link);
     }
-    return { name, picture, id, city, country, tagline, price, getUserCardDOM }
+    return {id, name, picture, city, country, tagline, price, getUserCardDOM}
 }
