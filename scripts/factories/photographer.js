@@ -17,24 +17,28 @@ function photographerFactory(data) {
         const img = document.createElement('img');
         img.setAttribute('src', picture);
         img.setAttribute('alt', `Photo de ${name}`);
-        img.setAttribute('aria-label', `Photo de ${name}`);
+        img.setAttribute('aria-label', `Photo du photographe ${name}`);
         // Prénom + Nom
         const h2 = document.createElement('h2');
         h2.textContent = name;
+        h2.setAttribute('aria-label', `Photographe ${name}`);
         
         // Ville + Pays
         const villePays = document.createElement('h3');
         villePays.textContent = `${city}, ${country}`;
+        villePays.setAttribute('aria-label', `Le photographe ${name} travaille dans la ville de ${city}, ${country}`);
         
         // Tagline
         const dicton = document.createElement('p');
         dicton.setAttribute('class', 'dicton')
         dicton.textContent = tagline;
+        dicton.setAttribute('aria-label', `Le dicton de ${name} est : "${tagline}"`);
 
         // Tarifs
         const prix = document.createElement('p');
         prix.setAttribute('class', 'tarif')
         prix.textContent = `${price}€/jour`;
+        prix.setAttribute('aria-label', `La prestation de ${name} est à ${price} € par jour`);
 
         // Finalisation
         article.appendChild(imgContainer)
