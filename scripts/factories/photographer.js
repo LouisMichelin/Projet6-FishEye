@@ -44,30 +44,39 @@ function photographerFactory(data) {
         article.appendChild(dicton);
         article.appendChild(prix);
         link.appendChild(article);
-
         return (link);
     };
     
     // Création du profil individuel de photographe
     function getUserHeaderDOM() {
         // la partie header du photographer : nom/prénom/etc + Contact + Photo de profil
-        const page = document.createElement("div");
-        page.textContent =" ceci est un theader";
-       return page;
-    };
+        // const page = document.createElement("div");
+        const page = document.querySelector('.photograph-header');
+        const fragment = document.createDocumentFragment();
+        const photographHeader = fragment
+            .appendChild(document.createElement("division"));
+        photographHeader.textContent = "helloworldLULWOMEGALUL"
 
-    function getUserDetailDOM() {
-        // recuperer depuis le fichier json les media du photographer selctionné 
-        // boucler sur cette liste 
-        // et pour chaque element je vais creer une carte 
-        // je vais donc creer une factory pour media qui me donne une carte de type video ou de type image 
-        const page = document.createElement("div");
-        page.textContent =" ceci est un test";
+        page.insertBefore(fragment, document.querySelector('.contact_button'));
 
         return page;
     };
 
-    return {id, name, picture, city, country, tagline, price, getUserCardDOM, getUserHeaderDOM, getUserDetailDOM}
+
+    // Création de l'ensemble des photos & vidéos du photographe sélectionné
+    // function getUserDetailDOM() {
+    //     // recuperer depuis le fichier json les media du photographer selctionné 
+    //     // boucler sur cette liste 
+    //     // et pour chaque element je vais creer une carte 
+    //     // je vais donc creer une factory pour media qui me donne une carte de type video ou de type image 
+    //     const page = document.createElement("div");
+    //     page.textContent =" ceci est un test";
+    //     return page;
+    // };
+
+
+
+    return {id, name, picture, city, country, tagline, price, getUserCardDOM, getUserHeaderDOM/*, getUserDetailDOM*/}
 };
 
 // Nouvelle factory pour les Medias vidéos/images 

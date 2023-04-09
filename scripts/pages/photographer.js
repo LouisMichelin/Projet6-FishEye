@@ -1,27 +1,26 @@
+// Prend l'ID utilisé dans la search bar :
 const params = new URLSearchParams(window.location.search);
 const selectedArtist = params.get('id');
 console.log(selectedArtist);
-
-// Page d'un photographe sélectionné
+// Page d'un photographe sélectionné :
 async function getPhotographers() {
-    // Importe les datas du document .JSON
     const response = await fetch('/data/photographers.json');
     const photographers = await response.json();
     return photographers
 };
 
 async function filterById(photographers) {
-
-    const photographer = photographers.filter((element) => (element.id == selectedArtist));
+    // Filter le photographe avec l'ID sélectionné lignes 1-2
+    const photographer = photographers.filter((element) =>
+        (element.id) == selectedArtist
+    );
     console.log(photographer);
+
     const photographerModel = photographerFactory(photographer);
-    const page = photographerModel.getUserDetailDOM();
+    const page = photographerModel.getUserHeaderDOM();
 
-
-    const main  = document.getElementById("main");
-    console.log(main);
+    const main = document.getElementById("main");
     main.appendChild(page);
-
 }
 
 async function init() {
