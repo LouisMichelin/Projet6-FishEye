@@ -1,13 +1,12 @@
 function photographerFactory(data) {
-  
     const {id, name, portrait, city, country, tagline, price} = data;
     const picture = `/assets/photographers/${portrait}`;
-
+    
     // Création des profils photographes
     function getUserCardDOM() {
         // Balise <a>
         const link = document.createElement('a');
-        link.setAttribute("href", `/photographer.html?id=${id}`)
+        link.setAttribute("href", `/photographer.html?id=${id}`);
         // Balise <article>
         const article = document.createElement('article');
         // Conteneur de Photo de profil
@@ -49,19 +48,42 @@ function photographerFactory(data) {
     
     // Création du profil individuel de photographe
     function getUserHeaderDOM() {
-        // la partie header du photographer : nom/prénom/etc + Contact + Photo de profil
-        // const page = document.createElement("div");
+        const { name, portrait, city, country, tagline } = data[0];
+
+        // Partie <header> du photographer : nom/prénom/etc + Contact + Photo de profil
         const page = document.querySelector('.photograph-header');
-        const fragment = document.createDocumentFragment();
-        const photographHeader = fragment
-            .appendChild(document.createElement("division"));
-        photographHeader.textContent = "helloworldLULWOMEGALUL"
 
-        page.insertBefore(fragment, document.querySelector('.contact_button'));
+        const presentationSection = page.appendChild(document.createElement("section"));
+        presentationSection.setAttribute('class', 'photograph-presentation');
 
+        const presentationName = presentationSection.appendChild(document.createElement("name"));
+        presentationName.textContent = name;
+
+        const presentationCity = presentationSection.appendChild(document.createElement("city"));
+        presentationCity.innerHTML = `${city}, ${country}`;
+
+        const presentationDicton = presentationSection.appendChild(document.createElement("dicton"));
+        presentationDicton.innerHTML = tagline;
+
+        page.insertBefore(presentationSection, document.querySelector('.contact_button'));
         return page;
     };
-
+    // ---------------------------------------------------------------------------------------------
+            // page.insertAdjacentHTML('afterbegin', `
+            //     <section class="user_header-DOM">
+            //         <name>${name}</name>
+            //         <city>ReTest</city>
+            //         <dicton>Suivez moi sur insta</dicton>
+            //     </section>
+            // `);
+            //
+            // const fragment = document.createDocumentFragment();
+            // const photographHeader = fragment.appendChild(document.createElement("carte-photographe"));
+            //     .appendChild(document.createElement("name"))
+            //     .appendChild(document.createElement("ville"))
+            //     .appendChild(document.createElement("dicton"))
+            // photographHeader.textContent = "HelloWorld";
+    // ---------------------------------------------------------------------------------------------
 
     // Création de l'ensemble des photos & vidéos du photographe sélectionné
     // function getUserDetailDOM() {
@@ -73,10 +95,10 @@ function photographerFactory(data) {
     //     page.textContent =" ceci est un test";
     //     return page;
     // };
-
-
-
-    return {id, name, picture, city, country, tagline, price, getUserCardDOM, getUserHeaderDOM/*, getUserDetailDOM*/}
+    return {id, name, picture, city, country, tagline, price, getUserCardDOM, getUserHeaderDOM};
 };
 
-// Nouvelle factory pour les Medias vidéos/images 
+// Nouvelle factory pour les Medias vidéos/images
+// // function mediaVideosFactory(data) {
+// 
+// }

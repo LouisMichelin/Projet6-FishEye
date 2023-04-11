@@ -1,32 +1,33 @@
 // Prend l'ID utilisé dans la search bar :
 const params = new URLSearchParams(window.location.search);
 const selectedArtist = params.get('id');
-console.log(selectedArtist);
+// console.log(selectedArtist);
+
 // Page d'un photographe sélectionné :
 async function getPhotographers() {
     const response = await fetch('/data/photographers.json');
     const photographers = await response.json();
-    return photographers
+    return photographers;
 };
 
+// Filtre le photographe avec l'ID récupéré
 async function filterById(photographers) {
-    // Filter le photographe avec l'ID sélectionné lignes 1-2
     const photographer = photographers.filter((element) =>
         (element.id) == selectedArtist
     );
-    console.log(photographer);
-
+    // On envoie les données filtrées au Factory
     const photographerModel = photographerFactory(photographer);
+    // Ces données passent ensuite vers la fonction getUserHeaderDOM()
     const page = photographerModel.getUserHeaderDOM();
-
-    const main = document.getElementById("main");
-    main.appendChild(page);
+    // Avant d'être assemblées vers la balise <main>
+    const mainSection = document.getElementById('main');
+    mainSection.appendChild(page);
 }
 
 async function init() {
     // Récupère les datas des photographes
     const { photographers } = await getPhotographers();
-    const photographer = filterById(photographers);
+    filterById(photographers);
 };
 
 init();
