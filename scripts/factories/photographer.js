@@ -48,42 +48,37 @@ function photographerFactory(data) {
     
     // Création du profil individuel de photographe
     function getUserHeaderDOM() {
+        // Import local des datas filtrées
         const { name, portrait, city, country, tagline } = data[0];
-
+        const picture = `/assets/photographers/${portrait}`;
         // Partie <header> du photographer : nom/prénom/etc + Contact + Photo de profil
         const page = document.querySelector('.photograph-header');
-
+        // Création de la balise <section>
         const presentationSection = page.appendChild(document.createElement("section"));
         presentationSection.setAttribute('class', 'photograph-presentation');
-
+        // Création des balises pour Nom, Ville/Pays, Dicton dans la balise <section>
         const presentationName = presentationSection.appendChild(document.createElement("name"));
         presentationName.textContent = name;
-
         const presentationCity = presentationSection.appendChild(document.createElement("city"));
         presentationCity.innerHTML = `${city}, ${country}`;
-
         const presentationDicton = presentationSection.appendChild(document.createElement("dicton"));
         presentationDicton.innerHTML = tagline;
-
+        // Insertion des balises avant bouton "Contactez-moi"
         page.insertBefore(presentationSection, document.querySelector('.contact_button'));
+        //
+        // ------------------------------------------------------------------------------------------
+        // Création de la balise <div> pour contenir la photo de profil
+        const imgContainer = document.createElement('div');
+        imgContainer.setAttribute('class', 'img-container');
+        // Insertion photo de profil <img> dans <div> pour mise en place CSS
+        const presentationPhoto = document.createElement('img');
+        presentationPhoto.setAttribute('class', 'photo-profil')
+        presentationPhoto.setAttribute('src', picture);
+        // Ajout de presentationPhoto dans la page
+        page.appendChild(imgContainer);
+        imgContainer.appendChild(presentationPhoto);
         return page;
     };
-    // ---------------------------------------------------------------------------------------------
-            // page.insertAdjacentHTML('afterbegin', `
-            //     <section class="user_header-DOM">
-            //         <name>${name}</name>
-            //         <city>ReTest</city>
-            //         <dicton>Suivez moi sur insta</dicton>
-            //     </section>
-            // `);
-            //
-            // const fragment = document.createDocumentFragment();
-            // const photographHeader = fragment.appendChild(document.createElement("carte-photographe"));
-            //     .appendChild(document.createElement("name"))
-            //     .appendChild(document.createElement("ville"))
-            //     .appendChild(document.createElement("dicton"))
-            // photographHeader.textContent = "HelloWorld";
-    // ---------------------------------------------------------------------------------------------
 
     // Création de l'ensemble des photos & vidéos du photographe sélectionné
     // function getUserDetailDOM() {
