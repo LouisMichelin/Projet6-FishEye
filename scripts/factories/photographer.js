@@ -1,5 +1,5 @@
 function photographerFactory(data) {
-    const {id, name, portrait, city, country, tagline, price} = data;
+    const { id, name, portrait, city, country, tagline, price, photographerId } = data;
     const picture = `/assets/photographers/${portrait}`;
     
     // Création des profils photographes
@@ -50,6 +50,7 @@ function photographerFactory(data) {
     function getUserHeaderDOM() {
         // Import local des datas filtrées
         const { name, portrait, city, country, tagline } = data[0];
+        
         const picture = `/assets/photographers/${portrait}`;
         // Partie <header> du photographer : nom/prénom/etc + Contact + Photo de profil
         const page = document.querySelector('.photograph-header');
@@ -58,14 +59,13 @@ function photographerFactory(data) {
         presentationSection.setAttribute('class', 'photograph-presentation');
         // Création des balises pour Nom, Ville/Pays, Dicton dans la balise <section>
         const presentationName = presentationSection.appendChild(document.createElement("name"));
-        presentationName.textContent = name;
+        presentationName.innerHTML = name;
         const presentationCity = presentationSection.appendChild(document.createElement("city"));
         presentationCity.innerHTML = `${city}, ${country}`;
         const presentationDicton = presentationSection.appendChild(document.createElement("dicton"));
         presentationDicton.innerHTML = tagline;
         // Insertion des balises avant bouton "Contactez-moi"
         page.insertBefore(presentationSection, document.querySelector('.contact_button'));
-        //
         // ------------------------------------------------------------------------------------------
         // Création de la balise <div> pour contenir la photo de profil
         const imgContainer = document.createElement('div');
@@ -81,16 +81,39 @@ function photographerFactory(data) {
     };
 
     // Création de l'ensemble des photos & vidéos du photographe sélectionné
-    // function getUserDetailDOM() {
-    //     // recuperer depuis le fichier json les media du photographer selctionné 
-    //     // boucler sur cette liste 
-    //     // et pour chaque element je vais creer une carte 
-    //     // je vais donc creer une factory pour media qui me donne une carte de type video ou de type image 
-    //     const page = document.createElement("div");
-    //     page.textContent =" ceci est un test";
-    //     return page;
-    // };
-    return {id, name, picture, city, country, tagline, price, getUserCardDOM, getUserHeaderDOM};
+    function getUserDetailDOM() {
+        // 1 - recuperer depuis le fichier json les media du photographer selctionné 
+        // 2 - boucler sur cette liste 
+        // 3 - et pour chaque element je vais creer une carte 
+        // 4 - je vais donc creer une factory pour media qui me donne une carte de type video ou de type image
+        const { image, video, likes, title } = data[0];
+        console.log(data[0]);
+        // Setup main division
+        const main = document.getElementById('main');
+        const mediaSection = main.appendChild(document.createElement("medias-section"));
+        // Partie filtres
+        const filters = mediaSection.appendChild(document.createElement("filters"));
+        filters.innerHTML = "Trier par";
+        const filterPopular = filters.appendChild(document.createElement("filter_button-popular"));
+        const filterDate = filters.appendChild(document.createElement("filter_button-date"));
+        const filterTitre = filters.appendChild(document.createElement("filter_button-titre"));
+        // Partie photos & vidéos
+        const gallerieMedias = mediaSection.append(document.createElement("gallerie"));
+
+        const divPhotos = `/FishEye - Photos/Sample Photos/${image}`;
+        const divVideos = `/FishEye - Photos/Sample Photos/${video}`;
+        const divTitle = title;
+        const divLikes = likes;
+
+        const photoTest = gallerieMedias.appendChild(divPhotos);
+        
+
+        
+
+        return main;
+    };
+
+    return { id, name, picture, city, country, tagline, price, getUserCardDOM, getUserHeaderDOM, getUserDetailDOM };
 };
 
 // Nouvelle factory pour les Medias vidéos/images

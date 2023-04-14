@@ -3,7 +3,7 @@ const params = new URLSearchParams(window.location.search);
 const selectedArtist = params.get('id');
 // console.log(selectedArtist);
 
-// Page d'un photographe sélectionné :
+// Photographes sélectionnés :
 async function getPhotographers() {
     const response = await fetch('/data/photographers.json');
     const photographers = await response.json();
@@ -24,10 +24,28 @@ async function filterById(photographers) {
     mainSection.appendChild(page);
 }
 
+async function filterMediasById(medias) {
+    const photographer = medias.filter((element) =>
+        (element.id) == selectedArtist
+    );
+    const mediasModel = photographerFactory(photographer);
+    const page = mediasModel.getUserDetailDOM();
+    const main = document.getElementById('main');
+    main.appendChild(page);
+
+}
+
+
+
+
+
+
+
 async function init() {
     // Récupère les datas des photographes
     const { photographers } = await getPhotographers();
     filterById(photographers);
+    filterMediasById(photographers);
 };
 
 init();
