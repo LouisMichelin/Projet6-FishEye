@@ -23,6 +23,10 @@ async function filterById(photographers) {
     // Avant d'être assemblées vers la balise <main>
     const mainSection = document.getElementById('main');
     mainSection.appendChild(page);
+    // ---------------------------------------------------------------
+    // let firstNameFilter = photographers[0].name.split(" ");
+    // firstNameFilter = firstNameFilter[0];
+    // console.log(firstNameFilter);
 }
 
 // Filtre les médias grâce au photographerId et l'ID récupéré
@@ -30,17 +34,22 @@ async function filterMediasById(medias) {
     const photographerMedia = medias.filter((element) =>
         (element.photographerId) == selectedArtist
     );
-
     // Sélection de la balise <main> dans le HTML
     const main = document.getElementById('main');
 
     // Exécution de la fonction mediaFactory() pour récupérer les données ligne3 factory
     // et ensuite exécution de getMediaCardDOM() .forEach(element) dont on a besoin.
     photographerMedia.forEach((element) => {
-        const mediaModel = mediaFactory(element);
-        const mediaCardDOM = mediaModel.getMediaCardDOM();
-        main.appendChild(mediaCardDOM);
-    });
+        if (element.image) {
+            const mediaModelImage = mediaFactory(element);
+            const mediaCardDOM = mediaModelImage.getMediaCardDOM();
+            main.appendChild(mediaCardDOM);
+        } else if (element.video) {
+            const mediaModelVideo = mediaFactory(element);
+            const mediaCardDOM = mediaModelVideo.getMediaCardDOM();
+            main.appendChild(mediaCardDOM);
+        }
+    }); 
 }
 
 async function init() {
