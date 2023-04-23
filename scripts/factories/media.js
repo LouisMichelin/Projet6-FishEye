@@ -1,7 +1,7 @@
 function mediaFactory(data) {
     // Ici, c'est les sous-parties de la sous-partie "MEDIA" du .JSON que l'on veut filtrer :
     const { id, photographerId, name, title, image, video, likes, date, price } = data;
-    // pour retourner : data.id, data.photographerId, data.name, etc
+    // pour retourner : data.id, data.photographerId, data.name ...
   
     // Sépare le Prénom & le Nom avec .split() + Prend l'index [0] pour le prénom + Remplace "-" par " ".
     let prenom = name.split(" ")[0].replace("-", " ");

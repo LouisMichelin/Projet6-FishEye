@@ -14,7 +14,7 @@ async function getPhotographers() {
 
 // Filtre le photographe avec l'ID récupéré :
 function filterPhotographerById(photographers) {
-    // 
+    // Reprend globale "photographer" pour match "photographers" avec ID sélectionné PUIS index[0] car 1 seul artiste.
     photographer = photographers.filter((element) => (element.id) == selectedArtist)[0];
     // On envoie les données filtrées au Factory
     const photographerModel = photographerFactory(photographer);
@@ -25,28 +25,21 @@ function filterPhotographerById(photographers) {
     mainSection.appendChild(page);
 };
 
-
-
 // Filtre les médias grâce au photographerId et l'ID récupéré :
 function filterMediasById(medias) {
-    const photographerMedia = medias.filter((element) =>
-        (element.photographerId) == selectedArtist
-    );
-    // Sélection de la balise <main> dans le HTML
+    const photographerMedia = medias.filter((element) => (element.photographerId) == selectedArtist);
+    // Select balise <main> dans le HTML :
     const main = document.getElementById('main');
-    
     // Exécute mediaFactory() pour récupérer données ligne 3 de media.js
-    // et exécute getMediaCardDOM() dans le .forEach(element) pour chaque média.
+    // et exécute getMediaCardDOM() dans .forEach(element) pour chaque média.
     photographerMedia.forEach((element) => {
         // Définit mediaData pour récupérer TOUT "element" en forme .JSON
-        const mediaData = {...element,
-            "name": photographer.name
-        };
-            // Maintenant, on a injecté la variable "name" avec dans "element"
-            console.log(mediaData);
-            const mediaModel = mediaFactory(mediaData);
-            const mediaCardDOM = mediaModel.getMediaCardDOM();
-            main.appendChild(mediaCardDOM);
+        // puis injecte la variable "name" dans "element".
+        const mediaData = {...element, "name": photographer.name};
+        // console.log(mediaData);
+        const mediaModel = mediaFactory(mediaData);
+        const mediaCardDOM = mediaModel.getMediaCardDOM();
+        main.appendChild(mediaCardDOM);
     });
 };
 
