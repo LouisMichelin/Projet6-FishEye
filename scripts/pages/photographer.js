@@ -2,22 +2,20 @@
 const params = new URLSearchParams(window.location.search);
 const selectedArtist = params.get('id');
 
+// Définition globale "photographer" :
 let photographer;
-// console.log(selectedArtist);
 
-// Photographes sélectionnés :
+// Photographes sélectionnés depuis le .JSON :
 async function getPhotographers() {
     const response = await fetch('/data/photographers.json');
     const photographers = await response.json();
     return photographers;
 };
 
-// Filtre le photographe avec l'ID récupéré
+// Filtre le photographe avec l'ID récupéré :
 function filterPhotographerById(photographers) {
-    photographer = photographers.filter((element) =>
-        (element.id) == selectedArtist    
-    )[0];
-
+    // 
+    photographer = photographers.filter((element) => (element.id) == selectedArtist)[0];
     // On envoie les données filtrées au Factory
     const photographerModel = photographerFactory(photographer);
     // Ces données passent ensuite vers la fonction getUserHeaderDOM()
@@ -29,7 +27,7 @@ function filterPhotographerById(photographers) {
 
 
 
-// Filtre les médias grâce au photographerId et l'ID récupéré
+// Filtre les médias grâce au photographerId et l'ID récupéré :
 function filterMediasById(medias) {
     const photographerMedia = medias.filter((element) =>
         (element.photographerId) == selectedArtist
@@ -37,19 +35,19 @@ function filterMediasById(medias) {
     // Sélection de la balise <main> dans le HTML
     const main = document.getElementById('main');
     
-    // Exécution de la fonction mediaFactory() pour récupérer les données ligne3 factory
-    // et ensuite exécution de getMediaCardDOM() .forEach(element) dont on a besoin.
+    // Exécute mediaFactory() pour récupérer données ligne 3 de media.js
+    // et exécute getMediaCardDOM() dans le .forEach(element) pour chaque média.
     photographerMedia.forEach((element) => {
-        
-        
+        // Définit mediaData pour récupérer TOUT "element" en forme .JSON
         const mediaData = {...element,
-            "name": photographer.name};
-
+            "name": photographer.name
+        };
+            // Maintenant, on a injecté la variable "name" avec dans "element"
             console.log(mediaData);
             const mediaModel = mediaFactory(mediaData);
             const mediaCardDOM = mediaModel.getMediaCardDOM();
             main.appendChild(mediaCardDOM);
-        });
+    });
 };
 
 async function init() {
