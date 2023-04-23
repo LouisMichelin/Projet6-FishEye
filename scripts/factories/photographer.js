@@ -50,9 +50,9 @@ function photographerFactory(data) {
     // Création du profil individuel de photographe
     function getUserHeaderDOM() {
         // Partie <header> du photographer : nom/prénom/etc + Contact + Photo de profil
-        const page = document.querySelector('.photograph-header');
+        const headerPhotograph = document.querySelector('.photograph-header');
         // Création de la balise <section>
-        const presentationSection = page.appendChild(document.createElement("section"));
+        const presentationSection = headerPhotograph.appendChild(document.createElement("section"));
         presentationSection.setAttribute('class', 'photograph-presentation');
         // Création des balises pour Nom, Ville/Pays, Dicton dans la balise <section>
         const presentationName = presentationSection.appendChild(document.createElement("name"));
@@ -62,7 +62,7 @@ function photographerFactory(data) {
         const presentationDicton = presentationSection.appendChild(document.createElement("dicton"));
         presentationDicton.innerHTML =`${tagline}`;
         // Insertion des balises avant bouton "Contactez-moi"
-        page.insertBefore(presentationSection, document.querySelector('.contact_button'));
+        headerPhotograph.insertBefore(presentationSection, document.querySelector('.contact_button'));
         // ------------------------------------------------------------------------------------------
         // Création de la balise <div> pour contenir la photo de profil
         const imgContainer = document.createElement('div');
@@ -72,9 +72,9 @@ function photographerFactory(data) {
         presentationPhoto.setAttribute('class', 'photo-profil')
         presentationPhoto.setAttribute('src', `${picture}`);
         // Ajout de presentationPhoto dans la page
-        page.appendChild(imgContainer);
+        headerPhotograph.appendChild(imgContainer);
         imgContainer.appendChild(presentationPhoto);
-        return page;
+        return headerPhotograph;
     };
 
     return { id, name, picture, city, country, tagline, price, getUserCardDOM, getUserHeaderDOM };
