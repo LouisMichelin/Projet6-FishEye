@@ -12,27 +12,55 @@ function mediaFactory(data) {
     
     // Création des medias du photographer choisi :
     function getMediaCardDOM() {
-        // Balise <a>
+        // Balise <a> sur les cartes
         const link = document.createElement('a');
+        link.classList.add('media-cards');
         link.setAttribute('href', imageSource);
+
+        
+        
+        // Conteneur media (photo/video)
+        const mediaContainer = document.createElement('div');
+        mediaContainer.classList.add('media-container');
+
+        // Conteneur Titre + Likes
+        const titleContainer = document.createElement('div');
+        titleContainer.classList.add('card-title');
+
         // Titre des medias
         const h2 = document.createElement('h2');
+        h2.classList.add('media-title');
         h2.textContent = title;
-        // Condition SI image / SI video
+
+
+
+
+        // Mise en page SI image / SI video
         if (image) {
-            const testImage = document.createElement('img');
-            testImage.setAttribute('src', imageSource);
-            testImage.setAttribute('height', '150px');
-            testImage.setAttribute('width', '150px');
+            const mediaImage = document.createElement('img');
+            mediaImage.classList.add('media');
+            mediaImage.setAttribute('src', imageSource);
+
+            // Partie media
+            link.appendChild(mediaContainer);
+            mediaContainer.appendChild(mediaImage);
+
+            // Partie titre
             link.appendChild(h2);
-            h2.appendChild(testImage);
         };
+
         if (video) {
-            const testVideo = document.createElement('video');
-            testVideo.setAttribute('src', videoSource);
-            testVideo.setAttribute('width', '150px');
+            const mediaVideo = document.createElement('video');
+            mediaVideo.classList.add('media');
+            mediaVideo.setAttribute('src', videoSource);
+
+            // Partie media
+            link.appendChild(mediaContainer);
+            mediaContainer.appendChild(mediaVideo);
+
+            // Partie titre
             link.appendChild(h2);
-            h2.appendChild(testVideo);
+            
         };
         return link;
     };
