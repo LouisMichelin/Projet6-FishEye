@@ -26,7 +26,7 @@ function mediaFactory(data) {
 
         // Conteneur <div> des Titres + Likes
         const titleContainer = document.createElement('div');
-        titleContainer.classList.add('card-title');
+        titleContainer.classList.add('card-title-area');
 
         // Titre <h2> des medias
         const h2 = document.createElement('h2');

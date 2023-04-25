@@ -1,3 +1,9 @@
+#main {
+    margin: 40px 100px;
+    display: grid;
+    justify-content: center;
+}
+
 #contact_modal {
     display: none;
 }
@@ -10,6 +16,7 @@
     align-items: center;
     background-color: #FAFAFA;
     height: 300px;
+    max-width: 1240px;
     /* margin: 0 100px; */
 }
 .photograph-presentation {
@@ -111,20 +118,15 @@ form input {
 }
 
 /*--------------------------------------------------PARTIE MEDIA CARDS--------------------------------------------------*/
-#main {
-    margin: 40px 100px;
-}
 .wrapper {
     display: grid;
     width: auto;
-    background-color: cyan  ;
     justify-content: center;
     grid-template-columns: repeat(3, 350px);
     column-gap: 95px;
-    row-gap: 30px   
+    row-gap: 30px; 
 }
 .media-card {
-    background-color: green;
     overflow: hidden;
     max-width: 350px;
     max-height: 350px;
@@ -138,6 +140,19 @@ form input {
     height: 100%;
     object-fit: cover;
 }
-.card-title {
+
+.card-title-area {
     height: 50px;
+}
+
+
+.media-title {
+    color: #901C1C;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 31px;
+}
+
+.media-title, .media-title:visited, .media-title:active, .media-title:hover {
+    text-decoration: none;
 }
