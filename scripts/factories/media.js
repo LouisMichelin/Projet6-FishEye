@@ -9,31 +9,29 @@ function mediaFactory(data) {
     // Source dynamique vers les medias :
     const imageSource = `/FishEye - Photos/Sample Photos/${prenom}/${image}`
     const videoSource = `/FishEye - Photos/Sample Photos/${prenom}/${video}`
-    
+    // --------------------------------------------------------------------------------------------------
+    //
     // Création des medias du photographer choisi :
+    //
+    // --------------------------------------------------------------------------------------------------
     function getMediaCardDOM() {
-        // Balise <a> sur les cartes
+        // Cards avec balise <a>
         const link = document.createElement('a');
-        link.classList.add('media-cards');
+        link.classList.add('media-card');
         link.setAttribute('href', imageSource);
 
-        
-        
-        // Conteneur media (photo/video)
+        // Conteneur <div> des medias (photo/video)
         const mediaContainer = document.createElement('div');
         mediaContainer.classList.add('media-container');
 
-        // Conteneur Titre + Likes
+        // Conteneur <div> des Titres + Likes
         const titleContainer = document.createElement('div');
         titleContainer.classList.add('card-title');
 
-        // Titre des medias
+        // Titre <h2> des medias
         const h2 = document.createElement('h2');
         h2.classList.add('media-title');
         h2.textContent = title;
-
-
-
 
         // Mise en page SI image / SI video
         if (image) {
@@ -60,7 +58,6 @@ function mediaFactory(data) {
 
             // Partie titre
             link.appendChild(h2);
-            
         };
         return link;
     };

@@ -30,6 +30,11 @@ function filterMediasById(medias) {
     const photographerMedia = medias.filter((element) => (element.photographerId) == selectedArtist);
     // Select balise <main> dans le HTML :
     const main = document.getElementById('main');
+    
+    // Wrapper pour mise en forme Grid
+    const wrapper = document.createElement('section');
+    wrapper.classList.add('wrapper');
+    main.appendChild(wrapper);
     // Exécute mediaFactory() pour récupérer données ligne 3 de media.js
     // et exécute getMediaCardDOM() dans .forEach(element) pour chaque média.
     photographerMedia.forEach((element) => {
@@ -39,7 +44,8 @@ function filterMediasById(medias) {
         // console.log(mediaData);
         const mediaModel = mediaFactory(mediaData);
         const mediaCardDOM = mediaModel.getMediaCardDOM();
-        main.appendChild(mediaCardDOM);
+        
+        wrapper.appendChild(mediaCardDOM);
     });
 };
 
