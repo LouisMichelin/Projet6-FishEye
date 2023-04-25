@@ -112,7 +112,7 @@ form input {
 
 /*--------------------------------------------------PARTIE MEDIA CARDS--------------------------------------------------*/
 #main {
-    margin: 50px 100px;
+    margin: 40px 100px;
 }
 .wrapper {
     display: grid;
@@ -120,6 +120,8 @@ form input {
     background-color: cyan  ;
     justify-content: center;
     grid-template-columns: repeat(3, 350px);
+    column-gap: 95px;
+    row-gap: 30px   
 }
 .media-card {
     background-color: green;
