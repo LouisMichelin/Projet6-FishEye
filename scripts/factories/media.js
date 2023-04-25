@@ -28,10 +28,16 @@ function mediaFactory(data) {
         const titleContainer = document.createElement('div');
         titleContainer.classList.add('card-title-area');
 
-        // Titre <h2> des medias
-        const h2 = document.createElement('h2');
-        h2.classList.add('media-title');
-        h2.textContent = title;
+        // Titre <p> des medias
+        const p = document.createElement('p');
+        p.classList.add('media-title');
+        p.textContent = title;
+
+
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        // PENSER AU flex-wrap: wrap; POUR LES MEDIAS
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 
         // Mise en page SI image / SI video
         if (image) {
@@ -44,7 +50,8 @@ function mediaFactory(data) {
             mediaContainer.appendChild(mediaImage);
 
             // Partie titre
-            link.appendChild(h2);
+            link.appendChild(titleContainer);
+            titleContainer.appendChild(p);
         };
 
         if (video) {
@@ -57,7 +64,8 @@ function mediaFactory(data) {
             mediaContainer.appendChild(mediaVideo);
 
             // Partie titre
-            link.appendChild(h2);
+            link.appendChild(titleContainer);
+            titleContainer.appendChild(p);
         };
         return link;
     };
