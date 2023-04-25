@@ -17,6 +17,7 @@ header {
 h1 {
     color: #901C1C;
     margin-right: 100px;
+    font-weight: 400;
 }
 
 .logo {
@@ -26,16 +27,15 @@ h1 {
 
 .photographer_section {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
-    margin-top: 100px;
+    grid-template-columns: repeat(3, 526px);
+    /* grid-template-columns: 1fr 1fr 1fr; */
+    row-gap: 80px;
+    margin: 100px 0px;
 }
-
 .photographer_section a, .photographer_section a:visited {
     text-decoration: none;
     color: black;
 }
-
 .photographer_section article {
     justify-self: center;
     display: flex;
