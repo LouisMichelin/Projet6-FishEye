@@ -50,7 +50,7 @@ function filterMediasById(medias) {
     logoMenuFilters.classList.add("fa-sharp");
     logoMenuFilters.classList.add("fa-solid");
     logoMenuFilters.classList.add("fa-angle-up");
-    logoMenuFilters.setAttribute('style', "style=color: #ffffff");
+    logoMenuFilters.setAttribute('style', "color: #ffffff");
 
 
     // Trier par : POPULARITE
