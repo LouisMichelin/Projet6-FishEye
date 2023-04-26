@@ -9,6 +9,21 @@ function mediaFactory(data) {
     // Source dynamique vers les medias :
     const imageSource = `/FishEye - Photos/Sample Photos/${prenom}/${image}`
     const videoSource = `/FishEye - Photos/Sample Photos/${prenom}/${video}`
+
+
+    // --------------------------------------------------------------------------------------------------
+    //
+    // Section "Trier par" :
+    //
+    // --------------------------------------------------------------------------------------------------
+    
+
+
+
+
+
+
+
     // --------------------------------------------------------------------------------------------------
     //
     // Création des medias du photographer choisi :
@@ -19,24 +34,18 @@ function mediaFactory(data) {
         const link = document.createElement('a');
         link.classList.add('media-card');
         link.setAttribute('href', imageSource);
-
         // Conteneur <div> des medias (photo/video)
         const mediaContainer = document.createElement('div');
         mediaContainer.classList.add('media-container');
-
         // Conteneur <div> des Titres + Likes
         const titleContainer = document.createElement('div');
         titleContainer.classList.add('card-title-area');
-
         // Titre <p> des medias
         const p = document.createElement('p');
         p.classList.add('media-title');
         p.textContent = title;
 
-
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // PENSER AU flex-wrap: wrap; POUR LES MEDIAS
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        // Bouton Coeur + Nombre de likes
 
 
         // Mise en page SI image / SI video
@@ -44,11 +53,9 @@ function mediaFactory(data) {
             const mediaImage = document.createElement('img');
             mediaImage.classList.add('media');
             mediaImage.setAttribute('src', imageSource);
-
             // Partie media
             link.appendChild(mediaContainer);
             mediaContainer.appendChild(mediaImage);
-
             // Partie titre
             link.appendChild(titleContainer);
             titleContainer.appendChild(p);
@@ -58,11 +65,9 @@ function mediaFactory(data) {
             const mediaVideo = document.createElement('video');
             mediaVideo.classList.add('media');
             mediaVideo.setAttribute('src', videoSource);
-
             // Partie media
             link.appendChild(mediaContainer);
             mediaContainer.appendChild(mediaVideo);
-
             // Partie titre
             link.appendChild(titleContainer);
             titleContainer.appendChild(p);
