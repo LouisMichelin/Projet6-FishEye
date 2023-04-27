@@ -58,6 +58,7 @@ function mediaFactory(data) {
         heartLogo.classList.add("fa-sharp");
         heartLogo.classList.add("fa-solid");
         heartLogo.classList.add("fa-heart");
+        heartLogo.classList.add("fa-lg");
         heartLogo.setAttribute('style', "color: #901C1C");
 
         // Mise en page SI image / SI video
