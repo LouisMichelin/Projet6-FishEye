@@ -37,7 +37,7 @@ function mediaFactory(data) {
         // Conteneur <div> des medias (photo/video)
         const mediaContainer = document.createElement('div');
         mediaContainer.classList.add('media-container');
-        // Conteneur <div> des Titres + Likes
+        // Conteneur <div> de (Titres + (Nombre Likes & Logo Coeur))
         const titleContainer = document.createElement('div');
         titleContainer.classList.add('card-title-area');
         // Titre <p> des medias
@@ -45,8 +45,20 @@ function mediaFactory(data) {
         p.classList.add('media-title');
         p.textContent = title;
 
-        // Bouton Coeur + Nombre de likes
-
+        // Conteneur <div> de (Nb Likes + Logo Coeur)
+        const nbLikesAndHeart = document.createElement('div');
+        nbLikesAndHeart.classList.add('likes-heart-area');
+        // Bouton Likes
+        const mediaLikes = document.createElement('p');
+        mediaLikes.classList.add('nombre-likes');
+        mediaLikes.textContent = likes;
+        // Bouton Coeur
+        const heartLogo = document.createElement('i');
+        heartLogo.classList.add('logo-heart');
+        heartLogo.classList.add("fa-sharp");
+        heartLogo.classList.add("fa-solid");
+        heartLogo.classList.add("fa-heart");
+        heartLogo.setAttribute('style', "color: #901C1C");
 
         // Mise en page SI image / SI video
         if (image) {
@@ -59,6 +71,10 @@ function mediaFactory(data) {
             // Partie titre
             link.appendChild(titleContainer);
             titleContainer.appendChild(p);
+            // Zone Likes & Coeur
+            titleContainer.appendChild(nbLikesAndHeart);
+            nbLikesAndHeart.appendChild(mediaLikes);
+            nbLikesAndHeart.appendChild(heartLogo);
         };
 
         if (video) {
@@ -71,6 +87,10 @@ function mediaFactory(data) {
             // Partie titre
             link.appendChild(titleContainer);
             titleContainer.appendChild(p);
+            // Zone Likes & Coeur
+            titleContainer.appendChild(nbLikesAndHeart);
+            nbLikesAndHeart.appendChild(mediaLikes);
+            nbLikesAndHeart.appendChild(heartLogo);
         };
         return link;
     };
