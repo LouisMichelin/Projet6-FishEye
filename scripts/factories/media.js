@@ -7,8 +7,33 @@ function mediaFactory(data) {
     let prenom = name.split(" ")[0].replace("-", " ");
 
     // Source dynamique vers les medias :
-    const imageSource = `/FishEye - Photos/Sample Photos/${prenom}/${image}`
-    const videoSource = `/FishEye - Photos/Sample Photos/${prenom}/${video}`
+    const imageSource = `/FishEye - Photos/Sample Photos/${prenom}/${image}`;
+    const videoSource = `/FishEye - Photos/Sample Photos/${prenom}/${video}`;
+
+    // --------------------------------------------------------------------------------------------------
+    //
+    // Section "Menu déroulant" :
+    //
+    // --------------------------------------------------------------------------------------------------
+    //
+    // const menuDeroulant = document.getElementsByName('menu-premiere-partie');
+    // menuDeroulant.addEventListener("click", function() {
+    //     console.log("helloworld LOL");
+    //     document.getElementsByName(".menu-deuxieme-partie").display = "none";
+    // });
+    // ------------------------------------------
+    // function menuTest() {
+    //     const menuDeroulant = document.getElementsByName('menu-premiere-partie');
+    //     menuDeroulant.addEventListener("click", function() {
+    //         console.log("helloworld LOL");
+    //         document.getElementsByName(".menu-deuxieme-partie").display = "none";
+    //     });
+    // };
+    // ------------------------------------------
+    // function menuTest() {
+    //     console.log("helloworld");
+    //     document.querySelector('menu-premiere-partie');
+    // };
 
 
     // --------------------------------------------------------------------------------------------------
@@ -18,12 +43,6 @@ function mediaFactory(data) {
     // --------------------------------------------------------------------------------------------------
     
 
-
-
-
-
-
-
     // --------------------------------------------------------------------------------------------------
     //
     // Création des medias du photographer choisi :
@@ -31,9 +50,9 @@ function mediaFactory(data) {
     // --------------------------------------------------------------------------------------------------
     function getMediaCardDOM() {
         // Cards avec balise <a>
-        const link = document.createElement('a');
-        link.classList.add('media-card');
-        link.setAttribute('href', imageSource);
+            // const link = document.createElement('a');
+            // link.classList.add('media-card');
+            // link.setAttribute('href', imageSource);
         // Conteneur <div> des medias (photo/video)
         const mediaContainer = document.createElement('div');
         mediaContainer.classList.add('media-container');
@@ -61,8 +80,12 @@ function mediaFactory(data) {
         heartLogo.classList.add("fa-lg");
         heartLogo.setAttribute('style', "color: #901C1C");
 
+        const link = document.createElement('a');
+
         // Mise en page SI image / SI video
         if (image) {
+            link.classList.add('media-card');
+            link.setAttribute('href', imageSource);
             const mediaImage = document.createElement('img');
             mediaImage.classList.add('media');
             mediaImage.setAttribute('src', imageSource);
@@ -79,12 +102,20 @@ function mediaFactory(data) {
         };
 
         if (video) {
+            link.classList.add('media-card');
+            link.setAttribute('href', videoSource);
             const mediaVideo = document.createElement('video');
             mediaVideo.classList.add('media');
-            mediaVideo.setAttribute('src', videoSource);
+            mediaVideo.controls = true;
+
+            const mediaVideoSource = document.createElement('source');
+            mediaVideoSource.setAttribute('src', videoSource);
+            mediaVideoSource.setAttribute('type', "video/mp4");
+
             // Partie media
             link.appendChild(mediaContainer);
             mediaContainer.appendChild(mediaVideo);
+            mediaVideo.appendChild(mediaVideoSource);
             // Partie titre
             link.appendChild(titleContainer);
             titleContainer.appendChild(p);

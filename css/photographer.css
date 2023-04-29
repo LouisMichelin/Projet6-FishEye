@@ -10,8 +10,11 @@ a {
     cursor: pointer;
     text-decoration: none;
 }
-
-/*--------------------PARTIE HEADER--------------------*/
+/*
+--------------------------------------------------------------------------------------------------
+PARTIE HEADER
+--------------------------------------------------------------------------------------------------
+*/
 .photograph-header {
     display: flex;
     justify-content: space-around;
@@ -57,8 +60,11 @@ a {
     margin-top: 25px;
     scale: 10%;
 }
-
-/*--------------------BOUTON CONTACT--------------------*/
+/*
+--------------------------------------------------------------------------------------------------
+BOUTON CONTACT
+--------------------------------------------------------------------------------------------------
+*/
 .contact_button {
     font-size: 20px;
     font-weight: bold;
@@ -117,8 +123,11 @@ form input {
     border: none;
     border-radius: 5px;
 }
-
-/*--------------------PARTIE "TRIER PAR"--------------------*/
+/*
+--------------------------------------------------------------------------------------------------
+PARTIE "TRIER PAR"
+--------------------------------------------------------------------------------------------------
+*/
 .section-media-filters {
     display: flex;
     justify-content: flex-start;
@@ -131,30 +140,6 @@ form input {
     font-weight: 700;
     margin-right: 25px;
 }
-.menu-filters {
-    height: 130px;
-    width: 130px;
-    border-radius: 5px;
-    padding: 20px;
-    display: grid;
-    column-gap: 15px;
-    row-gap: 25px;
-    align-items: center;
-    position: relative;
-    background-color: #901C1C;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-}
-.menu-filters > div {
-    display: flex;
-    align-items: center;
-}
-.menu-filters > div i {
-    cursor: pointer;
-    margin-left: 25px;
-}
-
-/* !!! transform: rotate(-180deg); ----> COMMANDE POUR FAIRE TOURNER LOGO QUAND MENU ON/OFF */
-
 .filter-popularity, .filter-date, .filter-titre {
     cursor: pointer;
     font-size: 18px;
@@ -167,7 +152,61 @@ form input {
     border-bottom: white;
 }
 
-/*--------------------PARTIE MEDIA CARDS--------------------*/
+.menu-filters {
+    /* height: 23px;
+    width: 130px;
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 15px;
+    row-gap: 25px;
+    align-items: center;
+    position: relative;
+    background-color: #901C1C;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); */
+    width: 170px;
+}
+
+.menu-filters .menu-premiere-partie {
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-radius: 5px 5px 0 0;
+    padding: 20px 20px 10px 20px;
+    height: 23px;
+    background-color: #901C1C;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.menu-premiere-partie i {
+    cursor: pointer;
+    margin-left: 25px;
+}
+
+.menu-premiere-partie:hover i {
+    transform: rotate(-180deg);
+}
+
+/* .menu-filters .menu-deuxieme-partie {
+    display: none;
+    filter: none;
+} */
+.menu-filters .menu-deuxieme-partie {
+    display: grid;
+    position: relative;
+    column-gap: 15px;
+    row-gap: 25px;
+    border-radius: 0 0 5px 5px;
+    padding: 10px 20px 20px 20px;
+    background-color: #901C1C;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+/*
+--------------------------------------------------------------------------------------------------
+PARTIE MEDIA CARDS
+--------------------------------------------------------------------------------------------------
+*/
 .wrapper {
     display: grid;
     width: auto;
@@ -233,4 +272,12 @@ form input {
     display: flex;
     align-items: center;
     margin-left: 6.38px;
+}
+/*
+--------------------------------------------------------------------------------------------------
+PARTIE MEDIA VIDEO
+--------------------------------------------------------------------------------------------------
+*/
+.media {
+    
 }

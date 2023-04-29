@@ -41,17 +41,25 @@ function filterMediasById(medias) {
     const trierPar = document.createElement('p');
     trierPar.classList.add('trier-par');
     trierPar.textContent = "Trier par";
-    // Menu déroulant des Filtres
+    // Menu des Filtres
     const menuFilters = document.createElement('div');
     menuFilters.classList.add('menu-filters');
-    // Balise pour "POPULARITE" + Logo du menu
-    const divPopularity = document.createElement('div');
+
+    
+    // 1ère partie Menu : "Titre" + Logo "v"
+    const menuPremierePartie = document.createElement('div');
+    menuPremierePartie.classList.add('menu-premiere-partie');
+    // menuPremierePartie.setAttribute('onclick', menuTest());
     const logoMenuFilters = document.createElement('i');
     logoMenuFilters.classList.add("fa-sharp");
     logoMenuFilters.classList.add("fa-solid");
     logoMenuFilters.classList.add("fa-angle-up");
     logoMenuFilters.setAttribute('style', "color: #ffffff");
+    
 
+    // 2ème partie Menu : "Date" + "Titre"
+    const menuDeuxiemePartie = document.createElement('div');
+    menuDeuxiemePartie.classList.add('menu-deuxieme-partie');
 
     // Trier par : POPULARITE
     const mediaFilterPopularity = document.createElement('div');
@@ -72,11 +80,13 @@ function filterMediasById(medias) {
     main.appendChild(mediaFilter);
     mediaFilter.appendChild(trierPar);
     mediaFilter.appendChild(menuFilters);
-    menuFilters.appendChild(divPopularity);
-    divPopularity.appendChild(mediaFilterPopularity); // Je place "POPULARITE" dans une div pour ajouter le logo du menu
-    divPopularity.appendChild(logoMenuFilters)
-    menuFilters.appendChild(mediaFilterDate);
-    menuFilters.appendChild(mediaFilterTitre);
+    menuFilters.appendChild(menuPremierePartie);
+    menuPremierePartie.appendChild(mediaFilterPopularity); // Je place "POPULARITE" dans une div pour ajouter le logo du menu
+    menuPremierePartie.appendChild(logoMenuFilters);
+    //
+    menuFilters.appendChild(menuDeuxiemePartie)
+    menuDeuxiemePartie.appendChild(mediaFilterDate);
+    menuDeuxiemePartie.appendChild(mediaFilterTitre);
 
     // --------------------------------------------------------------------------------------------------
     // Section Medias :
@@ -84,6 +94,8 @@ function filterMediasById(medias) {
     const wrapper = document.createElement('section'); // Wrapper pour mise en forme Grid :
     wrapper.classList.add('wrapper');
     main.appendChild(wrapper);
+    //
+    
     // Exécute mediaFactory() pour récupérer données ligne 3 de media.js
     // et exécute getMediaCardDOM() dans .forEach(element) pour chaque média.
     photographerMedia.forEach((element) => {
