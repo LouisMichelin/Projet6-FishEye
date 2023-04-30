@@ -122,6 +122,6 @@ function mediaFactory(data) {
             nbLikesAndHeart.appendChild(mediaLikes);
             nbLikesAndHeart.appendChild(heartLogo);
         return link;
-    };
+    }
     return { id, photographerId, name, title, image, video, likes, date, price, getMediaCardDOM };
 };

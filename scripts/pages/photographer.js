@@ -30,66 +30,58 @@ function filterMediasById(medias) {
     const photographerMedia = medias.filter((element) => (element.photographerId) == selectedArtist);
     // Select balise <main> dans le HTML :
     const main = document.getElementById('main');
-    
+
     // --------------------------------------------------------------------------------------------------
     // Section "Trier par" :
     // --------------------------------------------------------------------------------------------------
     const mediaFilter = document.createElement('section');
     mediaFilter.classList.add('section-media-filters');
-    
     // Nom de la zone "Trier par"
     const trierPar = document.createElement('p');
     trierPar.classList.add('trier-par');
     trierPar.textContent = "Trier par";
+
     // Menu des Filtres
     const menuFilters = document.createElement('select');
     menuFilters.classList.add('menu-filters');
 
+    // Select + Options : Styler
+    const menuStyler = document.createElement('div');
+    menuStyler.classList.add('menu-styler');
     
-    // 1ère partie Menu : "Titre" + Logo "v"
+    // Filtres
     const option1 = document.createElement('option');
     option1.classList.add('menu-filter');
+    option1.selected = true; // Affiche "Popularité" en haut du menu
     option1.value = "Popularité";
     option1.text = "Popularité";
-
+    //
     const option2 = document.createElement('option');
     option2.classList.add('menu-filter');
     option2.value = "Date";
     option2.text = "Date";
-
+    //
     const option3 = document.createElement('option');
     option3.classList.add('menu-filter');
     option3.value = "Titre";
     option3.text = "Titre";
-
+    // Mise en page
     main.appendChild(mediaFilter);
     mediaFilter.appendChild(trierPar);
-    mediaFilter.appendChild(menuFilters);
+    mediaFilter.appendChild(menuStyler);
+    menuStyler.appendChild(menuFilters);
     menuFilters.appendChild(option1);
     menuFilters.appendChild(option2);
     menuFilters.appendChild(option3);
 
-
-
-    /*
-    // menuPremierePartie.setAttribute('onclick', menuTest());
-    const logoMenuFilters = document.createElement('i');
-    logoMenuFilters.classList.add("fa-sharp");
-    logoMenuFilters.classList.add("fa-solid");
-    logoMenuFilters.classList.add("fa-angle-up");
-    logoMenuFilters.setAttribute('style', "color: #ffffff");
-    
-*/
     // --------------------------------------------------------------------------------------------------
     // Section Medias :
     // --------------------------------------------------------------------------------------------------
     const wrapper = document.createElement('section'); // Wrapper pour mise en forme Grid :
-   main.appendChild(wrapper);
-    //
-    
-    const div = displayPhotographerMedia(photographerMedia);
-   wrapper.appendChild(div);
-
+    const div = displayPhotographerMedia(photographerMedia); // Appelle la fonction avec "photographerMedia"
+    // Mise en page
+    main.appendChild(wrapper);
+    wrapper.appendChild(div);
 }
 
 async function init() {
@@ -117,20 +109,21 @@ function displayPhotographerMedia(tableau){
         const mediaCardDOM = mediaModel.getMediaCardDOM();
         div.appendChild(mediaCardDOM);
     });
-
     return div;
 }
 
-function sortByDate(){
-    // trier le tableau photographerMedia par date
-// 2 CHOIX : refaire 1 tableau trié OU trier le tableau existant
-// PAS DE ONCLICK() -> !!! addeventlistener();
+function sortByDate() {
+    // trier le tableau photographerMedia par Date
+    // 2 CHOIX : refaire 1 tableau trié OU trier le tableau existant
+    // PAS DE ONCLICK() -> !!! addeventlistener();
 }
-function sortByTitle(){
-    // trier le tableau photographerMedi apar date
-    
+function sortByTitle() {
+    // trier le tableau photographerMedia par Titre
+    // 2 CHOIX : refaire 1 tableau trié OU trier le tableau existant
+    // PAS DE ONCLICK() -> !!! addeventlistener();
 }
-function sortByPopularity(){
-    // trier le tableau photographerMedia par date
-    
+function sortByPopularity() {
+    // trier le tableau photographerMedia par Popularity
+    // 2 CHOIX : refaire 1 tableau trié OU trier le tableau existant
+    // PAS DE ONCLICK() -> !!! addeventlistener();
 }
