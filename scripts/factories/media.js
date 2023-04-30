@@ -81,28 +81,20 @@ function mediaFactory(data) {
         heartLogo.setAttribute('style', "color: #901C1C");
 
         const link = document.createElement('a');
-
+        
         // Mise en page SI image / SI video
         if (image) {
-            link.classList.add('media-card');
+            
             link.setAttribute('href', imageSource);
             const mediaImage = document.createElement('img');
             mediaImage.classList.add('media');
             mediaImage.setAttribute('src', imageSource);
             // Partie media
-            link.appendChild(mediaContainer);
             mediaContainer.appendChild(mediaImage);
-            // Partie titre
-            link.appendChild(titleContainer);
-            titleContainer.appendChild(p);
-            // Zone Likes & Coeur
-            titleContainer.appendChild(nbLikesAndHeart);
-            nbLikesAndHeart.appendChild(mediaLikes);
-            nbLikesAndHeart.appendChild(heartLogo);
-        };
+
+        }
 
         if (video) {
-            link.classList.add('media-card');
             link.setAttribute('href', videoSource);
             const mediaVideo = document.createElement('video');
             mediaVideo.classList.add('media');
@@ -113,17 +105,22 @@ function mediaFactory(data) {
             mediaVideoSource.setAttribute('type', "video/mp4");
 
             // Partie media
-            link.appendChild(mediaContainer);
             mediaContainer.appendChild(mediaVideo);
-            mediaVideo.appendChild(mediaVideoSource);
-            // Partie titre
+            mediaVideo.appendChild(mediaVideoSource); 
+        }
+
+        link.setAttribute("data-id", id);
+        link.classList.add('media-card');
+        // ajout de la partie media
+        link.appendChild(mediaContainer);
+            
+                    // Partie titre
             link.appendChild(titleContainer);
             titleContainer.appendChild(p);
             // Zone Likes & Coeur
             titleContainer.appendChild(nbLikesAndHeart);
             nbLikesAndHeart.appendChild(mediaLikes);
             nbLikesAndHeart.appendChild(heartLogo);
-        };
         return link;
     };
     return { id, photographerId, name, title, image, video, likes, date, price, getMediaCardDOM };

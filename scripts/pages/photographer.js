@@ -42,13 +42,36 @@ function filterMediasById(medias) {
     trierPar.classList.add('trier-par');
     trierPar.textContent = "Trier par";
     // Menu des Filtres
-    const menuFilters = document.createElement('div');
+    const menuFilters = document.createElement('select');
     menuFilters.classList.add('menu-filters');
 
     
     // 1ère partie Menu : "Titre" + Logo "v"
-    const menuPremierePartie = document.createElement('div');
-    menuPremierePartie.classList.add('menu-premiere-partie');
+    const option1 = document.createElement('option');
+    option1.classList.add('menu-filter');
+    option1.value = "Popularité";
+    option1.text = "Popularité";
+
+    const option2 = document.createElement('option');
+    option2.classList.add('menu-filter');
+    option2.value = "Date";
+    option2.text = "Date";
+
+    const option3 = document.createElement('option');
+    option3.classList.add('menu-filter');
+    option3.value = "Titre";
+    option3.text = "Titre";
+
+    main.appendChild(mediaFilter);
+    mediaFilter.appendChild(trierPar);
+    mediaFilter.appendChild(menuFilters);
+    menuFilters.appendChild(option1);
+    menuFilters.appendChild(option2);
+    menuFilters.appendChild(option3);
+
+
+
+    /*
     // menuPremierePartie.setAttribute('onclick', menuTest());
     const logoMenuFilters = document.createElement('i');
     logoMenuFilters.classList.add("fa-sharp");
@@ -56,58 +79,18 @@ function filterMediasById(medias) {
     logoMenuFilters.classList.add("fa-angle-up");
     logoMenuFilters.setAttribute('style', "color: #ffffff");
     
-
-    // 2ème partie Menu : "Date" + "Titre"
-    const menuDeuxiemePartie = document.createElement('div');
-    menuDeuxiemePartie.classList.add('menu-deuxieme-partie');
-
-    // Trier par : POPULARITE
-    const mediaFilterPopularity = document.createElement('div');
-    mediaFilterPopularity.classList.add('filter-popularity');
-    mediaFilterPopularity.setAttribute('href', '#');
-    mediaFilterPopularity.textContent = "Popularité";
-    // Trier par : DATE
-    const mediaFilterDate = document.createElement('div');
-    mediaFilterDate.classList.add('filter-date');
-    mediaFilterDate.setAttribute('href', '#');
-    mediaFilterDate.textContent = "Date";
-    // Trier par : TITRE
-    const mediaFilterTitre = document.createElement('div');
-    mediaFilterTitre.classList.add('filter-titre');
-    mediaFilterTitre.setAttribute('href', '#');
-    mediaFilterTitre.textContent = "Titre";
-
-    main.appendChild(mediaFilter);
-    mediaFilter.appendChild(trierPar);
-    mediaFilter.appendChild(menuFilters);
-    menuFilters.appendChild(menuPremierePartie);
-    menuPremierePartie.appendChild(mediaFilterPopularity); // Je place "POPULARITE" dans une div pour ajouter le logo du menu
-    menuPremierePartie.appendChild(logoMenuFilters);
-    //
-    menuFilters.appendChild(menuDeuxiemePartie)
-    menuDeuxiemePartie.appendChild(mediaFilterDate);
-    menuDeuxiemePartie.appendChild(mediaFilterTitre);
-
+*/
     // --------------------------------------------------------------------------------------------------
     // Section Medias :
     // --------------------------------------------------------------------------------------------------
     const wrapper = document.createElement('section'); // Wrapper pour mise en forme Grid :
-    wrapper.classList.add('wrapper');
-    main.appendChild(wrapper);
+   main.appendChild(wrapper);
     //
     
-    // Exécute mediaFactory() pour récupérer données ligne 3 de media.js
-    // et exécute getMediaCardDOM() dans .forEach(element) pour chaque média.
-    photographerMedia.forEach((element) => {
-        // Définit mediaData pour récupérer TOUT "element" en forme .JSON
-        // puis injecte la variable "name" dans "element".
-        const mediaData = {...element, "name": photographer.name};
-        // console.log(mediaData);
-        const mediaModel = mediaFactory(mediaData);
-        const mediaCardDOM = mediaModel.getMediaCardDOM();
-        wrapper.appendChild(mediaCardDOM);
-    });
-};
+    const div = displayPhotographerMedia(photographerMedia);
+   wrapper.appendChild(div);
+
+}
 
 async function init() {
     // Récupère les données de photographers & de media
@@ -116,6 +99,38 @@ async function init() {
     // Exécute ensuite les fonctions plus haut avec les données obtenues
     filterPhotographerById(photographers);
     filterMediasById(media);
-};
+}
 
 init();
+
+function displayPhotographerMedia(tableau){
+    const div = document.createElement("div");
+    div.classList.add('wrapper');
+     // Exécute mediaFactory() pour récupérer données ligne 3 de media.js
+    // et exécute getMediaCardDOM() dans .forEach(element) pour chaque média.
+    tableau.forEach((element) => {
+        // Définit mediaData pour récupérer TOUT "element" en forme .JSON
+        // puis injecte la variable "name" dans "element".
+        const mediaData = {...element, "name": photographer.name};
+        // console.log(mediaData);
+        const mediaModel = mediaFactory(mediaData);
+        const mediaCardDOM = mediaModel.getMediaCardDOM();
+        div.appendChild(mediaCardDOM);
+    });
+
+    return div;
+}
+
+function sortByDate(){
+    // trier le tableau photographerMedia par date
+// 2 CHOIX : refaire 1 tableau trié OU trier le tableau existant
+// PAS DE ONCLICK() -> !!! addeventlistener();
+}
+function sortByTitle(){
+    // trier le tableau photographerMedi apar date
+    
+}
+function sortByPopularity(){
+    // trier le tableau photographerMedia par date
+    
+}
