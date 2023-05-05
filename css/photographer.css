@@ -123,11 +123,61 @@ form input {
     border: none;
     border-radius: 5px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 --------------------------------------------------------------------------------------------------
 PARTIE "TRIER PAR"
 --------------------------------------------------------------------------------------------------
 */
+
+
+/*
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Popularité
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+    </div>
+</div>
+ ----------------------------------------------------------------------------------------------------------------
+ <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+    <button class="dropdown-item" type="button">Action</button>
+    <button class="dropdown-item" type="button">Another action</button>
+    <button class="dropdown-item" type="button">Something else here</button>
+  </div>
+</div>
+*/
+
+
 .section-media-filters {
     display: flex;
     justify-content: flex-start;
@@ -141,48 +191,105 @@ PARTIE "TRIER PAR"
     margin-right: 25px;
 }
 
-
-/* background:transparent url("http://placehold.it/25x25") right center no-repeat; */
-
-
-.menu-styler .menu-filters  {
-    background-color: #901C1C;
+.dropdown {
+    z-index: 10;
+    display: grid;
+    position: relative;
+    height: 170px;
     width: 170px;
-    padding: 20px;
-    border-radius: 5px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
+.menu-filter {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    cursor: pointer;
+    background-color: #901C1C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 700;
+    height: calc(170px/3);
+}
 
-.menu-filters {
-    background: transparent;
+.menu-filter > i {
+    margin-left: auto;
+}
+
+.menu-dropdown {
+    display: flex;
+    flex-direction: column;
 }
 
 
-/* .menu-styler[open] .menu-filters:after {
-    transform-origin: center center;
-    transition: transform ease-in-out 100ms;
-    transform: rotate(90deg) translate(50%, 0%);
-} */
 
-
-/* .menu-filters[open] .menu-filters:after {
-    transform-origin: center center;
-    transition: transform ease-in-out 100ms;
-    transform: rotate(45deg) translate(50%, 0%);
-} */
-
-.option {
+/*
+.menu-styler i {
+    display: flex;
+    color: white;
+    margin-right: 20px;
+    width: 16px;
+    pointer-events: none;
+}
+.menu-filters {
+    width: 100%;
+    height: 50px;
+    margin-left: 20px;
+    appearance: none;
+    outline: none;
+    border: none;
     cursor: pointer;
+    color: white;
+    background-color: inherit;
     font-size: 18px;
     font-weight: 700;
     line-height: 23px;
-    letter-spacing: 1px;
-    text-align: left;
-    color: #FFFFFF;
-    border-color: white;
-    border-bottom: white;
+    font-family: inherit;
 }
+.menu-filter {
+    cursor: pointer;
+    margin: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 23px;
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

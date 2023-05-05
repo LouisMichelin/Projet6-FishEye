@@ -34,45 +34,62 @@ function filterMediasById(medias) {
     // --------------------------------------------------------------------------------------------------
     // Section "Trier par" :
     // --------------------------------------------------------------------------------------------------
-    const mediaFilter = document.createElement('section');
-    mediaFilter.classList.add('section-media-filters');
-    // Nom de la zone "Trier par"
+
+    // Section Filters
+    const mediaFilters = document.createElement('section');
+    mediaFilters.classList.add('section-media-filters');
+
+    // Sous-titre "Trier par"
     const trierPar = document.createElement('p');
     trierPar.classList.add('trier-par');
     trierPar.textContent = "Trier par";
 
-    // Menu des Filtres
-    const menuFilters = document.createElement('select');
-    menuFilters.classList.add('menu-filters');
+    // <div> dropdown
+    const dropdown = document.createElement('div');
+    dropdown.classList.add('dropdown');
+    // ??? dropdown.setAttribute('role', 'listbox'); ???
 
-    // Select + Options : Styler
-    const menuStyler = document.createElement('div');
-    menuStyler.classList.add('menu-styler');
-    
-    // Filtres
-    const option1 = document.createElement('option');
-    option1.classList.add('menu-filter');
-    option1.selected = true; // Affiche "Popularité" en haut du menu
-    option1.value = "Popularité";
-    option1.text = "Popularité";
-    //
-    const option2 = document.createElement('option');
-    option2.classList.add('menu-filter');
-    option2.value = "Date";
-    option2.text = "Date";
-    //
-    const option3 = document.createElement('option');
-    option3.classList.add('menu-filter');
-    option3.value = "Titre";
-    option3.text = "Titre";
+
+
+
+
+    // Menu dropdown (Filtres + Logo)
+    const menuDropdown = document.createElement('div');
+    menuDropdown.classList.add('menu-dropdown');
+    // Filtre Popularité
+    const filtre1 = document.createElement('button');
+    filtre1.classList.add('menu-filter');
+    filtre1.textContent = "Popularité";
+    // Filtre Date
+    const filtre2 = document.createElement('button');
+    filtre2.classList.add('menu-filter');
+    filtre2.textContent = "Date";
+    // Filtre Titre
+    const filtre3 = document.createElement('button');
+    filtre3.classList.add('menu-filter');
+    filtre3.textContent = "Titre";
+
+    // Logo Triangle
+    const logoTriangle = document.createElement('i');
+    logoTriangle.classList.add("fa-sharp");
+    logoTriangle.classList.add("fa-solid");
+    logoTriangle.classList.add("fa-angle-up");
+
     // Mise en page
-    main.appendChild(mediaFilter);
-    mediaFilter.appendChild(trierPar);
-    mediaFilter.appendChild(menuStyler);
-    menuStyler.appendChild(menuFilters);
-    menuFilters.appendChild(option1);
-    menuFilters.appendChild(option2);
-    menuFilters.appendChild(option3);
+    main.appendChild(mediaFilters);
+    mediaFilters.appendChild(trierPar);
+    mediaFilters.appendChild(dropdown);
+
+    dropdown.appendChild(filtre1);
+    filtre1.appendChild(logoTriangle);
+
+    dropdown.appendChild(menuDropdown);
+    menuDropdown.appendChild(filtre2);
+    menuDropdown.appendChild(filtre3);
+    
+    
+
+
 
     // --------------------------------------------------------------------------------------------------
     // Section Medias :
