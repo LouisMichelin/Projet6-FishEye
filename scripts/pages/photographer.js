@@ -59,6 +59,7 @@ function filterMediasById(medias) {
     // Filtre Popularité
     const filtre1 = document.createElement('button');
     filtre1.classList.add('menu-filter');
+    filtre1.classList.add('filtre1');
     filtre1.textContent = "Popularité";
     // Filtre Date
     const filtre2 = document.createElement('button');
@@ -67,6 +68,7 @@ function filterMediasById(medias) {
     // Filtre Titre
     const filtre3 = document.createElement('button');
     filtre3.classList.add('menu-filter');
+    filtre3.classList.add('filtre3');
     filtre3.textContent = "Titre";
 
     // Logo Triangle
@@ -75,16 +77,33 @@ function filterMediasById(medias) {
     logoTriangle.classList.add("fa-solid");
     logoTriangle.classList.add("fa-angle-up");
 
+    // Cases vides
+    const emptyButton = document.createElement('div');
+    emptyButton.classList.add("empty-button");
+    const emptyButton2 = document.createElement('div');
+    emptyButton2.classList.add("empty-button");
+    const emptyButtonWhite = document.createElement('div');
+    emptyButtonWhite.classList.add("empty-button-red");
+   
+
+
+
     // Mise en page
     main.appendChild(mediaFilters);
     mediaFilters.appendChild(trierPar);
     mediaFilters.appendChild(dropdown);
-
+    //
     dropdown.appendChild(filtre1);
     filtre1.appendChild(logoTriangle);
-
+    //
     dropdown.appendChild(menuDropdown);
+    //
+    menuDropdown.appendChild(emptyButton); // Obligé d'avoir 2 "const" différentes pour les afficher toutes les 2
+    emptyButton.appendChild(emptyButtonWhite);
     menuDropdown.appendChild(filtre2);
+    //
+    menuDropdown.appendChild(emptyButton2); // Sinon, seule la "emptyButton2" est considérée en HTML...
+    emptyButton2.appendChild(emptyButtonWhite);
     menuDropdown.appendChild(filtre3);
     
     

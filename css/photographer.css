@@ -191,6 +191,37 @@ PARTIE "TRIER PAR"
     margin-right: 25px;
 }
 
+/* ---------- Bordures arrondies + Lignes blanches entre <buttons> */
+.empty-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #901C1C;
+    height: 1px;
+    width: 150px;
+    padding-left: 10px;
+    padding-right: 10px;
+    z-index: 10;
+    /* margin-left: 10px; */
+}
+.empty-button-red {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    height: 1px;
+    width: 150px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.filtre1 {
+    border-radius: 5px 5px 0 0;
+}
+.filtre3 {
+    border-radius: 0 0 5px 5px;
+}
+
+/* ---------- CSS du menu Dropdown */
 .dropdown {
     z-index: 10;
     display: grid;
@@ -209,14 +240,15 @@ PARTIE "TRIER PAR"
     background-color: #901C1C;
     color: white;
     border: none;
-    border-radius: 5px;
     font-size: 18px;
     font-weight: 700;
-    height: calc(170px/3);
+    letter-spacing: .5px;
+    height: calc((170px/3) - 1px); /* <<< ICI, IL FAUDRA SOUSTRAIRE 2px LORSQUE LE 2EME EMPTYBUTTON SERA AJOUTE */
 }
 
 .menu-filter > i {
     margin-left: auto;
+    font-size: 20px;
 }
 
 .menu-dropdown {
