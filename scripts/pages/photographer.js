@@ -30,29 +30,20 @@ function filterMediasById(medias) {
     const photographerMedia = medias.filter((element) => (element.photographerId) == selectedArtist);
     // Select balise <main> dans le HTML :
     const main = document.getElementById('main');
-
     // --------------------------------------------------------------------------------------------------
+    //
     // Section "Trier par" :
+    //
     // --------------------------------------------------------------------------------------------------
-
-    // Section Filters
     const mediaFilters = document.createElement('section');
     mediaFilters.classList.add('section-media-filters');
-
     // Sous-titre "Trier par"
     const trierPar = document.createElement('p');
     trierPar.classList.add('trier-par');
     trierPar.textContent = "Trier par";
-
     // <div> dropdown
     const dropdown = document.createElement('div');
     dropdown.classList.add('dropdown');
-    // ??? dropdown.setAttribute('role', 'listbox'); ???
-
-
-
-
-
     // Menu dropdown (Filtres + Logo)
     const menuDropdown = document.createElement('div');
     menuDropdown.classList.add('menu-dropdown');
@@ -70,13 +61,11 @@ function filterMediasById(medias) {
     filtre3.classList.add('menu-filter');
     filtre3.classList.add('filtre3');
     filtre3.textContent = "Titre";
-
     // Logo Triangle
     const logoTriangle = document.createElement('i');
     logoTriangle.classList.add("fa-sharp");
     logoTriangle.classList.add("fa-solid");
     logoTriangle.classList.add("fa-angle-up");
-
     // Cases vides
     const emptyButton = document.createElement('div');
     emptyButton.classList.add("empty-button");
@@ -84,41 +73,79 @@ function filterMediasById(medias) {
     emptyButton2.classList.add("empty-button");
     const emptyButtonWhite = document.createElement('div');
     emptyButtonWhite.classList.add("empty-button-red");
-   
-
-
-
     // Mise en page
     main.appendChild(mediaFilters);
     mediaFilters.appendChild(trierPar);
     mediaFilters.appendChild(dropdown);
-    //
     dropdown.appendChild(filtre1);
     filtre1.appendChild(logoTriangle);
-    //
     dropdown.appendChild(menuDropdown);
-    //
     menuDropdown.appendChild(emptyButton); // Obligé d'avoir 2 "const" différentes pour les afficher toutes les 2
     emptyButton.appendChild(emptyButtonWhite);
     menuDropdown.appendChild(filtre2);
-    //
     menuDropdown.appendChild(emptyButton2); // Sinon, seule la "emptyButton2" est considérée en HTML...
     emptyButton2.appendChild(emptyButtonWhite);
     menuDropdown.appendChild(filtre3);
-    
-    
-
-
 
     // --------------------------------------------------------------------------------------------------
-    // Section Medias :
+    //
+    // Section display Medias :
+    //
     // --------------------------------------------------------------------------------------------------
     const wrapper = document.createElement('section'); // Wrapper pour mise en forme Grid :
     const div = displayPhotographerMedia(photographerMedia); // Appelle la fonction avec "photographerMedia"
-    // Mise en page
-    main.appendChild(wrapper);
-    wrapper.appendChild(div);
+    main.appendChild(wrapper); // Mise en page 1
+    wrapper.appendChild(div); // Mise en page 2
+
+    // --------------------------------------------------------------------------------------------------
+    //
+    // Fonction Trier par Popularité, Date et Titre
+    //
+    // --------------------------------------------------------------------------------------------------
+    // • trier le tableau photographerMedia
+    // • 2 CHOIX : refaire 1 tableau trié OU trier le tableau existant
+    //
+    // Popularité
+    filtre1.addEventListener("click", function(medias) {
+        console.log("Je suis la fonction Popularité");
+        // console.log(photographer);
+
+        const testId = [];
+
+        const testNumber = document.querySelector('wrapper');
+        console.log(testNumber.length());
+
+        const test = document.querySelector("data-id");
+        
+        // for (let i=0; i)
+
+      
+
+
+        // console.log(medias.likes)
+
+
+        // const mediaFiltered = Array.from(photographer);
+        // mediaFiltered.sort(function (a,b) {
+        //     return a.likes - b.likes;
+        // });
+    });
+
+
+
+
+    // Date
+    filtre2.addEventListener("click", function() {
+        console.log("Et moi la fonction Date");
+
+    });
+    // Titre
+    filtre3.addEventListener("click", function() {
+        console.log("Et moi ? Je suis la fonction Titre");
+
+    });
 }
+
 
 async function init() {
     // Récupère les données de photographers & de media
@@ -129,7 +156,9 @@ async function init() {
     filterMediasById(media);
 }
 
+
 init();
+
 
 function displayPhotographerMedia(tableau){
     const div = document.createElement("div");
@@ -146,20 +175,4 @@ function displayPhotographerMedia(tableau){
         div.appendChild(mediaCardDOM);
     });
     return div;
-}
-
-function sortByDate() {
-    // trier le tableau photographerMedia par Date
-    // 2 CHOIX : refaire 1 tableau trié OU trier le tableau existant
-    // PAS DE ONCLICK() -> !!! addeventlistener();
-}
-function sortByTitle() {
-    // trier le tableau photographerMedia par Titre
-    // 2 CHOIX : refaire 1 tableau trié OU trier le tableau existant
-    // PAS DE ONCLICK() -> !!! addeventlistener();
-}
-function sortByPopularity() {
-    // trier le tableau photographerMedia par Popularity
-    // 2 CHOIX : refaire 1 tableau trié OU trier le tableau existant
-    // PAS DE ONCLICK() -> !!! addeventlistener();
 }

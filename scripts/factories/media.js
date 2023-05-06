@@ -111,16 +111,18 @@ function mediaFactory(data) {
 
         link.setAttribute("data-id", id);
         link.classList.add('media-card');
-        // ajout de la partie media
+
+        // Ajout de la partie media
         link.appendChild(mediaContainer);
-            
-                    // Partie titre
-            link.appendChild(titleContainer);
-            titleContainer.appendChild(p);
-            // Zone Likes & Coeur
-            titleContainer.appendChild(nbLikesAndHeart);
-            nbLikesAndHeart.appendChild(mediaLikes);
-            nbLikesAndHeart.appendChild(heartLogo);
+
+        // Partie titre
+        link.appendChild(titleContainer);
+        titleContainer.appendChild(p);
+        
+        // Zone Likes & Coeur
+        titleContainer.appendChild(nbLikesAndHeart);
+        nbLikesAndHeart.appendChild(mediaLikes);
+        nbLikesAndHeart.appendChild(heartLogo);
         return link;
     }
     return { id, photographerId, name, title, image, video, likes, date, price, getMediaCardDOM };
