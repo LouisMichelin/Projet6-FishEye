@@ -50,17 +50,17 @@ function filterMediasById(medias) {
     // Filtre Popularité
     const Popularite = document.createElement('button');
     Popularite.classList.add('menu-filter');
-    Popularite.classList.add('filtre1');
+    Popularite.classList.add('style-bouton-popularite');
     Popularite.textContent = "Popularité";
     // Filtre Date
-    const filtre2 = document.createElement('button');
-    filtre2.classList.add('menu-filter');
-    filtre2.textContent = "Date";
+    const Date = document.createElement('button');
+    Date.classList.add('menu-filter');
+    Date.textContent = "Date";
     // Filtre Titre
-    const filtre3 = document.createElement('button');
-    filtre3.classList.add('menu-filter');
-    filtre3.classList.add('filtre3');
-    filtre3.textContent = "Titre";
+    const Titre = document.createElement('button');
+    Titre.classList.add('menu-filter');
+    Titre.classList.add('style-bouton-titre');
+    Titre.textContent = "Titre";
     // Logo Triangle
     const logoTriangle = document.createElement('i');
     logoTriangle.classList.add("fa-sharp");
@@ -84,10 +84,10 @@ function filterMediasById(medias) {
     dropdown.appendChild(menuDropdown);
     menuDropdown.appendChild(emptyButton); // Obligé d'avoir 2 "const" différentes pour les afficher toutes les 2
     emptyButton.appendChild(emptyButtonWhite);
-    menuDropdown.appendChild(filtre2);
+    menuDropdown.appendChild(Date);
     menuDropdown.appendChild(emptyButton2); // Sinon, seule la "emptyButton2" est considérée en HTML...
     emptyButton2.appendChild(emptyButtonWhite2);
-    menuDropdown.appendChild(filtre3);
+    menuDropdown.appendChild(Titre);
 
     // --------------------------------------------------------------------------------------------------
     //
@@ -104,78 +104,61 @@ function filterMediasById(medias) {
     // Fonction Trier par Popularité, Date et Titre
     //
     // --------------------------------------------------------------------------------------------------
-    // • trier le tableau photographerMedia
-    // • 2 CHOIX : refaire 1 tableau trié OU trier le tableau existant
-    //
-    // Popularité
+
+    // Filtre Popularité
     Popularite.addEventListener("click", function(event) {
-        console.log("Je suis la fonction Popularité");
+        console.log("Fonction Popularité");
+        // Evite les "event" de base
         event.preventDefault();
         event.stopPropagation();
 
-        // je vais parcourir les media disponible et les trier par popularité 
-        console.log(photographerMedia.sort((a,b)=>(b.likes - a.likes)));
+        // Parcourir les médias disponibles et les trier par Popularité :
         const arraySorted = photographerMedia.sort((a,b)=>(a.likes - b.likes));
-        // Mettre à jour les elements sur le dom 
+        // console.log(photographerMedia.sort((a,b)=>(b.likes - a.likes)));
+
+        // Mettre à jour les éléments sur le DOM :
         const wrapper = document.querySelector(".wrapper");
+        // arrayCreatedElement reprend tous les éléments affichés par défaut
         const arrayCreatedElement = Array.prototype.slice.call(wrapper.childNodes);
        
         const index = 0;
+        // Réorganisation des Médias triés par leur Popularité (sans supprimer ce qui est déjà affiché !) :
         arraySorted.forEach(element => {
-            
+
+            // 1er élément "Child" de "Wrapper"
             let elementInitial = wrapper.childNodes[index];
            
-            let positionElement = arrayCreatedElement.findIndex((link) => ( link.dataset.id == element.id ));
+            // Cherche "Link" dont le "Data-id" est identique au "Data-id" de "Element"
+            let positionElement = arrayCreatedElement.findIndex((link) =>
+                ( link.dataset.id == element.id)
+            );
+            
+            // Définit le "Link" picked avec son "Index" assigné juste haut dessus
             let linkPicked = wrapper.childNodes[positionElement];
-
-            let elementtemp = elementInitial;
+            // "ElementTemp" = le 1er "Child" de "Wrapper"
+            let elementTemp = elementInitial;
+            // "ElementInitial" prend la valeur de LinkPicked
             elementInitial= linkPicked;
-            linkPicked = elementtemp;
-
+            // "LinkPicked" reprend la valeur de "ElementTemp"
+            linkPicked = elementTemp;
         });
 
-
-
-       
-        
-/*
-        const testId = [];
-
-        const testNumber = document.querySelector('wrapper');
-        console.log(testNumber.length());
-
-        const test = document.querySelector("data-id");*/
-        
-        // for (let i=0; i)
-
-      
-
-
-        // console.log(medias.likes)
-
-
-        // const mediaFiltered = Array.from(photographer);
-        // mediaFiltered.sort(function (a,b) {
-        //     return a.likes - b.likes;
-        // });
+    
     });
 
-
-
-
-    // Date
-    filtre2.addEventListener("click", function() {
-        console.log("Et moi la fonction Date");
-
+    // Filtre Date
+    Date.addEventListener("click", function() {
+        console.log("Fonction Date");
     });
-    // Titre
-    filtre3.addEventListener("click", function() {
-        console.log("Et moi ? Je suis la fonction Titre");
 
+    // Filtre Titre
+    Titre.addEventListener("click", function() {
+        console.log("Fonction Titre");
     });
 }
 
 
+// Récupération des données Photographers + Medias :
 async function init() {
     // Récupère les données de photographers & de media
     const { photographers } = await getPhotographers();
@@ -185,10 +168,9 @@ async function init() {
     filterMediasById(media);
 }
 
-
 init();
 
-
+// Display les médias dans le Wrapper :
 function displayPhotographerMedia(tableau){
     const div = document.createElement("div");
     div.classList.add('wrapper');
