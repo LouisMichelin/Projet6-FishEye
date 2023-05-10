@@ -113,50 +113,77 @@ function filterMediasById(medias) {
         event.stopPropagation();
 
         // Parcourir les médias disponibles et les trier par Popularité :
-        const arraySorted = photographerMedia.sort((a,b)=>(a.likes - b.likes));
-        // console.log(photographerMedia.sort((a,b)=>(b.likes - a.likes)));
-
-        // Mettre à jour les éléments sur le DOM :
-        const wrapper = document.querySelector(".wrapper");
-        // arrayCreatedElement reprend tous les éléments affichés par défaut
-        const arrayCreatedElement = Array.prototype.slice.call(wrapper.childNodes);
-       
-        const index = 0;
-        // Réorganisation des Médias triés par leur Popularité (sans supprimer ce qui est déjà affiché !) :
-        arraySorted.forEach(element => {
-
-            // 1er élément "Child" de "Wrapper"
-            let elementInitial = wrapper.childNodes[index];
-           
-            // Cherche "Link" dont le "Data-id" est identique au "Data-id" de "Element"
-            let positionElement = arrayCreatedElement.findIndex((link) =>
-                ( link.dataset.id == element.id)
-            );
-            
-            // Définit le "Link" picked avec son "Index" assigné juste haut dessus
-            let linkPicked = wrapper.childNodes[positionElement];
-            // "ElementTemp" = le 1er "Child" de "Wrapper"
-            let elementTemp = elementInitial;
-            // "ElementInitial" prend la valeur de LinkPicked
-            elementInitial= linkPicked;
-            // "LinkPicked" reprend la valeur de "ElementTemp"
-            linkPicked = elementTemp;
-        });
-
-    
+        const arraySorted = photographerMedia.sort((a,b)=>(b.likes - a.likes));
+        displaySortedElements(arraySorted);
     });
 
     // Filtre Date
-    Date.addEventListener("click", function() {
-        console.log("Fonction Date");
+    Date.addEventListener("click", function(event) {
+        console.log("Fonction date");
+        // Evite les "event" de base
+        event.preventDefault();
+        event.stopPropagation();
+
+        // Parcourir les médias disponibles et les trier par Date :
+        //
+        // const arraySorted = photographerMedia.sort(function (a, b) {
+        //     if (a.date < b.date) {
+        //       return -1;
+        //     }
+        //     if (a.date > b.date) {
+        //       return 1;
+        //     }
+        //     return 0;
+        //   });
+        // displaySortedElements(arraySorted);
+        //
+        // OBJECTIF DATE :
+        // 1 - Passer les Date de "Chaine de Caractères" vers Nombres
+        // 2 - 
     });
 
     // Filtre Titre
-    Titre.addEventListener("click", function() {
-        console.log("Fonction Titre");
+    Titre.addEventListener("click", function(event) {
+        console.log("Fonction Title");
+        // Evite les "event" de base
+        event.preventDefault();
+        event.stopPropagation();
+
+        // Parcourir les médias disponibles et les trier par Titre :
+        const arraySorted = photographerMedia.sort(function (a, b) {
+            if (a.title < b.title) {
+              return -1;
+            }
+            if (a.title > b.title) {
+              return 1;
+            }
+            return 0;
+          });
+        displaySortedElements(arraySorted);
     });
 }
 
+// Alimenter la fonction par le tableau des medias trié
+function displaySortedElements(arraySorted){
+    const wrapper = document.querySelector(".wrapper");
+    let positionReference = 0;
+    // Réorganisation des Médias triés par leur Popularité (sans supprimer ce qui est déjà affiché !) :
+    arraySorted.forEach(element => {
+
+        const arrayCreatedElement = Array.prototype.slice.call(wrapper.childNodes);
+    
+        let positionElement = arrayCreatedElement.findIndex((link) =>
+            ( link.dataset.id == element.id)
+        );
+        const nodeSearched = arrayCreatedElement[positionElement];
+        const nodeReference = arrayCreatedElement[positionReference];
+       // console.log(element.title +"/"+element.likes +" / position "+ positionElement + "deplacer vers: " +positionReference);
+       
+        wrapper.insertBefore(nodeSearched, nodeReference);
+        positionReference++;
+       
+    });
+}
 
 // Récupération des données Photographers + Medias :
 async function init() {
