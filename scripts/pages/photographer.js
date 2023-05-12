@@ -111,52 +111,27 @@ function filterMediasById(medias) {
         // Evite les "event" de base
         event.preventDefault();
         event.stopPropagation();
-
         // Parcourir les médias disponibles et les trier par Popularité :
         const arraySorted = photographerMedia.sort((a,b)=>(b.likes - a.likes));
         displaySortedElements(arraySorted);
     });
 
-    // Filtre par Date
+    // Filtre par Date du "Plus Récent" au "Plus Ancien"
     DateFiltre.addEventListener("click", function(event) {
         console.log("Fonction Date");
         // Evite les "event" de base
         event.preventDefault();
         event.stopPropagation();
-
-        // for(i=0; i < photographerMedia)
-
-
-
-
-
-        const dateString = photographerMedia[0].date;
-        // console.log(typeof dateString + " " + dateString);
-
-        // console.log(dateString);
-        // const test1 = new Date('2022-11-10');
-
-        
-        // CA MARCHE CI DESSOUS : 
-        const test2 = new Date(dateString).valueOf();
-        console.log(test2);
-        
-    
-        
-
-        
-
-
-        // const arraySorted = photographerMedia.sort(function (a, b) {
-        //     if (a.date < b.date) {
-        //       return -1;
-        //     }
-        //     if (a.date > b.date) {
-        //       return 1;
-        //     }
-        //     return 0;
-        //   });
-        // displaySortedElements(arraySorted);
+        // Remplace les dates "String" en Millisecondes :
+        for(i=0; i < photographerMedia.length; i++) {
+            const dateString = photographerMedia[i].date;
+            const dateMillisecondes = new Date(dateString).valueOf();
+            photographerMedia[i].date = dateMillisecondes;
+            // console.log("Pour " + photographerMedia[i].title + ", la valeur est : " + photographerMedia[i].date);
+        };
+        // Trier les médias
+        const arraySorted = photographerMedia.sort((a,b)=>(b.date - a.date));
+        displaySortedElements(arraySorted);
     });
 
     // Filtre par Titre
@@ -175,7 +150,7 @@ function filterMediasById(medias) {
               return 1;
             }
             return 0;
-          });
+        });
         displaySortedElements(arraySorted);
     });
 }
