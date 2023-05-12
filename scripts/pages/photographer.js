@@ -53,9 +53,9 @@ function filterMediasById(medias) {
     Popularite.classList.add('style-bouton-popularite');
     Popularite.textContent = "Popularité";
     // Filtre Date
-    const Date = document.createElement('button');
-    Date.classList.add('menu-filter');
-    Date.textContent = "Date";
+    const DateFiltre = document.createElement('button');
+    DateFiltre.classList.add('menu-filter');
+    DateFiltre.textContent = "Date";
     // Filtre Titre
     const Titre = document.createElement('button');
     Titre.classList.add('menu-filter');
@@ -84,7 +84,7 @@ function filterMediasById(medias) {
     dropdown.appendChild(menuDropdown);
     menuDropdown.appendChild(emptyButton); // Obligé d'avoir 2 "const" différentes pour les afficher toutes les 2
     emptyButton.appendChild(emptyButtonWhite);
-    menuDropdown.appendChild(Date);
+    menuDropdown.appendChild(DateFiltre);
     menuDropdown.appendChild(emptyButton2); // Sinon, seule la "emptyButton2" est considérée en HTML...
     emptyButton2.appendChild(emptyButtonWhite2);
     menuDropdown.appendChild(Titre);
@@ -105,7 +105,7 @@ function filterMediasById(medias) {
     //
     // --------------------------------------------------------------------------------------------------
 
-    // Filtre Popularité
+    // Filtre par Popularité
     Popularite.addEventListener("click", function(event) {
         console.log("Fonction Popularité");
         // Evite les "event" de base
@@ -117,15 +117,36 @@ function filterMediasById(medias) {
         displaySortedElements(arraySorted);
     });
 
-    // Filtre Date
-    Date.addEventListener("click", function(event) {
-        console.log("Fonction date");
+    // Filtre par Date
+    DateFiltre.addEventListener("click", function(event) {
+        console.log("Fonction Date");
         // Evite les "event" de base
         event.preventDefault();
         event.stopPropagation();
 
-        // Parcourir les médias disponibles et les trier par Date :
-        //
+        // for(i=0; i < photographerMedia)
+
+
+
+
+
+        const dateString = photographerMedia[0].date;
+        // console.log(typeof dateString + " " + dateString);
+
+        // console.log(dateString);
+        // const test1 = new Date('2022-11-10');
+
+        
+        // CA MARCHE CI DESSOUS : 
+        const test2 = new Date(dateString).valueOf();
+        console.log(test2);
+        
+    
+        
+
+        
+
+
         // const arraySorted = photographerMedia.sort(function (a, b) {
         //     if (a.date < b.date) {
         //       return -1;
@@ -136,13 +157,9 @@ function filterMediasById(medias) {
         //     return 0;
         //   });
         // displaySortedElements(arraySorted);
-        //
-        // OBJECTIF DATE :
-        // 1 - Passer les Date de "Chaine de Caractères" vers Nombres
-        // 2 - 
     });
 
-    // Filtre Titre
+    // Filtre par Titre
     Titre.addEventListener("click", function(event) {
         console.log("Fonction Title");
         // Evite les "event" de base
@@ -169,19 +186,17 @@ function displaySortedElements(arraySorted){
     let positionReference = 0;
     // Réorganisation des Médias triés par leur Popularité (sans supprimer ce qui est déjà affiché !) :
     arraySorted.forEach(element => {
-
         const arrayCreatedElement = Array.prototype.slice.call(wrapper.childNodes);
     
         let positionElement = arrayCreatedElement.findIndex((link) =>
             ( link.dataset.id == element.id)
         );
+
         const nodeSearched = arrayCreatedElement[positionElement];
         const nodeReference = arrayCreatedElement[positionReference];
        // console.log(element.title +"/"+element.likes +" / position "+ positionElement + "deplacer vers: " +positionReference);
-       
         wrapper.insertBefore(nodeSearched, nodeReference);
         positionReference++;
-       
     });
 }
 

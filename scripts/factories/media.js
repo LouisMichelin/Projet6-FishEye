@@ -12,47 +12,10 @@ function mediaFactory(data) {
 
     // --------------------------------------------------------------------------------------------------
     //
-    // Section "Menu déroulant" :
-    //
-    // --------------------------------------------------------------------------------------------------
-    //
-    // const menuDeroulant = document.getElementsByName('menu-premiere-partie');
-    // menuDeroulant.addEventListener("click", function() {
-    //     console.log("helloworld LOL");
-    //     document.getElementsByName(".menu-deuxieme-partie").display = "none";
-    // });
-    // ------------------------------------------
-    // function menuTest() {
-    //     const menuDeroulant = document.getElementsByName('menu-premiere-partie');
-    //     menuDeroulant.addEventListener("click", function() {
-    //         console.log("helloworld LOL");
-    //         document.getElementsByName(".menu-deuxieme-partie").display = "none";
-    //     });
-    // };
-    // ------------------------------------------
-    // function menuTest() {
-    //     console.log("helloworld");
-    //     document.querySelector('menu-premiere-partie');
-    // };
-
-
-    // --------------------------------------------------------------------------------------------------
-    //
-    // Section "Trier par" :
-    //
-    // --------------------------------------------------------------------------------------------------
-    
-
-    // --------------------------------------------------------------------------------------------------
-    //
     // Création des medias du photographer choisi :
     //
     // --------------------------------------------------------------------------------------------------
     function getMediaCardDOM() {
-        // Cards avec balise <a>
-            // const link = document.createElement('a');
-            // link.classList.add('media-card');
-            // link.setAttribute('href', imageSource);
         // Conteneur <div> des medias (photo/video)
         const mediaContainer = document.createElement('div');
         mediaContainer.classList.add('media-container');
@@ -63,7 +26,6 @@ function mediaFactory(data) {
         const p = document.createElement('p');
         p.classList.add('media-title');
         p.textContent = title;
-
         // Conteneur <div> de (Nb Likes + Logo Coeur)
         const nbLikesAndHeart = document.createElement('div');
         nbLikesAndHeart.classList.add('likes-heart-area');
@@ -84,41 +46,33 @@ function mediaFactory(data) {
         
         // Mise en page SI image / SI video
         if (image) {
-            
             link.setAttribute('href', imageSource);
             const mediaImage = document.createElement('img');
             mediaImage.classList.add('media');
             mediaImage.setAttribute('src', imageSource);
             // Partie media
             mediaContainer.appendChild(mediaImage);
-
         }
-
         if (video) {
             link.setAttribute('href', videoSource);
             const mediaVideo = document.createElement('video');
             mediaVideo.classList.add('media');
             mediaVideo.controls = true;
-
             const mediaVideoSource = document.createElement('source');
             mediaVideoSource.setAttribute('src', videoSource);
             mediaVideoSource.setAttribute('type', "video/mp4");
-
             // Partie media
             mediaContainer.appendChild(mediaVideo);
             mediaVideo.appendChild(mediaVideoSource); 
         }
-
+        
         link.setAttribute("data-id", id);
         link.classList.add('media-card');
-
         // Ajout de la partie media
         link.appendChild(mediaContainer);
-
         // Partie titre
         link.appendChild(titleContainer);
         titleContainer.appendChild(p);
-        
         // Zone Likes & Coeur
         titleContainer.appendChild(nbLikesAndHeart);
         nbLikesAndHeart.appendChild(mediaLikes);
