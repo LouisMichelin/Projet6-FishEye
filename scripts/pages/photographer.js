@@ -104,9 +104,7 @@ function filterMediasById(medias) {
     // Fonction Trier par Popularité, Date et Titre
     //
     // --------------------------------------------------------------------------------------------------
-
-    // Filtre par Popularité
-    Popularite.addEventListener("click", function(event) {
+    Popularite.addEventListener("click", function(event) { // Filtre par Popularité (Nombre de likes)
         console.log("Fonction Popularité");
         // Evite les "event" de base
         event.preventDefault();
@@ -116,8 +114,7 @@ function filterMediasById(medias) {
         displaySortedElements(arraySorted);
     });
 
-    // Filtre par Date du "Plus Récent" au "Plus Ancien"
-    DateFiltre.addEventListener("click", function(event) {
+    DateFiltre.addEventListener("click", function(event) { // Filtre par Date (du "Plus Récent" au "Plus Ancien")
         console.log("Fonction Date");
         // Evite les "event" de base
         event.preventDefault();
@@ -134,8 +131,7 @@ function filterMediasById(medias) {
         displaySortedElements(arraySorted);
     });
 
-    // Filtre par Titre
-    Titre.addEventListener("click", function(event) {
+    Titre.addEventListener("click", function(event) { // Filtre par Titre (Ordre alphabétique)
         console.log("Fonction Title");
         // Evite les "event" de base
         event.preventDefault();
@@ -153,9 +149,33 @@ function filterMediasById(medias) {
         });
         displaySortedElements(arraySorted);
     });
+
+    // --------------------------------------------------------------------------------------------------
+    //
+    // Partie "Likes + Tarif / jour en Bas à Droite"
+    //
+    // --------------------------------------------------------------------------------------------------
+    const heartLogo = document.createElement('i');
+    heartLogo.classList.add('logo-heart');
+    heartLogo.classList.add("fa-sharp");
+    heartLogo.classList.add("fa-solid");
+    heartLogo.classList.add("fa-heart");
+    heartLogo.classList.add("fa-lg");
+    heartLogo.setAttribute('style', "color: #000000");
+    
+    const likesEtPrix = document.createElement('div');
+    likesEtPrix.classList.add("zone-tarification");
+    likesEtPrix.textContent = "Hello World";
+
+
+    main.appendChild(likesEtPrix);
+    likesEtPrix.appendChild(heartLogo);
+    
+
+
 }
 
-// Alimenter la fonction par le tableau des medias trié
+// Alimenter la fonction par le tableau des Medias trié
 function displaySortedElements(arraySorted){
     const wrapper = document.querySelector(".wrapper");
     let positionReference = 0;

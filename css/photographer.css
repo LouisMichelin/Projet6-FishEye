@@ -2,6 +2,8 @@
     /* margin: 40px 100px; */
     display: grid;
     justify-content: center;
+
+    position: relative;
 }
 #contact_modal {
     display: none;
@@ -123,28 +125,6 @@ form input {
     border: none;
     border-radius: 5px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*
 --------------------------------------------------------------------------------------------------
@@ -322,3 +302,17 @@ PARTIE MEDIA CARDS >>>>>>>>>>>>> Pour le Lightbox aussi !
 PARTIE MEDIA VIDEO >>>>>>>>>>>>> Pour le Lightbox !
 --------------------------------------------------------------------------------------------------
 */
+
+/*
+--------------------------------------------------------------------------------------------------
+PARTIE TARIFICATION
+--------------------------------------------------------------------------------------------------
+*/
+.zone-tarification {
+    position: fixed;
+    width: 376px;
+    height: 89px;
+    margin: 700px 1100px;
+    background-color: #DB8876;
+    
+}
