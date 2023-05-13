@@ -309,10 +309,28 @@ PARTIE TARIFICATION
 --------------------------------------------------------------------------------------------------
 */
 .zone-tarification {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
     position: fixed;
     width: 376px;
-    height: 89px;
-    margin: 700px 1100px;
+    height: 73px;
+    bottom: 0;
+    right: 36px;
+    border-radius: 5px;
     background-color: #DB8876;
-    
+}
+
+.partie-likes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: green;
+}
+
+.partie-tarifs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: cyan;
 }

@@ -155,6 +155,16 @@ function filterMediasById(medias) {
     // Partie "Likes + Tarif / jour en Bas à Droite"
     //
     // --------------------------------------------------------------------------------------------------
+    const zoneLikesTarifs = document.createElement('div');
+    zoneLikesTarifs.classList.add("zone-tarification");
+    // Partie "Total des Likes"
+    const partieLikes = document.createElement('div');
+    partieLikes.classList.add("partie-likes");
+    //
+    const totalLikes = document.createElement('p');
+    totalLikes.id = "total-likes";
+    totalLikes.textContent = "300 000";
+    //
     const heartLogo = document.createElement('i');
     heartLogo.classList.add('logo-heart');
     heartLogo.classList.add("fa-sharp");
@@ -162,17 +172,21 @@ function filterMediasById(medias) {
     heartLogo.classList.add("fa-heart");
     heartLogo.classList.add("fa-lg");
     heartLogo.setAttribute('style', "color: #000000");
-    
-    const likesEtPrix = document.createElement('div');
-    likesEtPrix.classList.add("zone-tarification");
-    likesEtPrix.textContent = "Hello World";
+    // Partie "Tarification Quotidienne"
+    const partieTarifs = document.createElement('div');
+    partieTarifs.classList.add("partie-tarifs");
+    //
+    const tarifQuotidien = document.createElement('p');
+    tarifQuotidien.id = "tarif-quotidien";
+    tarifQuotidien.textContent = "300€ / Jour";
 
-
-    main.appendChild(likesEtPrix);
-    likesEtPrix.appendChild(heartLogo);
-    
-
-
+    // Mise en page :
+    main.appendChild(zoneLikesTarifs);
+    zoneLikesTarifs.appendChild(partieLikes);
+    partieLikes.appendChild(totalLikes);
+    partieLikes.appendChild(heartLogo);
+    zoneLikesTarifs.appendChild(partieTarifs);
+    partieTarifs.appendChild(tarifQuotidien);
 }
 
 // Alimenter la fonction par le tableau des Medias trié
