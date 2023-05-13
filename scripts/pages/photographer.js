@@ -136,7 +136,6 @@ function filterMediasById(medias) {
         // Evite les "event" de base
         event.preventDefault();
         event.stopPropagation();
-
         // Parcourir les médias disponibles et les trier par Titre :
         const arraySorted = photographerMedia.sort(function (a, b) {
             if (a.title < b.title) {
@@ -157,30 +156,22 @@ function filterMediasById(medias) {
     // --------------------------------------------------------------------------------------------------
     const zoneLikesTarifs = document.createElement('div');
     zoneLikesTarifs.classList.add("zone-tarification");
-    // Partie "Total des Likes"
+
+    // -------------------- Partie "Total des Likes" --------------------
     const partieLikes = document.createElement('div');
     partieLikes.classList.add("partie-likes");
-
-    
     function sommeTotalLikes() {
         let sumLikes = 0;
         for(i=0; i < photographerMedia.length; i++) {
             let mediaLikes = photographerMedia[i].likes;
             sumLikes += mediaLikes;
         };
-        console.log(sumLikes);
+        // console.log(sumLikes);
         return sumLikes
-    }
-    
-    sommeTotalLikes();
-    
-    
-
-
+    };
     const totalLikes = document.createElement('p');
     totalLikes.id = "total-likes";
     totalLikes.textContent = sommeTotalLikes();
-    
     const heartLogo = document.createElement('i');
     heartLogo.classList.add('logo-heart');
     heartLogo.classList.add("fa-sharp");
@@ -189,10 +180,9 @@ function filterMediasById(medias) {
     heartLogo.classList.add("fa-lg");
     heartLogo.setAttribute('style', "color: #000000");
 
-    // Partie "Tarification Quotidienne"
+    // -------------------- Partie "Tarification Quotidienne" --------------------
     const partieTarifs = document.createElement('div');
     partieTarifs.classList.add("partie-tarifs");
-
     const tarifQuotidien = document.createElement('p');
     tarifQuotidien.id = "tarif-quotidien";
     tarifQuotidien.textContent = `${photographer.price}€ / jour`;

@@ -317,20 +317,32 @@ PARTIE TARIFICATION
     height: 73px;
     bottom: 0;
     right: 36px;
-    border-radius: 5px;
+    border-radius: 5px 5px 0 0;
     background-color: #DB8876;
 }
-
 .partie-likes {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: green;
 }
-
+#total-likes {
+    font-family: DM Sans;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 31px;
+    letter-spacing: 0em;
+    text-align: right;
+}
 .partie-tarifs {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: cyan;
+}
+#tarif-quotidien {
+    font-family: DM Sans;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 31px;
+    letter-spacing: 0em;
+    text-align: center;
 }
