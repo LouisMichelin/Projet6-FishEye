@@ -160,11 +160,27 @@ function filterMediasById(medias) {
     // Partie "Total des Likes"
     const partieLikes = document.createElement('div');
     partieLikes.classList.add("partie-likes");
-    //
+
+    
+    function sommeTotalLikes() {
+        let sumLikes = 0;
+        for(i=0; i < photographerMedia.length; i++) {
+            let mediaLikes = photographerMedia[i].likes;
+            sumLikes += mediaLikes;
+        };
+        console.log(sumLikes);
+        return sumLikes
+    }
+    
+    sommeTotalLikes();
+    
+    
+
+
     const totalLikes = document.createElement('p');
     totalLikes.id = "total-likes";
-    totalLikes.textContent = "300 000";
-    //
+    totalLikes.textContent = sommeTotalLikes();
+    
     const heartLogo = document.createElement('i');
     heartLogo.classList.add('logo-heart');
     heartLogo.classList.add("fa-sharp");
@@ -172,13 +188,14 @@ function filterMediasById(medias) {
     heartLogo.classList.add("fa-heart");
     heartLogo.classList.add("fa-lg");
     heartLogo.setAttribute('style', "color: #000000");
+
     // Partie "Tarification Quotidienne"
     const partieTarifs = document.createElement('div');
     partieTarifs.classList.add("partie-tarifs");
-    //
+
     const tarifQuotidien = document.createElement('p');
     tarifQuotidien.id = "tarif-quotidien";
-    tarifQuotidien.textContent = "300€ / Jour";
+    tarifQuotidien.textContent = `${photographer.price}€ / jour`;
 
     // Mise en page :
     main.appendChild(zoneLikesTarifs);
