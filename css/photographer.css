@@ -144,7 +144,7 @@ PARTIE "TRIER PAR"
     margin-right: 25px;
 }
 .dropdown {
-    z-index: 10;
+    z-index: 5;
     display: grid;
     position: relative;
     height: 170px;
@@ -174,6 +174,7 @@ PARTIE "TRIER PAR"
     border-radius: 0 0 5px 5px;
 } 
 .menu-dropdown {
+    visibility: hidden ;
     display: flex;
     opacity: 0;
     flex-direction: column;
@@ -183,6 +184,7 @@ PARTIE "TRIER PAR"
     border-radius: 5px;
 }
 .dropdown:hover .menu-dropdown {
+    visibility: visible ;
     opacity: 1;
     transform: translateY(0%);
     transition: .45s ease-in-out;
@@ -200,7 +202,7 @@ PARTIE "TRIER PAR"
     transition: .45s ease-in-out;
 }
 .dropdown .menu-filter:hover{
-    transition: .2s ease-in;
+    transition: .25s ease-in-out;
     background-color: #7c1b1b;
 }
 .empty-button {
@@ -230,6 +232,7 @@ PARTIE "TRIER PAR"
 PARTIE MEDIA CARDS >>>>>>>>>>>>> Pour le Lightbox aussi !
 --------------------------------------------------------------------------------------------------
 */
+/* Wrapper grid */
 .wrapper {
     display: grid;
     width: auto;

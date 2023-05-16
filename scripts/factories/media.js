@@ -1,6 +1,6 @@
 function mediaFactory(data) {
     // Ici, c'est les sous-parties de la sous-partie "MEDIA" du .JSON que l'on veut filtrer...
-    const { id, photographerId, name, title, image, video, likes, date, price } = data;
+    let { id, photographerId, name, title, image, video, likes, date, price } = data;
     // ...pour retourner : data.id, data.photographerId, data.name, etc.
     //
     // Séparer le Prénom & le Nom avec .split() + Prend l'index [0] pour le prénom + Remplace "-" par " ".
@@ -45,10 +45,18 @@ function mediaFactory(data) {
         p.classList.add('media-title');
         p.textContent = title;
         // Balise Likes + Coeur
-        const nbLikesAndHeart = document.createElement('div');
+        const nbLikesAndHeart = document.createElement('a');
         nbLikesAndHeart.classList.add('likes-heart-area');
+        nbLikesAndHeart.addEventListener("click", function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            mediaLikes.textContent++;
+            let totalLikesUpdate =  document.getElementById('total-likes');
+            totalLikesUpdate.textContent++;
+        }, {once : true});
+
         // Likes
-        const mediaLikes = document.createElement('p');
+        let mediaLikes = document.createElement('p');
         mediaLikes.classList.add('nombre-likes');
         mediaLikes.textContent = likes;
         // Coeur
