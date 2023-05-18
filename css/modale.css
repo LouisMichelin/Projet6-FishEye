@@ -1,0 +1,48 @@
+.modale {
+    display: none;
+    z-index: 10;
+    position: absolute;
+     /* Location of the box */
+    left: 0;
+    right: 0;
+    
+    top: -75px;
+    
+    width: 100%;
+    
+    height: 900px; /* Full height */
+
+    overflow: auto; /* Enable scroll if needed */
+    
+    background-color: rgba(0,0,0,0.4);
+    /* background-color: white; */
+}
+
+
+
+.div-close-modal {
+    display: flex;
+    justify-content: end;
+}
+
+.close-modal {
+    
+    font-size: 58px;
+    padding: 15px;
+    color: #901C1C;
+    
+}
+.close-modal:hover {
+    cursor: pointer;
+}
+
+
+
+.btn-modal {
+    height: 50px;
+    width: 50px;
+    background-color: green;
+}
+.btn-modal:hover {
+    cursor: pointer;
+}
