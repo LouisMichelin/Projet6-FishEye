@@ -2,25 +2,31 @@
     display: none;
     z-index: 10;
     position: absolute;
-    left: 0;
+    margin-left: 100px;
+    margin-right: 100px;
     right: 0;
+    left: 0;
     top: -75px;
-    width: 100vw;
+    width: auto;
     height: 900px;
     overflow: auto; /* Enable scroll if needed */
 
-    background-color: rgba(0,0,0,0.4);
-    /* background-color: white; */
+    /* background-color: rgba(0,0,0,0.4); */
+    background-color: white;
 }
 
 /* CROIX POUR FERMER LA MODALE ----------------------------------------- */
 .div-close-modal {
     display: flex;
     justify-content: end;
+    top: 75px;
+    right: 10px;
+    position: relative;
+    z-index: 5;
 }
 .close-modal {
     font-size: 58px;
-    padding: 15px;
+    padding: 15px 15px 0 15px;
     color: #901C1C;
 }
 .close-modal:hover {
@@ -39,34 +45,44 @@
 /* PARTIE GLOBALE DU CARROUSSEL --------------------------------------- */
 #carroussel {
     display: flex;
-    justify-content:space-between;
+    justify-content:center;
+}
+#sous-titre-carroussel {
+    display: flex;
+    align-items: center;
+    color: #901C1C;
+    font-family: DM Sans;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 31px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin: 0 0 0 95px;
+    height: 60px;
 }
 /* FLECHES ------------------------------------------------------------- */
-#fleche-gauche {
-    display: flex;
-    background-color: green;
+#fleche-gauche, #fleche-droite {
+    display: grid;
+    background-color: white;
     height: 750px;
-    width: 30px;
-    padding: 0 30px;
+    width: 90px;
 }
-#fleche-gauche:hover {
+#fleche-gauche:hover, #fleche-droite:hover {
     cursor: pointer;
 }
-#fleche-droite {
+#angle-gauche, #angle-droite {
     display: flex;
-    background-color: cyan;
-    height: 750px;
-    width: 30px;
-    padding: 0 30px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-size: 58px;
+    color: #901C1C;
 }
-#fleche-droite:hover {
-    cursor: pointer;
-}
-
 /* PARTIE MEDIAS ------------------------------------------------------- */
 #partie-medias {
     display: flex;
     height: 750px;
-    width: 100%;
-    background-color: yellow;
+    width: 1050px;
+    background-color: greenyellow;
+    overflow: hidden;
 }

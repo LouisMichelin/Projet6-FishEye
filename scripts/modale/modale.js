@@ -26,7 +26,8 @@ function modaleGenerale() {
         filters.style.display = "flex";
         const btnOpen = document.querySelector('.btn-modal');
         btnOpen.style.display = "";
-        document.body.style.margin = "auto";
+        // document.body.style.margin = "auto";
+        
     };
 
     // BOUTON POUR OUVRIR LA MODALE
@@ -45,7 +46,7 @@ function modaleGenerale() {
         filters.style.display = "none";
         const btnOpen = document.querySelector('.btn-modal');
         btnOpen.style.display = "none";
-        document.body.style.margin = "0px";
+        // document.body.style.margin = "0px";
     };
 
     // PARTIE CARROUSSEL : 
@@ -78,13 +79,19 @@ function modaleGenerale() {
 
     const flecheGauche = document.createElement('div'); // Flèche à gauche du média
     flecheGauche.id = "fleche-gauche";
+    flecheGauche.onclick = function() {
+        console.log("à Gauche !");
+    };
+    const angleGauche = document.createElement('i');
+    angleGauche.classList.add('fa-sharp');
+    angleGauche.classList.add('fa-solid');
+    angleGauche.classList.add('fa-angle-left');
+    angleGauche.id = "angle-gauche";
+    
 
 
     const partieMedias = document.createElement('div'); // Média + Titre du média
     partieMedias.id = "partie-medias";
-
-    const conteneur = document.createElement('div'); // Conteneur pour overflow:hidden
-
 
     const slider = document.createElement('div'); // Slider : contient TOUS LES MEDIAS
 
@@ -92,10 +99,21 @@ function modaleGenerale() {
 
     const flecheDroite = document.createElement('div'); // Flèche à droite du média
     flecheDroite.id = "fleche-droite";
+    flecheDroite.onclick = function() {
+        console.log("à Droite !");
+    };
+    const angleDroite = document.createElement('i');
+    angleDroite.classList.add('fa-sharp');
+    angleDroite.classList.add('fa-solid');
+    angleDroite.classList.add('fa-angle-right');
+    angleDroite.id = "angle-droite";
+
+    
 
 
     const sousTitres = document.createElement('p');
-    sousTitres.textContent = "Hello World"
+    sousTitres.id = "sous-titre-carroussel";
+    sousTitres.textContent = "Hello World";
 
 
     // MISE EN PAGE
@@ -105,10 +123,12 @@ function modaleGenerale() {
     closeModaleDiv.appendChild(closeModale);
     mainModale.appendChild(carroussel);
     carroussel.appendChild(flecheGauche); // Flèche Gauche
+    flecheGauche.appendChild(angleGauche);
 
     carroussel.appendChild(partieMedias) // Médias
 
     carroussel.appendChild(flecheDroite); // Flèche Droite
+    flecheDroite.appendChild(angleDroite);
 
     mainModale.appendChild(sousTitres); // Sous-titres
 }
