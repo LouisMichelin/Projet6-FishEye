@@ -2,42 +2,31 @@
     display: none;
     z-index: 10;
     position: absolute;
-     /* Location of the box */
     left: 0;
     right: 0;
-    
     top: -75px;
-    
-    width: 100%;
-    
-    height: 900px; /* Full height */
-
+    width: 100vw;
+    height: 900px;
     overflow: auto; /* Enable scroll if needed */
-    
+
     background-color: rgba(0,0,0,0.4);
     /* background-color: white; */
 }
 
-
-
+/* CROIX POUR FERMER LA MODALE ----------------------------------------- */
 .div-close-modal {
     display: flex;
     justify-content: end;
 }
-
 .close-modal {
-    
     font-size: 58px;
     padding: 15px;
     color: #901C1C;
-    
 }
 .close-modal:hover {
     cursor: pointer;
 }
-
-
-
+/* BOUTON POUR TOGGLE LA MODALE --------------------------------------- */
 .btn-modal {
     height: 50px;
     width: 50px;
@@ -45,4 +34,39 @@
 }
 .btn-modal:hover {
     cursor: pointer;
+}
+
+/* PARTIE GLOBALE DU CARROUSSEL --------------------------------------- */
+#carroussel {
+    display: flex;
+    justify-content:space-between;
+}
+/* FLECHES ------------------------------------------------------------- */
+#fleche-gauche {
+    display: flex;
+    background-color: green;
+    height: 750px;
+    width: 30px;
+    padding: 0 30px;
+}
+#fleche-gauche:hover {
+    cursor: pointer;
+}
+#fleche-droite {
+    display: flex;
+    background-color: cyan;
+    height: 750px;
+    width: 30px;
+    padding: 0 30px;
+}
+#fleche-droite:hover {
+    cursor: pointer;
+}
+
+/* PARTIE MEDIAS ------------------------------------------------------- */
+#partie-medias {
+    display: flex;
+    height: 750px;
+    width: 100%;
+    background-color: yellow;
 }

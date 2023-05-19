@@ -26,6 +26,7 @@ function modaleGenerale() {
         filters.style.display = "flex";
         const btnOpen = document.querySelector('.btn-modal');
         btnOpen.style.display = "";
+        document.body.style.margin = "auto";
     };
 
     // BOUTON POUR OUVRIR LA MODALE
@@ -44,10 +45,12 @@ function modaleGenerale() {
         filters.style.display = "none";
         const btnOpen = document.querySelector('.btn-modal');
         btnOpen.style.display = "none";
+        document.body.style.margin = "0px";
     };
 
     // PARTIE CARROUSSEL : 
-    //  <modale>
+
+    //  <mainModale>
     //      <CROIX POUR FERMER></>
     //      <div>
     //          <divFlecheGauche><i></>
@@ -69,14 +72,44 @@ function modaleGenerale() {
     //      </div>
     //  </modale>
 
+    // PARTIE CARROUSSEL :
+    const carroussel = document.createElement('div'); // Regroupe tout le monde
+    carroussel.id = "carroussel";
 
-    const carroussel = document.createElement('div');
+    const flecheGauche = document.createElement('div'); // Flèche à gauche du média
+    flecheGauche.id = "fleche-gauche";
 
 
+    const partieMedias = document.createElement('div'); // Média + Titre du média
+    partieMedias.id = "partie-medias";
 
+    const conteneur = document.createElement('div'); // Conteneur pour overflow:hidden
+
+
+    const slider = document.createElement('div'); // Slider : contient TOUS LES MEDIAS
+
+    
+
+    const flecheDroite = document.createElement('div'); // Flèche à droite du média
+    flecheDroite.id = "fleche-droite";
+
+
+    const sousTitres = document.createElement('p');
+    sousTitres.textContent = "Hello World"
+
+
+    // MISE EN PAGE
     main.appendChild(btn);
     main.appendChild(mainModale);
     mainModale.appendChild(closeModaleDiv);
     closeModaleDiv.appendChild(closeModale);
+    mainModale.appendChild(carroussel);
+    carroussel.appendChild(flecheGauche); // Flèche Gauche
+
+    carroussel.appendChild(partieMedias) // Médias
+
+    carroussel.appendChild(flecheDroite); // Flèche Droite
+
+    mainModale.appendChild(sousTitres); // Sous-titres
 }
 modaleGenerale();
