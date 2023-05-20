@@ -27,8 +27,12 @@ function modaleGenerale() {
         const btnOpen = document.querySelector('.btn-modal');
         btnOpen.style.display = "";
         // document.body.style.margin = "auto";
-        
     };
+
+    // FERMER LA MODALE SI OUT OF MODAL
+    
+   
+
 
     // BOUTON POUR OUVRIR LA MODALE
     const btn = document.createElement('div');
@@ -49,32 +53,10 @@ function modaleGenerale() {
         // document.body.style.margin = "0px";
     };
 
-    // PARTIE CARROUSSEL : 
-    //  <mainModale>
-    //      <CROIX POUR FERMER></>
-    //      <div>
-    //          <divFlecheGauche><i></>
-    //          <divMediaAffiché+Titre>
-    //                 <media>
-    //                     <conteneur>
-    //                         <slider>
-    //                             <img></img>
-    //                             <img></img>
-    //                             <img></img>
-    //                             <img></img>
-    //                             <img></img>
-    //                         </slider>
-    //                     </conteneur>
-    //                 </media>
-    //              <titre></titre>
-    //          </>
-    //          <divFlecheDroite><i></>
-    //      </div>
-    //  </modale>
-
     // PARTIE CARROUSSEL :
     const carroussel = document.createElement('div'); // Regroupe tout le monde
     carroussel.id = "carroussel";
+
     // FLECHE DE GAUCHE
     const flecheGauche = document.createElement('div'); // Flèche à gauche du média
     flecheGauche.id = "fleche-gauche";
@@ -86,9 +68,11 @@ function modaleGenerale() {
     angleGauche.classList.add('fa-solid');
     angleGauche.classList.add('fa-angle-left');
     angleGauche.id = "angle-gauche";
+
     // ZONE MEDIAS & SLIDER
     const partieMedias = document.createElement('div'); // Média + Titre du média
     partieMedias.id = "partie-medias";
+
     // SLIDER
     const slider = document.createElement('div'); // Slider : contient TOUS LES MEDIAS
     slider.id = "slider-medias"
@@ -97,24 +81,29 @@ function modaleGenerale() {
     let slidingMedia1 = document.createElement('img');
     slidingMedia1.classList.add('sliding-media');
     slidingMedia1.setAttribute('src', `/FishEye - Photos/Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg`);
+    //
     let slidingMedia2 = document.createElement('img');
     slidingMedia2.classList.add('sliding-media');
     slidingMedia2.setAttribute('src', `/FishEye - Photos/Sample Photos/Ellie Rose/Architecture_Horseshoe.jpg`);
 
-
-
-    
 // ----------------------------------------------------------------------------------------------
 // ----------------------------------------------------------------------------------------------
 // ----------------------------------------------------------------------------------------------
 
     // ETAPE 3: ON UTILISE LES DATAS IMPORTEES AVEC CETTE FONCTION ICI-PRESENTE
-    function laFonction1(medias) {
-        console.log(medias);
-        medias.forEach(element =>
-            console.log(element)
-        );
+    let listeCarroussel = [];
+    function carrousselTitre(medias) {
+        for (let i=0; i < medias.length; i++) {
+            medias[i].photographerId == photographer.id ? listeCarroussel.push(medias[i].image) : null;
+            // if (medias[i].photographerId == photographer.id) {
+            //     listeCarroussel.push(medias[i]);
+            //     // console.log(medias[i].title);
+            // };
+        };
+        console.log(listeCarroussel);
     };
+    console.log(listeCarroussel);
+    
     // ETAPE 1: FETCH() LES DONNEES DU .JSON
     async function recupLesData() {
         const response = await fetch('/data/photographers.json');
@@ -123,41 +112,10 @@ function modaleGenerale() {
     };
     // ETAPE 2: ON MET A DISPOSITION LES DATAS RECUPEREES (ETAPE 1)
     async function testData() {
-        const { photographers } = await recupLesData();
         const { media } = await recupLesData();
-        laFonction1(media);
+        carrousselTitre(media);
     };
     testData();
-
-    
-    
-
-    // async function test() {
-    //     const response = await fetch('/data/photographers.json');
-    //     const data = await response.json();
-    //     return data;
-    // };
-   
-
-
-    // 1) CREER UN TABLEAU QUI REPREND TOUS LES MEDIAS AFFICHES    
-    // let slidingList = [];
-
-    // let wrapper = document.querySelector('wrapper');
-    // let media = document.querySelector('media-container');
-
-    // slidingList.forEach()
-
-    // function slidingListTest() {
-        
-    //     wrapper.forEach(media => {
-    //         slidingList.push(media);
-    //     });
-
-    //     console.log(slidingList);
-    //     return slidingList
-    // }
-    // slidingListTest()
 
 // 2) AFFICHER L'IMAGE [0]
 // 3) FLECHE DROITE <=> IMAGE [0]+1

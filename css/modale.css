@@ -2,25 +2,22 @@
     display: none;
     z-index: 10;
     position: absolute;
-    margin-left: 100px;
-    margin-right: 100px;
+    /* margin-left: 100px;
+    margin-right: 100px; */
     right: 0;
     left: 0;
     top: -75px;
     width: auto;
     height: 900px;
     overflow: auto; /* Enable scroll if needed */
-
-    /* background-color: rgba(0,0,0,0.4); */
     background-color: white;
 }
-
 /* CROIX POUR FERMER LA MODALE ----------------------------------------- */
 .div-close-modal {
     display: flex;
     justify-content: end;
-    top: 75px;
-    right: 10px;
+    top: 60px;
+    right: 120px;
     position: relative;
     z-index: 5;
 }
@@ -41,7 +38,6 @@
 .btn-modal:hover {
     cursor: pointer;
 }
-
 /* PARTIE GLOBALE DU CARROUSSEL --------------------------------------- */
 #carroussel {
     display: flex;
