@@ -205,7 +205,7 @@ function displaySortedElements(arraySorted){
         const arrayCreatedElement = Array.prototype.slice.call(wrapper.childNodes);
     
         let positionElement = arrayCreatedElement.findIndex((mediaContainer) =>
-            ( mediaContainer.dataset.id == element.id)
+            (mediaContainer.dataset.id == element.id)
         );
 
         const nodeSearched = arrayCreatedElement[positionElement];

@@ -85,4 +85,19 @@
     width: 1050px;
     background-color: greenyellow;
     overflow: hidden;
+    border-radius: 5px;
+}
+/* SLIDER ------------------------------------------------------- */
+#slider-medias {
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+}
+/* MEDIA SLIDES ------------------------------------------------------- */
+.sliding-media {
+    display: flex;
+    min-width: 1050px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
