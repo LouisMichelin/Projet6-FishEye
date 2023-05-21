@@ -1,35 +1,4 @@
-.modale {
-    display: none;
-    z-index: 10;
-    position: absolute;
-    /* margin-left: 100px;
-    margin-right: 100px; */
-    right: 0;
-    left: 0;
-    top: -75px;
-    width: auto;
-    height: 900px;
-    overflow: auto; /* Enable scroll if needed */
-    background-color: white;
-}
-/* CROIX POUR FERMER LA MODALE ----------------------------------------- */
-.div-close-modal {
-    display: flex;
-    justify-content: end;
-    top: 60px;
-    right: 120px;
-    position: relative;
-    z-index: 5;
-}
-.close-modal {
-    font-size: 58px;
-    padding: 15px 15px 0 15px;
-    color: #901C1C;
-}
-.close-modal:hover {
-    cursor: pointer;
-}
-/* BOUTON POUR TOGGLE LA MODALE --------------------------------------- */
+/* BOUTON OPEN MODALE ---------------------------------------------------------------------------------- */
 .btn-modal {
     height: 50px;
     width: 50px;
@@ -38,7 +7,103 @@
 .btn-modal:hover {
     cursor: pointer;
 }
-/* PARTIE GLOBALE DU CARROUSSEL --------------------------------------- */
+/* BOUTON CLOSE MODALE ---------------------------------------------------------------------------------- */
+#close-modale {
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 10px;
+    right: 350px;
+    max-height: 45px;
+    width: 45px;
+    font-size: 90px;
+    color: #901C1C;
+    position: absolute;
+}
+#close-modale:hover {
+    cursor: pointer;
+}
+/* MODALE ---------------------------------------------------------------------------------- */
+#modale {
+    z-index: 1;
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(196, 196, 196, 0.4);
+    overflow: auto;
+}
+/* MODALE CONTENT ---------------------------------------------------------------------------------- */
+#modale-content {
+    display: flex;
+    justify-content: center;
+    top: 60px;
+    position: relative;
+}
+#carroussel {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    height: 770px;
+}
+
+
+
+/* FLECHES ---------------------------------------------------------------------------------- */
+#fleche-gauche, #fleche-droite {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    width: 90px;
+}
+#fleche-gauche:hover, #fleche-droite:hover {
+    cursor: pointer;
+}
+#angle-gauche, #angle-droite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-size: 58px;
+    color: #901C1C;
+}
+/* MODALE MEDIA ---------------------------------------------------------------------------------- */
+#modale-media {
+    display: flex;
+    
+    padding-top: 20px;
+
+    width: 1050px;
+    background-color: greenyellow;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+
+
+
+
+
+/*
+.modale {
+    display: none;
+    z-index: 10;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: -75px;
+    width: auto;
+    height: 900px;
+    overflow: auto;
+    background-color: rgb(0, 0, 0, 0.3);
+}
+
+
+
+/* PARTIE GLOBALE DU CARROUSSEL ---------------------------------------
 #carroussel {
     display: flex;
     justify-content:center;
@@ -56,25 +121,8 @@
     margin: 0 0 0 95px;
     height: 60px;
 }
-/* FLECHES ------------------------------------------------------------- */
-#fleche-gauche, #fleche-droite {
-    display: grid;
-    background-color: white;
-    height: 750px;
-    width: 90px;
-}
-#fleche-gauche:hover, #fleche-droite:hover {
-    cursor: pointer;
-}
-#angle-gauche, #angle-droite {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    font-size: 58px;
-    color: #901C1C;
-}
-/* PARTIE MEDIAS ------------------------------------------------------- */
+
+/* PARTIE MEDIAS -------------------------------------------------------
 #partie-medias {
     display: flex;
     height: 750px;
@@ -83,13 +131,13 @@
     overflow: hidden;
     border-radius: 5px;
 }
-/* SLIDER ------------------------------------------------------- */
+/* SLIDER -------------------------------------------------------
 #slider-medias {
     overflow: hidden;
     display: flex;
     flex-direction: row;
 }
-/* MEDIA SLIDES ------------------------------------------------------- */
+/* MEDIA SLIDES -------------------------------------------------------
 .sliding-media {
     display: flex;
     min-width: 1050px;
@@ -97,3 +145,4 @@
     height: 100%;
     object-fit: cover;
 }
+*/

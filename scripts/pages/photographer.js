@@ -2,15 +2,15 @@
 const params = new URLSearchParams(window.location.search);
 const selectedArtist = params.get('id');
 
-// Définition globale "photographer" :
-let photographer;
-
 // Photographes sélectionnés depuis le .JSON :
 async function getPhotographers() {
     const response = await fetch('/data/photographers.json');
     const photographers = await response.json();
     return photographers;
-};
+}
+
+// Définition globale photographer" :
+let photographer;
 
 // Filtre le photographe avec l'ID récupéré :
 function filterPhotographerById(photographers) {
@@ -23,11 +23,14 @@ function filterPhotographerById(photographers) {
     // Avant d'être assemblées vers la balise <main>
     const mainSection = document.getElementById('main');
     mainSection.appendChild(page);
-};
+}
 
+
+let photographerMedia = []; // Définition globale des médias filtrés par l'ID du Photographe choisi
 // Filtre les médias grâce au photographerId et l'ID récupéré :
 function filterMediasById(medias) {
-    const photographerMedia = medias.filter((element) => (element.photographerId) == selectedArtist);
+    photographerMedia = medias.filter((element) => (element.photographerId) == selectedArtist);
+
     // Select balise <main> dans le HTML :
     const main = document.getElementById('main');
     // --------------------------------------------------------------------------------------------------
