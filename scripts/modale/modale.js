@@ -7,50 +7,27 @@ const openModale = document.createElement('div');
 openModale.classList.add('btn-modal');
 openModale.onclick = function() {modale.style.display = "block"};
 main.appendChild(openModale);
-// BOUTON FERMER
+
+// BOUTON FERMER MODALE
 const closeModale = document.getElementById('close-modale');
 closeModale.onclick = function() {modale.style.display = "none"};
+// WINDOW FERMER MODALE
+window.onclick = function(event) {
+    console.log(event.target);
+    let modaleContent = document.getElementById('modale-content');
+    if (event.target == modaleContent || event.target == modale) {
+        modale.style.display = "none";
+    };
+};
 
+// 1) REMETTRE LA LISTE DE "photographerMedia" accessible ici (not loading properly);
+// 2) .querySelector('media-card').addEvelentListener("click", function() {
+// })
+// 3) Get ID du click
+// 4) IF ID du click == ID de la liste photographerMedia (.forEach), alors donner l'emplacement dans la liste (findIndex)
+// 5) IF video / IF img, alors ...IMG / ...VID
+// 5) let mediaDisplayedIMG/VID = photographerMedia[findINDEX];
+// 6) GGWP
 
-
-
-
-// function modaleGenerale() {
-//     const main = document.getElementById('main');
-
-//     const mainModale = document.createElement('div');
-//     mainModale.classList.add('modale');
-
-//     const closeModaleDiv = document.createElement('div');
-//     closeModaleDiv.classList.add('div-close-modal');
-
-//     // BOUTON POUR FERMER LA MODALE
-//     const closeModale = document.createElement('i');
-//     closeModale.classList.add('close-modal');
-//     closeModale.classList.add('fa-sharp');
-//     closeModale.classList.add('fa-solid');
-//     closeModale.classList.add('fa-xmark');
-//     closeModale.onclick = function() {
-//         const modale = document.querySelector('.modale');
-//         modale.style.display = "none";
-//         const zoneTarif = document.querySelector('.zone-tarification');
-//         zoneTarif.style.display = "flex";
-//         const wrapper = document.querySelector('.wrapper');
-//         wrapper.style.display = "grid";
-//         const photographSection = document.querySelector('.photograph-header');
-//         photographSection.style.display = "flex";
-//         const filters = document.querySelector('.section-media-filters');
-//         filters.style.display = "flex";
-//         const btnOpen = document.querySelector('.btn-modal');
-//         btnOpen.style.display = "";
-//         // document.body.style.margin = "auto";
-//     };
-
-//     // BOUTON POUR OUVRIR LA MODALE
-//     const btnOpen = document.createElement('div');
-//     btnOpen.classList.add('btn-modal');
-//     btnOpen.onclick = function() {
-//         
-//     };
-// }
-// modale();
+let mediaDisplayedIMG = document.createElement('img');
+let mediaDisplayedVID = document.createElement('video');

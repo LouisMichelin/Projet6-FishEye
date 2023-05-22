@@ -13,8 +13,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 10px;
-    right: 350px;
+    top: 25px;
+    right: 375px;
     max-height: 45px;
     width: 45px;
     font-size: 90px;
@@ -23,6 +23,24 @@
 }
 #close-modale:hover {
     cursor: pointer;
+}
+/* FLECHES ---------------------------------------------------------------------------------- */
+#fleche-gauche, #fleche-droite {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    width: 90px;
+}
+#fleche-gauche:hover, #fleche-droite:hover {
+    cursor: pointer;
+}
+#angle-gauche, #angle-droite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-size: 58px;
+    color: #901C1C;
 }
 /* MODALE ---------------------------------------------------------------------------------- */
 #modale {
@@ -42,75 +60,37 @@
     justify-content: center;
     top: 60px;
     position: relative;
+    height: 840px;
 }
 #carroussel {
     display: flex;
     justify-content: center;
     flex-direction: row;
-    height: 770px;
-}
-
-
-
-/* FLECHES ---------------------------------------------------------------------------------- */
-#fleche-gauche, #fleche-droite {
-    display: flex;
-    justify-content: center;
-    background-color: white;
-    width: 90px;
-}
-#fleche-gauche:hover, #fleche-droite:hover {
-    cursor: pointer;
-}
-#angle-gauche, #angle-droite {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    font-size: 58px;
-    color: #901C1C;
+    width: 1210px;
 }
 /* MODALE MEDIA ---------------------------------------------------------------------------------- */
-#modale-media {
+#modale-media-bg {
     display: flex;
-    
-    padding-top: 20px;
-
-    width: 1050px;
-    background-color: greenyellow;
+    flex-direction: column;
+    background-color: white;
+}
+#modale-media {
+    margin-top: 20px;
+    height: 770px;
+    display: flex;
+    justify-content: center;
+    width: 1030px;
     overflow: hidden;
     border-radius: 5px;
 }
-
-
-
-
-
-
-/*
-.modale {
-    display: none;
-    z-index: 10;
-    position: absolute;
-    right: 0;
-    left: 0;
-    top: -75px;
-    width: auto;
-    height: 900px;
-    overflow: auto;
-    background-color: rgb(0, 0, 0, 0.3);
-}
-
-
-
-/* PARTIE GLOBALE DU CARROUSSEL ---------------------------------------
-#carroussel {
+/* SOUS-TITRE ---------------------------------------------------------------------------------- */
+#sous-titre-modale {
     display: flex;
-    justify-content:center;
-}
-#sous-titre-carroussel {
-    display: flex;
+    position: relative;
     align-items: center;
+    height: 60px;   
+    width: 1030px;
+    /* CSS DU TITRE */
     color: #901C1C;
     font-family: DM Sans;
     font-size: 24px;
@@ -118,9 +98,15 @@
     line-height: 31px;
     letter-spacing: 0em;
     text-align: left;
-    margin: 0 0 0 95px;
-    height: 60px;
 }
+
+/* MEDIA DISPLAYED ---------------------------------------------------------------------------------- */
+
+
+
+
+
+/*----------------------------------------------------
 
 /* PARTIE MEDIAS -------------------------------------------------------
 #partie-medias {
