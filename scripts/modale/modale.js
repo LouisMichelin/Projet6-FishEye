@@ -20,6 +20,23 @@ window.onclick = function(event) {
     };
 };
 
+// --------------------------------------------------------
+// DISPLAY LE MEDIA (FIXE) DANS LA MODALE !!!
+// --------------------------------------------------------
+let mediaDisplayedIMG = document.createElement('img');
+let mediaDisplayedVID = document.createElement('video');
+
+let mediaDisplayed = document.createElement('img');
+mediaDisplayed.id = "media-displayed";
+mediaDisplayed.setAttribute('src', `/FishEye - Photos/Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg`);
+const modaleMedia = document.getElementById('modale-media');
+modaleMedia.appendChild(mediaDisplayed);
+
+
+
+
+// ------------------------------------------------------------------------------------------------------------------------
+// TO-DO LISTE :
 // ------------------------------------------------------------------------------------------------------------------------
 // 1) REMETTRE LA LISTE DE "photographerMedia" accessible ici (not loading properly);
 // 2) .querySelector('media-card').addEvelentListener("click", function() {
@@ -31,28 +48,45 @@ window.onclick = function(event) {
 // 6) GGWP
 // ------------------------------------------------------------------------------------------------------------------------
 
-// 1:
-
-console.log(photographerMedia);
 // 2:
-
 // let mediaCard = document.querySelector('.media-card');
 // mediaCard.addEventListener("click", function() {
-//
-// });
-
-// 3:
-
-// 4:
-
-let mediaDisplayedIMG = document.createElement('img');
-let mediaDisplayedVID = document.createElement('video');
 
 
-let testest = document.createElement('img');
-testest.id = "media-displayed";
-testest.setAttribute('src', `/FishEye - Photos/Sample Photos/Ellie Rose/Architecture_Connected_Curves.jpg`);
+// ###################################################################################################
+// ###################################################################################################
+// #################################### IMPORT DES DATA DE MEDIA #####################################
+// ###################################################################################################
+// ###################################################################################################
+
+let tableauMedias = [];
+
+function tableauData(medias) {
+    
+    for (let i=0; i < medias.length; i++) {
+        if (medias[i].photographerId == selectedArtist) {
+            tableauMedias.push(medias[i]);
+        };
+    };
+    console.log(tableauMedias[1].image);
+};
+
+console.log(tableauMedias);
 
 
-const modaleMedia = document.getElementById('modale-media');
-modaleMedia.appendChild(testest)
+
+
+// SETUP DATA MEDIA
+async function importData() {
+    const response = await fetch('/data/photographers.json');
+    const data = await response.json();
+    return data;
+}
+// SETUP DATA MEDIA
+async function launchData() {
+    const { media } = await importData();
+    tableauData(media);
+    return media;
+}
+// SETUP DATA MEDIA
+launchData();
