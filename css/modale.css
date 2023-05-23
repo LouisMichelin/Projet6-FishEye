@@ -1,4 +1,8 @@
-/* BOUTON OPEN MODALE ---------------------------------------------------------------------------------- */
+/*
+----------------------------------------------------------------------------------------------------
+BOUTON OPEN MODALE
+----------------------------------------------------------------------------------------------------
+*/
 .btn-modal {
     height: 50px;
     width: 50px;
@@ -7,14 +11,18 @@
 .btn-modal:hover {
     cursor: pointer;
 }
-/* BOUTON CLOSE MODALE ---------------------------------------------------------------------------------- */
+/*
+----------------------------------------------------------------------------------------------------
+BOUTON CLOSE MODALE
+----------------------------------------------------------------------------------------------------
+*/
 #close-modale {
     z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     top: 25px;
-    right: 375px;
+    right: 365px;
     max-height: 45px;
     width: 45px;
     font-size: 90px;
@@ -24,7 +32,11 @@
 #close-modale:hover {
     cursor: pointer;
 }
-/* FLECHES ---------------------------------------------------------------------------------- */
+/*
+----------------------------------------------------------------------------------------------------
+FLECHES
+----------------------------------------------------------------------------------------------------
+*/
 #fleche-gauche, #fleche-droite {
     display: flex;
     justify-content: center;
@@ -42,48 +54,11 @@
     font-size: 58px;
     color: #901C1C;
 }
-/* MODALE ---------------------------------------------------------------------------------- */
-#modale {
-    z-index: 1;
-    display: none;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: rgba(196, 196, 196, 0.4);
-    overflow: auto;
-}
-/* MODALE CONTENT ---------------------------------------------------------------------------------- */
-#modale-content {
-    display: flex;
-    justify-content: center;
-    top: 60px;
-    position: relative;
-    height: 840px;
-}
-#carroussel {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    width: 1210px;
-}
-/* MODALE MEDIA ---------------------------------------------------------------------------------- */
-#modale-media-bg {
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-}
-#modale-media {
-    margin-top: 20px;
-    height: 770px;
-    display: flex;
-    justify-content: center;
-    width: 1030px;
-    overflow: hidden;
-    border-radius: 5px;
-}
-/* SOUS-TITRE ---------------------------------------------------------------------------------- */
+/*
+----------------------------------------------------------------------------------------------------
+SOUS-TITRE MEDIA
+----------------------------------------------------------------------------------------------------
+*/
 #sous-titre-modale {
     display: flex;
     position: relative;
@@ -99,36 +74,137 @@
     letter-spacing: 0em;
     text-align: left;
 }
-
-/* MEDIA DISPLAYED ---------------------------------------------------------------------------------- */
-
-
-
-
-
-/*----------------------------------------------------
-
-/* PARTIE MEDIAS -------------------------------------------------------
-#partie-medias {
+/*
+----------------------------------------------------------------------------------------------------
+MODALE / MODALE-CONTENT / CARROUSSEL / MODALE-MEDIA-BG / MODALE-MEDIA / MEDIA-DISPLAYED
+----------------------------------------------------------------------------------------------------
+*/
+#modale {
+    z-index: 1;
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(196, 196, 196, 0.4);
+    overflow: auto;
+}
+#modale-content {
     display: flex;
-    height: 750px;
-    width: 1050px;
-    background-color: greenyellow;
+    justify-content: center;
+    top: 60px;
+    position: relative;
+    height: 840px;
+}
+#carroussel {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 1210px;
+}
+#modale-media-bg {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+#modale-media {
+    margin-top: 20px;
+    height: 770px;
+    display: flex;
+    justify-content: center;
+    width: 1030px;
     overflow: hidden;
     border-radius: 5px;
 }
-/* SLIDER -------------------------------------------------------
-#slider-medias {
-    overflow: hidden;
+#media-displayed {
     display: flex;
-    flex-direction: row;
-}
-/* MEDIA SLIDES -------------------------------------------------------
-.sliding-media {
-    display: flex;
-    min-width: 1050px;
+    min-width: 1030px;
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
+
+/*
+###################################################################################################
 */
+
+/*
+----------------------------------------------------------------------------------------------------
+CONTACT MODALE
+----------------------------------------------------------------------------------------------------
+*/
+#contact_modal {
+    z-index: 1;
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(196, 196, 196, 0.4);
+    overflow: auto;
+}
+
+.contact_button {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.modal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    background-color: #DB8876;
+    border-radius: 5px;
+    padding: 35px;
+    margin: auto;
+    /* ------------------------- */
+    margin-top: 50px;
+    height: 780px;
+    width: 600px;
+    /* width: 50%; */
+}
+.modal header {
+    justify-content: space-between;
+    width: 100%;
+}
+.modal header img {
+    cursor: pointer;
+}
+.modal header h2 {
+    font-size: 64px;
+    font-weight: normal;
+    text-align: center;
+}
+form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+}
+form label {
+    color: #312E2E;
+    font-size: 36px;
+}
+form div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: self-start;
+    margin-bottom: 26px;
+}
+form input {
+    width: 100%;
+    height: 68px;
+    border: none;
+    border-radius: 5px;
+}

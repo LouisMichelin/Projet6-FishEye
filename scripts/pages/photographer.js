@@ -25,12 +25,13 @@ function filterPhotographerById(photographers) {
     mainSection.appendChild(page);
 }
 
-
-let photographerMedia = []; // Définition globale des médias filtrés par l'ID du Photographe choisi
+// Définition globale des médias filtrés par l'ID du Photographe choisi
+let photographerMedia = [];
+let testGlobal = "Valeur avant la fonction";
 // Filtre les médias grâce au photographerId et l'ID récupéré :
 function filterMediasById(medias) {
     photographerMedia = medias.filter((element) => (element.photographerId) == selectedArtist);
-
+    testGlobal = "Valeur APRES la fonction !!!";
     // Select balise <main> dans le HTML :
     const main = document.getElementById('main');
     // --------------------------------------------------------------------------------------------------
