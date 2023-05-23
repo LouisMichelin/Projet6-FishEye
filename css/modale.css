@@ -127,6 +127,8 @@ MODALE / MODALE-CONTENT / CARROUSSEL / MODALE-MEDIA-BG / MODALE-MEDIA / MEDIA-DI
 
 /*
 ###################################################################################################
+###################################################################################################
+###################################################################################################
 */
 
 /*
@@ -160,16 +162,16 @@ CONTACT MODALE
 }
 .modal {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
     flex-direction: column;
     background-color: #DB8876;
     border-radius: 5px;
-    padding: 35px;
+    padding: 50px 35px 35px 35px;
     margin: auto;
     /* ------------------------- */
-    margin-top: 50px;
-    height: 780px;
+    margin-top: 35px;
+    height: 790px;
     width: 600px;
     /* width: 50%; */
 }
@@ -179,32 +181,52 @@ CONTACT MODALE
 }
 .modal header img {
     cursor: pointer;
+    position: absolute;
+    top: 75px;
+    right: 640px;
 }
 .modal header h2 {
     font-size: 64px;
     font-weight: normal;
-    text-align: center;
 }
-form {
+
+#contact_formulaires {
     display: flex;
+    flex-direction: column;
+    
+    width: 100%;
+    margin-top: 50px;
+}
+#contact_formulaires form div {
+    margin: 0;
+}
+
+.contact-formulaire {
+    display: flex;
+    height: auto;
     width: 100%;
     flex-direction: column;
     align-items: flex-start;
 }
-form label {
+.contact-formulaire label {
+    margin-top: 5px;
     color: #312E2E;
     font-size: 36px;
 }
-form div {
+.contact-formulaire div {
     display: flex;
     flex-direction: column;
     width: 100%;
     align-items: self-start;
     margin-bottom: 26px;
 }
-form input {
+.contact-formulaire input {
     width: 100%;
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+#contact_message input {
+    height: 150px;
+    margin-bottom: 20px;
 }

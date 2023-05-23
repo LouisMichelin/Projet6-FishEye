@@ -34,7 +34,6 @@ window.onclick = function(event) {
 // 1:
 
 console.log(photographerMedia);
-console.log(testGlobal);
 // 2:
 
 // let mediaCard = document.querySelector('.media-card');

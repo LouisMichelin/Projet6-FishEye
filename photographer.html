@@ -22,34 +22,36 @@
     <div id="contact_modal">
 			<div class="modal">
 				<header>
-          <h2>Contactez-moi</h2>
+          <h2 id="contact_header">Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
-				<form>
+        <div id="contact_formulaires">
+          <form class="contact-formulaire">
+            <div>
+              <label>Prénom</label>
+              <input />
+            </div>
+          </form>
+          <form class="contact-formulaire">
+            <div>
+              <label>Nom</label>
+              <input />
+            </div>
+          </form>
+          <form class="contact-formulaire">
+            <div>
+              <label>Email</label>
+              <input />
+            </div>
+          </form>
+				  <form class="contact-formulaire" id="contact_message">
 					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-				</form>
-				<form>
-					<div>
-						<label>Nom</label>
-						<input />
-					</div>
-				</form>
-        <form>
-					<div>
-						<label>Email</label>
-						<input />
-					</div>
-				</form>
-				<form>
-					<div>
-						<label>Message</label>
+						<label>Votre message</label>
 						<input />
 					</div>
           <button class="contact_button">Envoyer</button>
-				</form>
+				  </form>
+        </div> 
 			</div>
 		</div>
 

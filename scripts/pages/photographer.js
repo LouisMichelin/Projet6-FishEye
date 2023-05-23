@@ -1,6 +1,10 @@
 // Prend l'ID utilisé dans la search bar :
 const params = new URLSearchParams(window.location.search);
 const selectedArtist = params.get('id');
+// Définition globale photographer" :
+let photographer;
+// Définition globale des médias filtrés par l'ID du Photographe choisi
+let photographerMedia = [];
 
 // Photographes sélectionnés depuis le .JSON :
 async function getPhotographers() {
@@ -8,9 +12,6 @@ async function getPhotographers() {
     const photographers = await response.json();
     return photographers;
 }
-
-// Définition globale photographer" :
-let photographer;
 
 // Filtre le photographe avec l'ID récupéré :
 function filterPhotographerById(photographers) {
@@ -25,13 +26,10 @@ function filterPhotographerById(photographers) {
     mainSection.appendChild(page);
 }
 
-// Définition globale des médias filtrés par l'ID du Photographe choisi
-let photographerMedia = [];
-let testGlobal = "Valeur avant la fonction";
 // Filtre les médias grâce au photographerId et l'ID récupéré :
 function filterMediasById(medias) {
     photographerMedia = medias.filter((element) => (element.photographerId) == selectedArtist);
-    testGlobal = "Valeur APRES la fonction !!!";
+    
     // Select balise <main> dans le HTML :
     const main = document.getElementById('main');
     // --------------------------------------------------------------------------------------------------
