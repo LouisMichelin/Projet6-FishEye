@@ -20,17 +20,19 @@ function mediaFactory(data) {
         mediaContainer.setAttribute("data-id", id);
 
         if (image) {
-            mediaContainer.setAttribute('href', imageSource);
+            // mediaContainer.setAttribute('href', imageSource);
             const mediaImage = document.createElement('img');
             mediaImage.classList.add('media');
             mediaImage.setAttribute('src', imageSource);
+            mediaImage.setAttribute('onclick', 'toggleCarroussel()');
             mediaContainer.appendChild(mediaImage);
         }
         if (video) {
-            mediaContainer.setAttribute('href', videoSource);
+            // mediaContainer.setAttribute('href', videoSource);
             const mediaVideo = document.createElement('video');
             mediaVideo.classList.add('media');
             mediaVideo.controls = true;
+            mediaVideo.setAttribute('onclick', 'toggleCarroussel()');
             const mediaVideoSource = document.createElement('source');
             mediaVideoSource.setAttribute('src', videoSource);
             mediaVideoSource.setAttribute('type', "video/mp4");
