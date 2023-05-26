@@ -31,8 +31,6 @@ window.onclick = function(event) {
 // ##################################################################################################################
 // ##################################################################################################################
 
-let tableauMedias = [];
-let tableauPhotographers = [];
 const mediaDisplayed = document.getElementById('media-displayed');
 const allMediasOfDoc = document.querySelectorAll('.media'); // query ALL
 const video = document.querySelector('.media'); // query UNIQUE
@@ -45,40 +43,41 @@ const video = document.querySelector('.media'); // query UNIQUE
 //     }
 // });
 
+console.log(photographerMedia);
 
 
-
-function toggleCarroussel() {
+function toggleCarroussel(idMedia) {
+    console.log(idMedia);
+    console.log(photographerMedia);
+    let pos = photographerMedia.findIndex(element => element.id == idMedia);
     let value;
-    console.log("je suis un onclick qui marche");
-    // RECUPERER LE DATA-ID
-    window.onclick = function(event) {
-        console.log(event.target.parentElement.getAttribute("data-id"));
-        value = event.target.parentElement.getAttribute("data-id")
-    };
-}
+    console.log("je suis un onclick qui marche", pos);
+
+    modale.style.display = "block";
+
+};
 
 
-// DATA MEDIA
-function tableauDataMedia(medias) {
-    for (let i=0; i < medias.length; i++) {
-        if (medias[i].photographerId == selectedArtist) {
-            tableauMedias.push(medias[i]);
-        };
-    };
-    console.log(tableauMedias);
-}
+// // DATA MEDIA
+// function tableauDataMedia(medias) {
+//     for (let i=0; i < medias.length; i++) {
+//         if (medias[i].photographerId == selectedArtist) {
+//             tableauMedias.push(medias[i]);
+//         };
+//     };
+//     console.log(tableauMedias);
+// }
 
 
-// DATA PHOTOGRAPHERS
-function tableauDataPhotographers(photographers) {
-    for (let i=0; i < photographers.length; i++) {
-        if (photographers[i].id == selectedArtist) {
-            tableauPhotographers.push(photographers[i]);
-        };
-    };
-    console.log(tableauPhotographers);
-}
+// // DATA PHOTOGRAPHERS
+// function tableauDataPhotographers(photographers) {
+//     for (let i=0; i < photographers.length; i++) {
+//         if (photographers[i].id == selectedArtist) {
+//             tableauPhotographers.push(photographers[i]);
+//         };
+//     };
+//     console.log(tableauPhotographers);
+// }
 
 // ------------------------------------------------------------------------------------------------
 //     tableauMedias.forEach(media => {
@@ -112,20 +111,3 @@ function tableauDataPhotographers(photographers) {
 // };
 //
 // ------------------------------------------------------------------------------------------------
-
-// SETUP DATA MEDIA 1
-async function importData() {
-    const response = await fetch('/data/photographers.json');
-    const data = await response.json();
-    return data;
-}
-// SETUP DATA MEDIA 2
-async function launchData() {
-    const { media } = await importData();
-    const { photographers } = await importData();
-    tableauDataMedia(media)
-    tableauDataPhotographers(photographers);
-    return media, photographers;
-}
-// SETUP DATA MEDIA 3
-launchData();

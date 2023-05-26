@@ -223,6 +223,8 @@ async function init() {
     // Récupère les données de photographers & de media
     const { photographers } = await getPhotographers();
     const { media } = await getPhotographers();
+
+    
     // Exécute ensuite les fonctions plus haut avec les données obtenues
     filterPhotographerById(photographers);
     filterMediasById(media);

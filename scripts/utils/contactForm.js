@@ -1,21 +1,21 @@
 // OPEN MODAL
+const modal = document.getElementById("contact_modal");
+
 function displayModal() {
-    const modal = document.getElementById("contact_modal");
+    console.log("test Sarra");
 	modal.style.display = "block";
 }
 // CLOSE MODAL
 function closeModal() {
-    const modal = document.getElementById("contact_modal");
+    console.log("test Sarra 2");
     modal.style.display = "none";
 }
 // WINDOW CLOSE MODAL
 window.onclick = function(event) {
-    console.log(event.target);
-
-    const contactModal = document.getElementById("contact_modal");
-    if (event.target == modal || event.target == contactModal) {
-        contactModal.style.display = "none";
-    };
+    
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 };      
 
 // HEADER AVEC NOM DU PHOTOGRAPHE

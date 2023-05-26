@@ -9,7 +9,7 @@ function mediaFactory(data) {
     // Source dynamique vers les medias :
     const imageSource = `/FishEye - Photos/Sample Photos/${prenom}/${image}`;
     const videoSource = `/FishEye - Photos/Sample Photos/${prenom}/${video}`;
-
+    
     function getMediaCardDOM() {
         const allCardContainer = document.createElement('div');
         allCardContainer.classList.add('media-card');
@@ -24,7 +24,11 @@ function mediaFactory(data) {
             const mediaImage = document.createElement('img');
             mediaImage.classList.add('media');
             mediaImage.setAttribute('src', imageSource);
-            mediaImage.setAttribute('onclick', 'toggleCarroussel()');
+            mediaImage.addEventListener("click", function(event){
+                event.preventDefault();
+                event.stopPropagation();
+                toggleCarroussel(id);
+            })
             mediaContainer.appendChild(mediaImage);
         }
         if (video) {
@@ -32,6 +36,11 @@ function mediaFactory(data) {
             const mediaVideo = document.createElement('video');
             mediaVideo.classList.add('media');
             mediaVideo.controls = true;
+            mediaVideo.addEventListener("click", function(event){
+                event.preventDefault();
+                event.stopPropagation();
+                toggleCarroussel(id);
+            })
             mediaVideo.setAttribute('onclick', 'toggleCarroussel()');
             const mediaVideoSource = document.createElement('source');
             mediaVideoSource.setAttribute('src', videoSource);
@@ -78,5 +87,9 @@ function mediaFactory(data) {
         nbLikesAndHeart.appendChild(heartLogo);
         return allCardContainer;
     }
-    return { id, photographerId, name, title, image, video, likes, date, price, getMediaCardDOM };
+    function getMediaModalDom(){
+        // coder le contenu d'un element media dans la modale
+        // grande div du centent de la modale avec le contenu image ou video et tu le retourne à la fin  
+    }
+    return { id, photographerId, name,prenom, title, image, video,imageSource,videoSource, likes, date, price, getMediaCardDOM };
 };
