@@ -1,6 +1,6 @@
 const modal = document.getElementById("contact_modal");
 
-// OPEN MODAL
+// OPEN MODAL ------------------------------------------------------------
 function displayModal() {
 	modal.style.display = "block";
     // HEADER AVEC NOM DU PHOTOGRAPHE
@@ -8,15 +8,29 @@ function displayModal() {
     headerText.textContent = `Contactez-moi ${photographer.name}`;
 }
 
-// CLOSE MODAL
+// CLOSE MODAL ------------------------------------------------------------
 function closeModal() {
     modal.style.display = "none";
 }
 
-let contactButton = document.querySelector('.contact_button');
+// ENVOYER FORMULAIRE ------------------------------------------------------------
+let contactButton = document.querySelector('.send_button');
 
-contactButton.addEventListener("click", function() {
-    console.log("Merci de m'avoir contacté,"
+// Données renseignées
+let userPrenom = document.getElementById('user_prenom');
+let userNom = document.getElementById('user_nom');
+let userEmail = document.getElementById('user_email');
+let userMessage = document.getElementById('user_message');
 
-    )
+// Fonction submit
+contactButton.addEventListener("submit", function() {
+    console.log(
+        `Merci de m'avoir contacté,
+        ${userPrenom.value} ${userNom.value},
+        vous trouverez davantage de renseignements à votre adresse email :
+        ${userEmail},
+        et je prendrais en compte chaque élément de votre message :
+        ${userMessage}
+        Passez une agréable journée !
+        `);
 });

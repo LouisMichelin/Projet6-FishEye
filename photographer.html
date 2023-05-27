@@ -26,52 +26,29 @@
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
         <div id="contact_formulaires">
-          <form class="contact-formulaire">
-            <div>
-              <label>Prénom</label>
-              <input type="text" required/>
+          <form method="POST" target="_blank">
+            <div class="contact-formulaire">
+              <label for="user_prenom">Prénom</label>
+              <input id="user_prenom" type="text" required/>
             </div>
-          </form>
-          <form class="contact-formulaire">
-            <div>
-              <label>Nom</label>
-              <input type="text" required/>
+            <div class="contact-formulaire" method="post">
+              <label for="user_nom">Nom</label>
+              <input id="user_nom" type="text" required/>
             </div>
-          </form>
-          <form class="contact-formulaire">
-            <div>
-              <label>Email</label>
-              <input type="email" required/>
+            <div class="contact-formulaire">
+              <label for="user_email">Email</label>
+              <input id="user_email" type="email" required/>
             </div>
-          </form>
-				  <form class="contact-formulaire" id="contact_message">
-					<div>
-						<label>Votre message</label>
-						<input type="text" required/>
-					</div>
-          <button class="contact_button" type="submit">Envoyer</button>
+            <div class="contact-formulaire" id="contact_message">
+              <label for="user_message">Votre message</label>
+              <input id="user_message" class="input-value" type="text" required/>
+            </div>
+            <button class="send_button" type="submit" target="_blank">Envoyer</button>
 				  </form>
         </div> 
 			</div>
 		</div>
 
-    <div id="modale">
-      <div id="modale-content">
-        <span id="close-modale">&times;</span>
-        <div id="carroussel">
-          <div id="fleche-gauche">
-            <i class="fa-sharp fa-solid fa-angle-left" id="angle-gauche"></i>
-          </div>
-          <div id="modale-media-bg">
-            <div id="modale-media"></div>
-            <div id="sous-titre-modale">Hello World</div>
-          </div>
-          <div id="fleche-droite">
-            <i class="fa-sharp fa-solid fa-angle-right" id="angle-droite"></i>
-          </div>
-        </div>
-      </div>
-    </div>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/factories/media.js"></script>
     <script src="/scripts/factories/photographer.js"></script>

@@ -1,5 +1,61 @@
 // MAIN
 const main = document.querySelector('main');
+// Définitiation des VARIABLES de la Modale
+const modaleMedia = document.createElement('div');
+modaleMedia.id = "modale";
+const modaleMediaContent = document.createElement('div');
+modaleMediaContent.id = "modale-content";
+// Bouton Close
+const modaleCloseButton = document.createElement('span');
+modaleCloseButton.id = "close-modale";
+modaleCloseButton.innerHTML = "&times;";
+const modaleMediaCarroussel = document.createElement('div');
+modaleMediaCarroussel.id = "carroussel";
+// Bouton <Gauche>
+const modaleMediaFlecheGauche = document.createElement('div');
+modaleMediaFlecheGauche.id = "fleche-gauche";
+const modaleMediaAngleGauche = document.createElement('div');
+modaleMediaAngleGauche.id = "angle-gauche";
+modaleMediaAngleGauche.classList.add('fa-sharp');
+modaleMediaAngleGauche.classList.add('fa-solid');
+modaleMediaAngleGauche.classList.add('fa-angle-left');
+// Media Affiché
+const modaleMediaBG = document.createElement('div');
+modaleMediaBG.id = "modale-media-bg";
+const modaleMediaDisplayed = document.createElement('div');
+modaleMediaDisplayed.id = "modale-media";
+const modaleMediaSousTitre = document.createElement('div');
+modaleMediaSousTitre.id = "sous-titre-modale";
+// Bouton <Droite>
+const modaleMediaFlecheDroite = document.createElement('div');
+modaleMediaFlecheDroite.id = "fleche-droite";
+const modaleMediaAngleDroit = document.createElement('div');
+modaleMediaAngleDroit.id = "angle-droite";
+modaleMediaAngleDroit.classList.add('fa-sharp');
+modaleMediaAngleDroit.classList.add('fa-solid');
+modaleMediaAngleDroit.classList.add('fa-angle-right');
+
+// INITIALISATION MODALE
+main.before(modaleMedia);
+modaleMedia.appendChild(modaleMediaContent);
+modaleMediaContent.appendChild(modaleCloseButton);
+// Carroussel
+modaleMediaContent.appendChild(modaleMediaCarroussel);
+// Bouton Gauche
+modaleMediaCarroussel.appendChild(modaleMediaFlecheGauche);
+modaleMediaFlecheGauche.appendChild(modaleMediaAngleGauche);
+// Media Displayed
+modaleMediaCarroussel.appendChild(modaleMediaBG);
+modaleMediaBG.appendChild(modaleMediaDisplayed);
+modaleMediaBG.appendChild(modaleMediaSousTitre);
+// Bouton Droite
+modaleMediaCarroussel.appendChild(modaleMediaFlecheDroite);
+modaleMediaFlecheDroite.appendChild(modaleMediaAngleDroit);
+
+
+// ##################################################################################################################
+
+
 // MODALE
 const modale = document.getElementById('modale');
 
@@ -10,53 +66,42 @@ openModale.onclick = function() {modale.style.display = "block"};
 main.appendChild(openModale);
 
 // BOUTON FERMER MODALE
-const closeModale = document.getElementById('close-modale');
-closeModale.onclick = function() {
-    modale.style.display = "none"
+modaleCloseButton.onclick = function() {
+    modaleMedia.style.display = "none"
 };
 // WINDOW FERMER MODALE
 window.onclick = function(event) {
     // console.log(event.target);
-    let modaleContent = document.getElementById('modale-content');
     let modal = document.getElementById("contact_modal");
-    if (event.target == modaleContent || event.target == modale || event.target == modal) {
+    if (event.target == modaleMediaContent || event.target == modale || event.target == modal) {
         modale.style.display = "none";
         modal.style.display = "none";
     };
 };
 
-
-// ##################################################################################################################
-// ##################################################################################################################
-// ##################################################################################################################
-// #################################### IMPORT DES DATA DE MEDIA ####################################################
-// ##################################################################################################################
-// ##################################################################################################################
 // ##################################################################################################################
 
 const mediaDisplayed = document.getElementById('media-displayed');
 const allMediasOfDoc = document.querySelectorAll('.media'); // query ALL
 const video = document.querySelector('.media'); // query UNIQUE
 
-// allMediasOfDoc.forEach(media => {
-//     if(media.nodeName == "IMG") {
-//         console.log(media, "c'est une image !");
-//     } else if(media.nodeName == "VIDEO") {
-//         console.log(media, "c'est une video !");
-//     }
-// });
-
-
 
 function toggleCarroussel(idMedia) {
-    console.log(idMedia);
+    modaleMedia.style.display = "block";
     console.log(photographerMedia);
+    
     let pos = photographerMedia.findIndex(element => element.id == idMedia);
+    console.log("I'm a working EventListener. ID Media =", pos);
+
+
+    console.log(photographerMedia[pos].image)
+
+    console.log(photographer.name);
+    console.log(idMedia);
+
+    
+    
     
     
 
-    modale.style.display = "block";
-    console.log("je suis un onclick qui marche", pos), {once : true};
-
-    console.log(photographer.name)
 };

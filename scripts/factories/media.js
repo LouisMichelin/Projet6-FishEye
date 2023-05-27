@@ -28,7 +28,8 @@ function mediaFactory(data) {
                 event.preventDefault();
                 event.stopPropagation();
                 toggleCarroussel(id);
-            })
+                getMediaModalDOM();
+            });
             mediaContainer.appendChild(mediaImage);
         }
         if (video) {
@@ -40,7 +41,8 @@ function mediaFactory(data) {
                 event.preventDefault();
                 event.stopPropagation();
                 toggleCarroussel(id);
-            })
+                getMediaModalDOM();
+            });
             mediaVideo.setAttribute('onclick', 'toggleCarroussel()');
             const mediaVideoSource = document.createElement('source');
             mediaVideoSource.setAttribute('src', videoSource);
@@ -88,11 +90,25 @@ function mediaFactory(data) {
         return allCardContainer;
     }
 
-    function getMediaModalDOM(){
-        console.log(photographer.name)
+    function getMediaModalDOM() {
         // coder le contenu d'un element media dans la modale
         // grande div du centre de la modale avec le contenu image ou video et tu le retourne à la fin  
+        let displayedMediaDIV = document.getElementById('modale-media');
+
+        if (image) {
+            console.log(imageSource);
+            let displayedMedia = document.createElement('img');
+            displayedMedia.setAttribute('src', imageSource);
+            displayedMediaDIV.appendChild(displayedMedia);
+
+        }
+        
+
+        
+        
+        
+        console.log("je suis getMediaModalDOM()");
     }
 
-    return { id, photographerId, name,prenom, title, image, video,imageSource,videoSource, likes, date, price, getMediaCardDOM };
+    return { id, photographerId, name,prenom, title, image, video,imageSource,videoSource, likes, date, price, getMediaCardDOM, getMediaModalDOM };
 };
