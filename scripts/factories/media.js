@@ -87,9 +87,12 @@ function mediaFactory(data) {
         nbLikesAndHeart.appendChild(heartLogo);
         return allCardContainer;
     }
-    function getMediaModalDom(){
+
+    function getMediaModalDOM(){
+        console.log(photographer.name)
         // coder le contenu d'un element media dans la modale
-        // grande div du centent de la modale avec le contenu image ou video et tu le retourne à la fin  
+        // grande div du centre de la modale avec le contenu image ou video et tu le retourne à la fin  
     }
+
     return { id, photographerId, name,prenom, title, image, video,imageSource,videoSource, likes, date, price, getMediaCardDOM };
 };

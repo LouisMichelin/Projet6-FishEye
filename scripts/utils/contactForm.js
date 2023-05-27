@@ -1,23 +1,22 @@
-// OPEN MODAL
 const modal = document.getElementById("contact_modal");
 
+// OPEN MODAL
 function displayModal() {
-    console.log("test Sarra");
 	modal.style.display = "block";
+    // HEADER AVEC NOM DU PHOTOGRAPHE
+    let headerText = document.getElementById('contact_header');
+    headerText.textContent = `Contactez-moi ${photographer.name}`;
 }
+
 // CLOSE MODAL
 function closeModal() {
-    console.log("test Sarra 2");
     modal.style.display = "none";
 }
-// WINDOW CLOSE MODAL
-window.onclick = function(event) {
-    
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-};      
 
-// HEADER AVEC NOM DU PHOTOGRAPHE
-let headerText = document.getElementById('contact_header');
-headerText.textContent += ` ${photographerMedia.name}`;
+let contactButton = document.querySelector('.contact_button');
+
+contactButton.addEventListener("click", function() {
+    console.log("Merci de m'avoir contacté,"
+
+    )
+});
