@@ -34,7 +34,6 @@ modaleMediaAngleDroit.id = "angle-droite";
 modaleMediaAngleDroit.classList.add('fa-sharp');
 modaleMediaAngleDroit.classList.add('fa-solid');
 modaleMediaAngleDroit.classList.add('fa-angle-right');
-
 // INITIALISATION MODALE
 main.before(modaleMedia);
 modaleMedia.appendChild(modaleMediaContent);
@@ -52,22 +51,13 @@ modaleMediaBG.appendChild(modaleMediaSousTitre);
 modaleMediaCarroussel.appendChild(modaleMediaFlecheDroite);
 modaleMediaFlecheDroite.appendChild(modaleMediaAngleDroit);
 
-
 // ##################################################################################################################
-
 
 // MODALE
 const modale = document.getElementById('modale');
-
-// BOUTON OPEN
-const openModale = document.createElement('div');
-openModale.classList.add('btn-modal');
-openModale.onclick = function() {modale.style.display = "block"};
-main.appendChild(openModale);
-
 // BOUTON FERMER MODALE
 modaleCloseButton.onclick = function() {
-    modaleMedia.style.display = "none"
+    modaleMedia.style.display = "none";
 };
 // WINDOW FERMER MODALE
 window.onclick = function(event) {
@@ -78,30 +68,12 @@ window.onclick = function(event) {
         modal.style.display = "none";
     };
 };
-
-// ##################################################################################################################
-
-const mediaDisplayed = document.getElementById('media-displayed');
-const allMediasOfDoc = document.querySelectorAll('.media'); // query ALL
-const video = document.querySelector('.media'); // query UNIQUE
-
-
+// TOGGLE CARROUSSEL
 function toggleCarroussel(idMedia) {
     modaleMedia.style.display = "block";
-    console.log(photographerMedia);
     
     let pos = photographerMedia.findIndex(element => element.id == idMedia);
     console.log("I'm a working EventListener. ID Media =", pos);
 
-
-    console.log(photographerMedia[pos].image)
-
-    console.log(photographer.name);
-    console.log(idMedia);
-
-    
-    
-    
-    
-
+    console.log(photographerMedia[pos].video || photographerMedia[pos].image);
 };

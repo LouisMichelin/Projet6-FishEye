@@ -20,7 +20,6 @@ function mediaFactory(data) {
         mediaContainer.setAttribute("data-id", id);
 
         if (image) {
-            // mediaContainer.setAttribute('href', imageSource);
             const mediaImage = document.createElement('img');
             mediaImage.classList.add('media');
             mediaImage.setAttribute('src', imageSource);
@@ -28,28 +27,24 @@ function mediaFactory(data) {
                 event.preventDefault();
                 event.stopPropagation();
                 toggleCarroussel(id);
-                getMediaModalDOM();
+                getMediaModalDOM(image);
             });
             mediaContainer.appendChild(mediaImage);
-        }
+        };
         if (video) {
-            // mediaContainer.setAttribute('href', videoSource);
             const mediaVideo = document.createElement('video');
             mediaVideo.classList.add('media');
+            mediaVideo.setAttribute('src', videoSource);
+            mediaVideo.setAttribute('type', "video/mp4");
             mediaVideo.controls = true;
             mediaVideo.addEventListener("click", function(event){
                 event.preventDefault();
                 event.stopPropagation();
                 toggleCarroussel(id);
-                getMediaModalDOM();
+                getMediaModalDOM(video);
             });
-            mediaVideo.setAttribute('onclick', 'toggleCarroussel()');
-            const mediaVideoSource = document.createElement('source');
-            mediaVideoSource.setAttribute('src', videoSource);
-            mediaVideoSource.setAttribute('type', "video/mp4");
             mediaContainer.appendChild(mediaVideo);
-            mediaVideo.appendChild(mediaVideoSource); 
-        }
+        };
         // Zone [Titre + (Nb likes & Logo Coeur)]
         const titleContainer = document.createElement('div');
         titleContainer.classList.add('card-title-area');
@@ -94,21 +89,25 @@ function mediaFactory(data) {
         // coder le contenu d'un element media dans la modale
         // grande div du centre de la modale avec le contenu image ou video et tu le retourne à la fin  
         let displayedMediaDIV = document.getElementById('modale-media');
+        let displayedImage = document.createElement('img');
+        let displayedVideo = document.createElement('video');
 
+        
         if (image) {
             console.log(imageSource);
-            let displayedMedia = document.createElement('img');
-            displayedMedia.setAttribute('src', imageSource);
-            displayedMediaDIV.appendChild(displayedMedia);
-
-        }
-        
+            displayedMediaDIV.appendChild(displayedImage);
+            displayedImage.setAttribute('src', imageSource);
+        };
 
         
+        if (video) {
+            console.log(videoSource);
+            displayedMediaDIV.appendChild(displayedVideo);
+            displayedVideo.setAttribute('src', videoSource);
+            
+        };
         
-        
-        console.log("je suis getMediaModalDOM()");
-    }
 
+    } 
     return { id, photographerId, name,prenom, title, image, video,imageSource,videoSource, likes, date, price, getMediaCardDOM, getMediaModalDOM };
 };
