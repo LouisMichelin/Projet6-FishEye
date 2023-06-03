@@ -91,23 +91,26 @@ function mediaFactory(data) {
         let displayedMediaDIV = document.getElementById('modale-media');
         let displayedImage = document.createElement('img');
         let displayedVideo = document.createElement('video');
-
+        // Sous-titre du media :
+        let displayedMediaTitle = document.getElementById('sous-titre-modale');
+        let displayedMediaTitleValue = document.createElement('p');
+        // displayedMediaTitleValue.textContent = `${title}`;
         
         if (image) {
             console.log(imageSource);
             displayedMediaDIV.appendChild(displayedImage);
             displayedImage.setAttribute('src', imageSource);
+            displayedMediaTitle.appendChild(displayedMediaTitleValue).textContent = `${title}`;
         };
-
         
         if (video) {
             console.log(videoSource);
             displayedMediaDIV.appendChild(displayedVideo);
             displayedVideo.setAttribute('src', videoSource);
-            
+            displayedMediaTitle.appendChild(displayedMediaTitleValue).textContent = `${title}`;
         };
         
 
     } 
-    return { id, photographerId, name,prenom, title, image, video,imageSource,videoSource, likes, date, price, getMediaCardDOM, getMediaModalDOM };
+    return { id, photographerId, name, prenom, title, image, video, imageSource, videoSource, likes, date, price, getMediaCardDOM, getMediaModalDOM };
 };

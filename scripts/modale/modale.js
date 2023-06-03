@@ -66,6 +66,8 @@ window.onclick = function(event) {
     if (event.target == modaleMediaContent || event.target == modale || event.target == modal) {
         modale.style.display = "none";
         modal.style.display = "none";
+        let removeModaleMedia = document.getElementById('modale-media');
+        removeModaleMedia.removeChild(removeModaleMedia.firstChild);
     };
 };
 // TOGGLE CARROUSSEL
