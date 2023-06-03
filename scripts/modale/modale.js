@@ -62,20 +62,30 @@ modaleCloseButton.onclick = function() {
 // WINDOW FERMER MODALE
 window.onclick = function(event) {
     // console.log(event.target);
+    let zoomedVideo = document.getElementsByClassName('zoomed-modal-media');
+    zoomedVideo.controls = true;
     let modal = document.getElementById("contact_modal");
     if (event.target == modaleMediaContent || event.target == modale || event.target == modal) {
         modale.style.display = "none";
         modal.style.display = "none";
         let removeModaleMedia = document.getElementById('modale-media');
         removeModaleMedia.removeChild(removeModaleMedia.firstChild);
+        // console.log("media removed");
+        let removeModaleTitle = document.getElementById('sous-titre-modale');
+        removeModaleTitle.removeChild(removeModaleTitle.firstChild);
+        // console.log("title removed");
+        zoomedVideo.controls = false;
+        // console.log("controls = FALSE");
     };
 };
 // TOGGLE CARROUSSEL
 function toggleCarroussel(idMedia) {
     modaleMedia.style.display = "block";
-    
     let pos = photographerMedia.findIndex(element => element.id == idMedia);
     console.log("I'm a working EventListener. ID Media =", pos);
-
     console.log(photographerMedia[pos].video || photographerMedia[pos].image);
 };
+
+// FLECHE DE GAUCHE
+
+// FLECHE DE DROITE

@@ -90,7 +90,9 @@ function mediaFactory(data) {
         // grande div du centre de la modale avec le contenu image ou video et tu le retourne à la fin  
         let displayedMediaDIV = document.getElementById('modale-media');
         let displayedImage = document.createElement('img');
+        displayedImage.classList.add('zoomed-modal-media');
         let displayedVideo = document.createElement('video');
+        displayedVideo.classList.add('zoomed-modal-media');
         // Sous-titre du media :
         let displayedMediaTitle = document.getElementById('sous-titre-modale');
         let displayedMediaTitleValue = document.createElement('p');
@@ -107,6 +109,8 @@ function mediaFactory(data) {
             console.log(videoSource);
             displayedMediaDIV.appendChild(displayedVideo);
             displayedVideo.setAttribute('src', videoSource);
+            displayedVideo.controls = true;
+            
             displayedMediaTitle.appendChild(displayedMediaTitleValue).textContent = `${title}`;
         };
         
