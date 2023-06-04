@@ -26,11 +26,17 @@ document.getElementById("contactForm").addEventListener("submit", function() {
     console.log(
         `Merci de m'avoir contacté,
         ${userPrenom.value} ${userNom.value},
-        vous trouverez davantage de renseignements à votre adresse email :
-        ${userEmail},
-        et je prendrais en compte chaque élément de votre message :
-        ${userMessage}
-        Passez une agréable journée !
-        `);
-        alert("esssss");
+        Vous trouverez davantage de renseignements à votre adresse email :
+        ${userEmail.value},
+        Et je prendrais en compte chaque élément de votre message :
+        ${userMessage.value}
+        Passez une agréable journée !`
+    );
+    // PREMIERE ALERT() POUR DISPLAY LE CONSOLE.LOG()
+    alert("Alerte n°1");
+    
+    window.location.href = `./index.html`;
+    
+    // DEUXIEME ALERT() POUR CONSIDERER LE WINDOW.LOCATION.HREF
+    alert("Alerte n°2");
 });

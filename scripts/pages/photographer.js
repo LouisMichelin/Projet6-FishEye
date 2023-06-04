@@ -7,7 +7,7 @@ let photographerMedia = [];
 
 // Photographes sélectionnés depuis le .JSON :
 async function getPhotographers() {
-    const response = await fetch('/data/photographers.json');
+    const response = await fetch('./data/photographers.json');
     const photographers = await response.json();
     return photographers;
 }
@@ -27,13 +27,12 @@ function filterPhotographerById(photographers) {
 
 // Filtre les médias grâce au photographerId et l'ID récupéré :
 function filterMediasById(medias) {
-    const filtredMedia = medias.filter((element) => (element.photographerId) == selectedArtist);
+    const filteredMedia = medias.filter((element) => (element.photographerId) == selectedArtist);
     
-    filtredMedia.forEach((element) => {
+    filteredMedia.forEach((element) => {
         // Définit mediaData pour récupérer TOUT "element" en forme .JSON
         // puis injecte la variable "name" dans "element".
         photographerMedia.push({...element, "name": photographer.name});
-        
     });
 
     // Select balise <main> dans le HTML :

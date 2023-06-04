@@ -2,11 +2,10 @@ function mediaFactory(data) {
     // Ici, c'est les sous-parties de la sous-partie "MEDIA" du .JSON que l'on veut filtrer...
     let { id, photographerId, name, title, image, video, likes, date, price } = data;
     // ...pour retourner : data.id, data.photographerId, data.name, etc.
-    //
-    console.log(data);
+
     // Séparer le Prénom & le Nom avec .split() + Prend l'index [0] pour le prénom + Remplace "-" par " ".
     let prenom = name.split(" ")[0].replace("-", " ");
-    //
+    
     // Source dynamique vers les medias :
     const imageSource = `/FishEye - Photos/Sample Photos/${prenom}/${image}`;
     const videoSource = `/FishEye - Photos/Sample Photos/${prenom}/${video}`;
@@ -87,9 +86,6 @@ function mediaFactory(data) {
     }
 
     function getMediaModalDOM() {
-        
-        // coder le contenu d'un element media dans la modale
-        // grande div du centre de la modale avec le contenu image ou video et tu le retourne à la fin  
         let displayedMediaDIV = document.createElement("div");
         displayedMediaDIV.setAttribute("class","mediaModale");
         displayedMediaDIV.dataset.id = id;
@@ -121,41 +117,5 @@ function mediaFactory(data) {
         return displayedMediaDIV;
     } 
 
-    /*
-    
-    function getMediaModalDOM() {
-        
-        // coder le contenu d'un element media dans la modale
-        // grande div du centre de la modale avec le contenu image ou video et tu le retourne à la fin  
-        let displayedMediaDIV = document.getElementById('modale-media');
-        displayedMediaDIV.dataset.id = id;
-       
-        let displayedImage = document.createElement('img');
-        displayedImage.classList.add('zoomed-modal-media');
-        let displayedVideo = document.createElement('video');
-        displayedVideo.classList.add('zoomed-modal-media');
-        // Sous-titre du media :
-        let displayedMediaTitle = document.getElementById('sous-titre-modale');
-        let displayedMediaTitleValue = document.createElement('p');
-        // displayedMediaTitleValue.textContent = `${title}`;
-        
-        if (image) {
-            console.log(imageSource);
-            displayedMediaDIV.appendChild(displayedImage);
-            displayedImage.setAttribute('src', imageSource);
-            displayedMediaTitle.appendChild(displayedMediaTitleValue).textContent = `${title}`;
-        };
-        
-        if (video) {
-            console.log(videoSource);
-            displayedMediaDIV.appendChild(displayedVideo);
-            displayedVideo.setAttribute('src', videoSource);
-            displayedVideo.controls = true;
-            displayedMediaTitle.appendChild(displayedMediaTitleValue).textContent = `${title}`;
-        };
-        
-
-    } 
-    */
     return { id, photographerId, name, prenom, title, image, video, imageSource, videoSource, likes, date, price, getMediaCardDOM, getMediaModalDOM };
 };

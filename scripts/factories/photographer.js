@@ -1,13 +1,13 @@
 function photographerFactory(data) {
     const { id, name, portrait, city, country, tagline, price } = data;
   
-    const picture = `/assets/photographers/${portrait}`;
+    const picture = `./assets/photographers/${portrait}`;
     
     // Création des profils photographes
     function getUserCardDOM() {
         // Balise <a>
         const link = document.createElement('a');
-        link.setAttribute("href", `/photographer.html?id=${id}`);
+        link.setAttribute("href", `./photographer.html?id=${id}`);
         // Balise <article>
         const article = document.createElement('article');
         // Conteneur de Photo de profil

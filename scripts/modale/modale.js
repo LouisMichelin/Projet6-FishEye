@@ -53,17 +53,17 @@ modaleMediaFlecheDroite.appendChild(modaleMediaAngleDroit);
 
 // ##################################################################################################################
 
-// MODALE
+// MODALE ---------------------------------------------------------------------------
 const modale = document.getElementById('modale');
-// BOUTON FERMER MODALE
+// BOUTON FERMER MODALE ---------------------------------------------------------------------------
 modaleCloseButton.onclick = function() {
     modaleMedia.style.display = "none";
 };
-// WINDOW FERMER MODALE
+// WINDOW FERMER MODALE ---------------------------------------------------------------------------
 window.onclick = function(event) {
     // console.log(event.target);
-    let zoomedVideo = document.getElementsByClassName('zoomed-modal-media');
-    zoomedVideo.controls = true;
+    let zoomedMedia = document.getElementsByClassName('zoomed-modal-media');
+    zoomedMedia.controls = true;
     let modal = document.getElementById("contact_modal");
     if (event.target == modaleMediaContent || event.target == modale || event.target == modal) {
         modale.style.display = "none";
@@ -74,11 +74,11 @@ window.onclick = function(event) {
         let removeModaleTitle = document.getElementById('sous-titre-modale');
         removeModaleTitle.removeChild(removeModaleTitle.firstChild);
         // console.log("title removed");
-        zoomedVideo.controls = false;
+        zoomedMedia.controls = false;
         // console.log("controls = FALSE");
     };
 };
-// TOGGLE CARROUSSEL
+// TOGGLE CARROUSSEL ---------------------------------------------------------------------------
 function toggleCarroussel(mediaModal) {
     modaleMedia.style.display = "block";
     let modale_media = document.getElementById('modale-media');
@@ -89,29 +89,33 @@ function toggleCarroussel(mediaModal) {
     modale_media.appendChild(mediaModal);
 }
 
+// FLECHE DE DROITE ---------------------------------------------------------------------------
 function displaynext() {
     // recuprer l'id de media affiché : en cours
     let displayedMediaDIV = document.querySelector(".mediaModale");
     let id = displayedMediaDIV.dataset.id;
-    
-    
     // chercher la position de l'element en cours pour prendre le suivant
     let pos = photographerMedia.findIndex(element => element.id == id);
     let nextPos ;
-    if(pos == photographerMedia.length-1){
-     nextPos = 0;
-    }
-    else {
-        nextPos= pos+1;
+    if (pos == photographerMedia.length - 1) {
+        nextPos = 0;
+    } else {
+        nextPos = pos++;
     }
 
-    const mediaModel = mediaFactory(photographerMedia[nextPos]);
-    const mediaCardDOM = mediaModel.getMediaModalDOM();
+    let mediaModel = mediaFactory(photographerMedia[nextPos]);
+    let mediaCardDOM = mediaModel.getMediaModalDOM();
     toggleCarroussel(mediaCardDOM);
-    
 }
+modaleMediaAngleDroit.addEventListener("click", function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    document.querySelector(".mediaModale").remove();
+    displaynext();
+});
 
-// FLECHE DE GAUCHE
+
+// FLECHE DE GAUCHE ---------------------------------------------------------------------------
 modaleMediaAngleGauche.addEventListener("click", function(event) {
     event.preventDefault();
     event.stopPropagation();
@@ -126,15 +130,3 @@ modaleMediaAngleGauche.addEventListener("click", function(event) {
     
 });
 
-// FLECHE DE DROITE
-modaleMediaAngleDroit.addEventListener("click", function(event) {
-    event.preventDefault();
-    event.stopPropagation();
- /*   let removeModaleMedia = document.getElementById('modale-media');
-    removeModaleMedia.removeChild(removeModaleMedia.firstChild);
-    let removeModaleTitle = document.getElementById('sous-titre-modale');
-    removeModaleTitle.removeChild(removeModaleTitle.firstChild); */
-    
-    displaynext();
-    
-});
