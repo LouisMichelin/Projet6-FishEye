@@ -27,8 +27,15 @@ function filterPhotographerById(photographers) {
 
 // Filtre les médias grâce au photographerId et l'ID récupéré :
 function filterMediasById(medias) {
-    photographerMedia = medias.filter((element) => (element.photographerId) == selectedArtist);
+    const filtredMedia = medias.filter((element) => (element.photographerId) == selectedArtist);
     
+    filtredMedia.forEach((element) => {
+        // Définit mediaData pour récupérer TOUT "element" en forme .JSON
+        // puis injecte la variable "name" dans "element".
+        photographerMedia.push({...element, "name": photographer.name});
+        
+    });
+
     // Select balise <main> dans le HTML :
     const main = document.getElementById('main');
     // --------------------------------------------------------------------------------------------------
@@ -237,10 +244,7 @@ function displayPhotographerMedia(tableau){
     // et exécute getMediaCardDOM() dans .forEach(element) pour chaque média.
     tableau.forEach((element) => {
         // Définit mediaData pour récupérer TOUT "element" en forme .JSON
-        // puis injecte la variable "name" dans "element".
-        const mediaData = {...element, "name": photographer.name};
-        // console.log(mediaData);
-        const mediaModel = mediaFactory(mediaData);
+        const mediaModel = mediaFactory(element);
         const mediaCardDOM = mediaModel.getMediaCardDOM();
         div.appendChild(mediaCardDOM);
     });

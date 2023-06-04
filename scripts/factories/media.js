@@ -3,6 +3,7 @@ function mediaFactory(data) {
     let { id, photographerId, name, title, image, video, likes, date, price } = data;
     // ...pour retourner : data.id, data.photographerId, data.name, etc.
     //
+    console.log(data);
     // Séparer le Prénom & le Nom avec .split() + Prend l'index [0] pour le prénom + Remplace "-" par " ".
     let prenom = name.split(" ")[0].replace("-", " ");
     //
@@ -26,8 +27,8 @@ function mediaFactory(data) {
             mediaImage.addEventListener("click", function(event){
                 event.preventDefault();
                 event.stopPropagation();
-                toggleCarroussel(id);
-                getMediaModalDOM(image);
+                const mediaModal = getMediaModalDOM(image);
+                toggleCarroussel(mediaModal);
             });
             mediaContainer.appendChild(mediaImage);
         };
@@ -40,8 +41,8 @@ function mediaFactory(data) {
             mediaVideo.addEventListener("click", function(event){
                 event.preventDefault();
                 event.stopPropagation();
-                toggleCarroussel(id);
-                getMediaModalDOM(video);
+                const mediaModal = getMediaModalDOM(video);
+                toggleCarroussel(mediaModal);
             });
             mediaContainer.appendChild(mediaVideo);
         };
@@ -86,9 +87,13 @@ function mediaFactory(data) {
     }
 
     function getMediaModalDOM() {
+        
         // coder le contenu d'un element media dans la modale
         // grande div du centre de la modale avec le contenu image ou video et tu le retourne à la fin  
-        let displayedMediaDIV = document.getElementById('modale-media');
+        let displayedMediaDIV = document.createElement("div");
+        displayedMediaDIV.setAttribute("class","mediaModale");
+        displayedMediaDIV.dataset.id = id;
+       
         let displayedImage = document.createElement('img');
         displayedImage.classList.add('zoomed-modal-media');
         let displayedVideo = document.createElement('video');
@@ -110,11 +115,47 @@ function mediaFactory(data) {
             displayedMediaDIV.appendChild(displayedVideo);
             displayedVideo.setAttribute('src', videoSource);
             displayedVideo.controls = true;
-            
+            displayedMediaTitle.appendChild(displayedMediaTitleValue).textContent = `${title}`;
+        };
+        
+        return displayedMediaDIV;
+    } 
+
+    /*
+    
+    function getMediaModalDOM() {
+        
+        // coder le contenu d'un element media dans la modale
+        // grande div du centre de la modale avec le contenu image ou video et tu le retourne à la fin  
+        let displayedMediaDIV = document.getElementById('modale-media');
+        displayedMediaDIV.dataset.id = id;
+       
+        let displayedImage = document.createElement('img');
+        displayedImage.classList.add('zoomed-modal-media');
+        let displayedVideo = document.createElement('video');
+        displayedVideo.classList.add('zoomed-modal-media');
+        // Sous-titre du media :
+        let displayedMediaTitle = document.getElementById('sous-titre-modale');
+        let displayedMediaTitleValue = document.createElement('p');
+        // displayedMediaTitleValue.textContent = `${title}`;
+        
+        if (image) {
+            console.log(imageSource);
+            displayedMediaDIV.appendChild(displayedImage);
+            displayedImage.setAttribute('src', imageSource);
+            displayedMediaTitle.appendChild(displayedMediaTitleValue).textContent = `${title}`;
+        };
+        
+        if (video) {
+            console.log(videoSource);
+            displayedMediaDIV.appendChild(displayedVideo);
+            displayedVideo.setAttribute('src', videoSource);
+            displayedVideo.controls = true;
             displayedMediaTitle.appendChild(displayedMediaTitleValue).textContent = `${title}`;
         };
         
 
     } 
+    */
     return { id, photographerId, name, prenom, title, image, video, imageSource, videoSource, likes, date, price, getMediaCardDOM, getMediaModalDOM };
 };

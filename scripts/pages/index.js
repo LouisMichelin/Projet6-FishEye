@@ -1,7 +1,7 @@
 // Page d'accueil
 async function getPhotographers() {
     // Importe les datas du document .JSON
-    const response = await fetch('/data/photographers.json');
+    const response = await fetch('./data/photographers.json');
     const photographers = await response.json();
     return photographers;
 };

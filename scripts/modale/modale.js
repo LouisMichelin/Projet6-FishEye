@@ -79,13 +79,62 @@ window.onclick = function(event) {
     };
 };
 // TOGGLE CARROUSSEL
-function toggleCarroussel(idMedia) {
+function toggleCarroussel(mediaModal) {
     modaleMedia.style.display = "block";
-    let pos = photographerMedia.findIndex(element => element.id == idMedia);
-    console.log("I'm a working EventListener. ID Media =", pos);
-    console.log(photographerMedia[pos].video || photographerMedia[pos].image);
-};
+    let modale_media = document.getElementById('modale-media');
+    
+    let displayedMediaDIV = document.querySelector(".mediaModale");
+    //Eliminer l'element en cours et ajouter le nouveau 
+    displayedMediaDIV.remove();
+    modale_media.appendChild(mediaModal);
+}
+
+function displaynext() {
+    // recuprer l'id de media affiché : en cours
+    let displayedMediaDIV = document.querySelector(".mediaModale");
+    let id = displayedMediaDIV.dataset.id;
+    
+    
+    // chercher la position de l'element en cours pour prendre le suivant
+    let pos = photographerMedia.findIndex(element => element.id == id);
+    let nextPos ;
+    if(pos == photographerMedia.length-1){
+     nextPos = 0;
+    }
+    else {
+        nextPos= pos+1;
+    }
+
+    const mediaModel = mediaFactory(photographerMedia[nextPos]);
+    const mediaCardDOM = mediaModel.getMediaModalDOM();
+    toggleCarroussel(mediaCardDOM);
+    
+}
 
 // FLECHE DE GAUCHE
+modaleMediaAngleGauche.addEventListener("click", function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+  /*  let removeModaleMedia = document.getElementById('modale-media');
+    removeModaleMedia.removeChild(removeModaleMedia.firstChild);
+    let removeModaleTitle = document.getElementById('sous-titre-modale');
+    removeModaleTitle.removeChild(removeModaleTitle.firstChild);*/
+   // toggleCarroussel();
+    
+    
+    
+    
+});
 
 // FLECHE DE DROITE
+modaleMediaAngleDroit.addEventListener("click", function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+ /*   let removeModaleMedia = document.getElementById('modale-media');
+    removeModaleMedia.removeChild(removeModaleMedia.firstChild);
+    let removeModaleTitle = document.getElementById('sous-titre-modale');
+    removeModaleTitle.removeChild(removeModaleTitle.firstChild); */
+    
+    displaynext();
+    
+});

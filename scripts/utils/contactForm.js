@@ -14,8 +14,7 @@ function closeModal() {
 }
 
 // ENVOYER FORMULAIRE ------------------------------------------------------------
-let contactButton = document.querySelector('.send_button');
-
+//
 // Données renseignées
 let userPrenom = document.getElementById('user_prenom');
 let userNom = document.getElementById('user_nom');
@@ -23,7 +22,7 @@ let userEmail = document.getElementById('user_email');
 let userMessage = document.getElementById('user_message');
 
 // Fonction submit
-contactButton.addEventListener("submit", function() {
+document.getElementById("contactForm").addEventListener("submit", function() {
     console.log(
         `Merci de m'avoir contacté,
         ${userPrenom.value} ${userNom.value},
@@ -33,4 +32,5 @@ contactButton.addEventListener("submit", function() {
         ${userMessage}
         Passez une agréable journée !
         `);
+        alert("esssss");
 });
