@@ -97,59 +97,80 @@ function displaynext() {
     let displayedMediaTitleValue = document.querySelector(".mediaTitle");
     // ID du Media affiché :
     let id = displayedMediaDIV.dataset.id;
-    
     // Chercher la position de l'élément en cours pour prendre le suivant :
     let pos = photographerMedia.findIndex(element => element.id == id);
     let nextPos = pos;
     
     // IF (fin du carrousssel) ELSE (ajouter +1 à l'ID affiché pour Media + Title)
     if (nextPos == photographerMedia.length - 1) {
-        console.log("arrivé au bout du carroussel, pos= ", nextPos)
         nextPos = pos - (photographerMedia.length - 1);
-
-        // On supprime le Media + son Titre de la Modale
+        // On supprime le Media + son Titre de la Modale :
         displayedMediaDIV.remove();
         displayedMediaTitleValue.remove();
-
+        // On refait la Factory avec la nextPos incrémentée :
         let nextMedia = mediaFactory(photographerMedia[nextPos]);
         console.log("nextmedia =", nextMedia);
         let mediaCardDOM = nextMedia.getMediaModalDOM();
         toggleCarroussel(mediaCardDOM);
     } else {
-        // On supprime le Media + son Titre de la Modale
+        // On supprime le Media + son Titre de la Modale :
         displayedMediaDIV.remove();
         displayedMediaTitleValue.remove();
         // Incrémenter ID
         nextPos += 1;
-        console.log("id actuel=", pos);
-        console.log("id suivant=", nextPos);
+        console.log("ID ACTUEL = ", pos);
+        console.log("ID PRECEDENT = ", nextPos);
         // Edit le Media à la [ID + 1]
         let nextMedia = mediaFactory(photographerMedia[nextPos]);
-        console.log("nextmedia =", nextMedia);
+        console.log("NEXT MEDIA = ", nextMedia);
         let mediaCardDOM = nextMedia.getMediaModalDOM();
         toggleCarroussel(mediaCardDOM);
     };
 }
-
 modaleMediaAngleDroit.addEventListener("click", function(event) {
     event.preventDefault();
     event.stopPropagation();
     displaynext();
 });
 
-
 // FLECHE DE GAUCHE ---------------------------------------------------------------------------
+function displayprevious() {
+    let displayedMediaDIV = document.querySelector(".mediaModale");
+    let displayedMediaTitleValue = document.querySelector(".mediaTitle");
+    // ID du Media affiché :
+    let id = displayedMediaDIV.dataset.id;
+    // Chercher la position de l'élément en cours pour prendre le précédent :
+    let pos = photographerMedia.findIndex(element => element.id == id);
+    let previousPos = pos;
+    
+    // IF (début du carroussel) ELSE (enlever -1 à l'ID affiché pour Media + Title)
+    if (previousPos == 0) {
+        previousPos += (photographerMedia.length - 1);
+        // On supprime le Media + son Titre de la Modale :
+        displayedMediaDIV.remove();
+        displayedMediaTitleValue.remove();
+        // On refait la Factory avec la previousPos décrémentée :
+        let previousMedia = mediaFactory(photographerMedia[previousPos]);
+        console.log("PREVIOUS MEDIA = ", previousMedia);
+        let mediaCardDOM = previousMedia.getMediaModalDOM();
+        toggleCarroussel(mediaCardDOM);
+    } else {
+        // On supprime le Media + son Titre de la Modale :
+        displayedMediaDIV.remove();
+        displayedMediaTitleValue.remove();
+        // Décrémenter ID
+        previousPos -= 1;
+        console.log("ID ACTUEL = ", pos);
+        console.log("ID PRECEDENT = ", previousPos);
+        // Edit le Media à la [ID - 1]
+        let previousMedia = mediaFactory(photographerMedia[previousPos]);
+        console.log("PREVIOUS MEDIA =", previousMedia);
+        let mediaCardDOM = previousMedia.getMediaModalDOM();
+        toggleCarroussel(mediaCardDOM);
+    };
+}
 modaleMediaAngleGauche.addEventListener("click", function(event) {
     event.preventDefault();
     event.stopPropagation();
-  /*  let removeModaleMedia = document.getElementById('modale-media');
-    removeModaleMedia.removeChild(removeModaleMedia.firstChild);
-    let removeModaleTitle = document.getElementById('sous-titre-modale');
-    removeModaleTitle.removeChild(removeModaleTitle.firstChild);*/
-   // toggleCarroussel();
-    
-    
-    
-    
+    displayprevious()
 });
-
