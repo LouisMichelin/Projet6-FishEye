@@ -87,7 +87,7 @@ function mediaFactory(data) {
 
     function getMediaModalDOM() {
         let displayedMediaDIV = document.createElement("div");
-        displayedMediaDIV.setAttribute("class","mediaModale");
+        displayedMediaDIV.setAttribute("class", "mediaModale");
         displayedMediaDIV.dataset.id = id;
        
         let displayedImage = document.createElement('img');
@@ -97,6 +97,7 @@ function mediaFactory(data) {
         // Sous-titre du media :
         let displayedMediaTitle = document.getElementById('sous-titre-modale');
         let displayedMediaTitleValue = document.createElement('p');
+        displayedMediaTitleValue.setAttribute("class", "mediaTitle");
         // displayedMediaTitleValue.textContent = `${title}`;
         
         if (image) {
@@ -115,7 +116,7 @@ function mediaFactory(data) {
         };
         
         return displayedMediaDIV;
-    } 
+    }
 
     return { id, photographerId, name, prenom, title, image, video, imageSource, videoSource, likes, date, price, getMediaCardDOM, getMediaModalDOM };
 };

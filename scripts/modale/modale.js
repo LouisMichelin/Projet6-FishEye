@@ -69,48 +69,75 @@ window.onclick = function(event) {
         modale.style.display = "none";
         modal.style.display = "none";
         let removeModaleMedia = document.getElementById('modale-media');
-        removeModaleMedia.removeChild(removeModaleMedia.firstChild);
-        // console.log("media removed");
+        if (removeModaleMedia) {
+            removeModaleMedia.removeChild(removeModaleMedia.firstChild);
+        }
         let removeModaleTitle = document.getElementById('sous-titre-modale');
-        removeModaleTitle.removeChild(removeModaleTitle.firstChild);
-        // console.log("title removed");
+        if (removeModaleTitle) {
+            removeModaleTitle.removeChild(removeModaleTitle.firstChild);
+        }
         zoomedMedia.controls = false;
         // console.log("controls = FALSE");
     };
-};
+}
 // TOGGLE CARROUSSEL ---------------------------------------------------------------------------
 function toggleCarroussel(mediaModal) {
+    // Affiche la Modale
     modaleMedia.style.display = "block";
+    // Affiche le Media sélectionné dans la Modale
     let modale_media = document.getElementById('modale-media');
-    
-    let displayedMediaDIV = document.querySelector(".mediaModale");
-    //Eliminer l'element en cours et ajouter le nouveau 
-    displayedMediaDIV.remove();
     modale_media.appendChild(mediaModal);
+
+
+    // Eliminer l'element en cours et ajouter le nouveau
+    // let displayedMediaDIV = document.querySelector(".mediaModale");
+    // displayedMediaDIV.remove();
 }
 
 // FLECHE DE DROITE ---------------------------------------------------------------------------
 function displaynext() {
-    // recuprer l'id de media affiché : en cours
+    // Media + Title
+    let modale_media = document.getElementById('modale-media');
+    let modale_title = document.getElementById('sous-titre-modale');
+    // Récupérer l'ID du Media affiché :
     let displayedMediaDIV = document.querySelector(".mediaModale");
+    let displayedMediaTitleValue = document.querySelector(".mediaTitle");
+    // ID du Media affiché :
     let id = displayedMediaDIV.dataset.id;
-    // chercher la position de l'element en cours pour prendre le suivant
+    
+    // Chercher la position de l'élément en cours pour prendre le suivant :
     let pos = photographerMedia.findIndex(element => element.id == id);
-    let nextPos ;
+    let nextPos = pos;
+    
+    // IF (fin du carrousssel) ELSE (ajouter +1 à l'ID affiché pour Media + Title)
     if (pos == photographerMedia.length - 1) {
         nextPos = 0;
     } else {
-        nextPos = pos++;
-    }
+        // On supprime le Media + son Titre de la Modale
+        displayedMediaDIV.remove();
+        displayedMediaTitleValue.remove();
+        // Incrémenter ID
+        nextPos += 1;
+        console.log("id actuel=", pos);
+        console.log("id suivant=", nextPos);
 
-    let mediaModel = mediaFactory(photographerMedia[nextPos]);
-    let mediaCardDOM = mediaModel.getMediaModalDOM();
-    toggleCarroussel(mediaCardDOM);
+
+        // Test ~~~~~~~~~~~~~~~~~~~~~~
+        let nextMedia = mediaFactory(photographerMedia[nextPos]);
+        console.log("nextmedia =", nextMedia);
+        let mediaCardDOM = nextMedia.getMediaModalDOM();
+        toggleCarroussel(mediaCardDOM);
+
+
+        // let nextMedia = mediaFactory(photographerMedia[nextPos]);
+        // let mediaCardDOM = nextMedia.getMediaModalDOM();
+        // toggleCarroussel(mediaCardDOM);
+    };
 }
+
 modaleMediaAngleDroit.addEventListener("click", function(event) {
     event.preventDefault();
     event.stopPropagation();
-    document.querySelector(".mediaModale").remove();
     displaynext();
 });
 
