@@ -57,8 +57,12 @@ modaleMediaFlecheDroite.appendChild(modaleMediaAngleDroit);
 const modale = document.getElementById('modale');
 // BOUTON FERMER MODALE ---------------------------------------------------------------------------
 modaleCloseButton.onclick = function() {
+    let displayedMediaDIV = document.querySelector(".mediaModale");
+    let displayedMediaTitleValue = document.querySelector(".mediaTitle");
+    displayedMediaDIV.remove();
+    displayedMediaTitleValue.remove();
     modaleMedia.style.display = "none";
-};
+}
 // WINDOW FERMER MODALE ---------------------------------------------------------------------------
 window.onclick = function(event) {
     // console.log(event.target);
@@ -71,35 +75,24 @@ window.onclick = function(event) {
         let removeModaleMedia = document.getElementById('modale-media');
         if (removeModaleMedia) {
             removeModaleMedia.removeChild(removeModaleMedia.firstChild);
-        }
+        };
         let removeModaleTitle = document.getElementById('sous-titre-modale');
         if (removeModaleTitle) {
             removeModaleTitle.removeChild(removeModaleTitle.firstChild);
-        }
+        };
         zoomedMedia.controls = false;
-        // console.log("controls = FALSE");
     };
 }
 // TOGGLE CARROUSSEL ---------------------------------------------------------------------------
 function toggleCarroussel(mediaModal) {
-    // Affiche la Modale
     modaleMedia.style.display = "block";
     // Affiche le Media sélectionné dans la Modale
     let modale_media = document.getElementById('modale-media');
     modale_media.appendChild(mediaModal);
-
-
-    // Eliminer l'element en cours et ajouter le nouveau
-    // let displayedMediaDIV = document.querySelector(".mediaModale");
-    // displayedMediaDIV.remove();
 }
 
 // FLECHE DE DROITE ---------------------------------------------------------------------------
 function displaynext() {
-    // Media + Title
-    let modale_media = document.getElementById('modale-media');
-    let modale_title = document.getElementById('sous-titre-modale');
-    // Récupérer l'ID du Media affiché :
     let displayedMediaDIV = document.querySelector(".mediaModale");
     let displayedMediaTitleValue = document.querySelector(".mediaTitle");
     // ID du Media affiché :
@@ -110,8 +103,18 @@ function displaynext() {
     let nextPos = pos;
     
     // IF (fin du carrousssel) ELSE (ajouter +1 à l'ID affiché pour Media + Title)
-    if (pos == photographerMedia.length - 1) {
-        nextPos = 0;
+    if (nextPos == photographerMedia.length - 1) {
+        console.log("arrivé au bout du carroussel, pos= ", nextPos)
+        nextPos = pos - (photographerMedia.length - 1);
+
+        // On supprime le Media + son Titre de la Modale
+        displayedMediaDIV.remove();
+        displayedMediaTitleValue.remove();
+
+        let nextMedia = mediaFactory(photographerMedia[nextPos]);
+        console.log("nextmedia =", nextMedia);
+        let mediaCardDOM = nextMedia.getMediaModalDOM();
+        toggleCarroussel(mediaCardDOM);
     } else {
         // On supprime le Media + son Titre de la Modale
         displayedMediaDIV.remove();
@@ -120,18 +123,11 @@ function displaynext() {
         nextPos += 1;
         console.log("id actuel=", pos);
         console.log("id suivant=", nextPos);
-
-
-        // Test ~~~~~~~~~~~~~~~~~~~~~~
+        // Edit le Media à la [ID + 1]
         let nextMedia = mediaFactory(photographerMedia[nextPos]);
         console.log("nextmedia =", nextMedia);
         let mediaCardDOM = nextMedia.getMediaModalDOM();
         toggleCarroussel(mediaCardDOM);
-
-
-        // let nextMedia = mediaFactory(photographerMedia[nextPos]);
-        // let mediaCardDOM = nextMedia.getMediaModalDOM();
-        // toggleCarroussel(mediaCardDOM);
     };
 }
 
