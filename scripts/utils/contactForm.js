@@ -1,5 +1,16 @@
 const modal = document.getElementById("contact_modal");
 
+// COULEUR DU BOUTON "CONTACTEZ-MOI" ------------------------------------------------------------
+const contactButton = document.querySelector('.contact_button');
+contactButton.addEventListener("mouseenter", function() {
+    contactButton.style.background = "#DB8876";
+    contactButton.style.color = "#000000";
+});
+contactButton.addEventListener("mouseleave", function() {
+    contactButton.style.background = "#901C1C";
+    contactButton.style.color = "#FFFFFF";
+});
+
 // OPEN MODAL ------------------------------------------------------------
 function displayModal() {
 	modal.style.display = "block";
@@ -14,13 +25,11 @@ function closeModal() {
 }
 
 // ENVOYER FORMULAIRE ------------------------------------------------------------
-//
 // Données renseignées
 let userPrenom = document.getElementById('user_prenom');
 let userNom = document.getElementById('user_nom');
 let userEmail = document.getElementById('user_email');
 let userMessage = document.getElementById('user_message');
-
 // Fonction submit
 document.getElementById("contactForm").addEventListener("submit", function() {
     console.log(
