@@ -8,6 +8,7 @@ function photographerFactory(data) {
         // Balise <a>
         const link = document.createElement('a');
         link.setAttribute("href", `./photographer.html?id=${id}`);
+        link.setAttribute("aria-label", `${name}`);
         // Balise <article>
         const article = document.createElement('article');
         // Conteneur de Photo de profil
@@ -16,8 +17,7 @@ function photographerFactory(data) {
         // Photo de profil
         const img = document.createElement('img');
         img.setAttribute('src', picture);
-        img.setAttribute('alt', `Photo de ${name}`);
-        img.setAttribute('aria-label', `Photo du photographe ${name}`);
+        img.setAttribute('alt', '');
         // Prénom + Nom
         const h2 = document.createElement('h2');
         h2.textContent = name;
@@ -71,6 +71,7 @@ function photographerFactory(data) {
         const presentationPhoto = document.createElement('img');
         presentationPhoto.setAttribute('class', 'photo-profil')
         presentationPhoto.setAttribute('src', `${picture}`);
+        presentationPhoto.setAttribute('alt', `${name}`);
         // Ajout de presentationPhoto dans la page
         headerPhotograph.appendChild(imgContainer);
         imgContainer.appendChild(presentationPhoto);

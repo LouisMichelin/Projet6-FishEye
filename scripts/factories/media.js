@@ -29,6 +29,7 @@ function mediaFactory(data) {
                 const mediaModal = getMediaModalDOM(image);
                 toggleCarroussel(mediaModal);
             });
+            mediaImage.setAttribute("alt", `${title}`);
             mediaContainer.appendChild(mediaImage);
         };
         if (video) {
@@ -55,6 +56,7 @@ function mediaFactory(data) {
         // Balise Likes + Coeur
         const nbLikesAndHeart = document.createElement('a');
         nbLikesAndHeart.classList.add('likes-heart-area');
+        nbLikesAndHeart.setAttribute('aria-label', 'likes');
         nbLikesAndHeart.addEventListener("click", function(event) {
             event.preventDefault();
             event.stopPropagation();
@@ -92,6 +94,7 @@ function mediaFactory(data) {
        
         let displayedImage = document.createElement('img');
         displayedImage.classList.add('zoomed-modal-media');
+        displayedImage.setAttribute('alt', `${title}`);
         let displayedVideo = document.createElement('video');
         displayedVideo.classList.add('zoomed-modal-media');
         // Sous-titre du media :

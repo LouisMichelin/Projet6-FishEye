@@ -10,6 +10,7 @@ contactButton.addEventListener("mouseleave", function() {
     contactButton.style.background = "#901C1C";
     contactButton.style.color = "#FFFFFF";
 });
+contactButton.setAttribute("aria-label", "Contact Me");
 
 // OPEN MODAL ------------------------------------------------------------
 function displayModal() {

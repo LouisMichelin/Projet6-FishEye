@@ -9,6 +9,8 @@ modaleMediaContent.id = "modale-content";
 const modaleCloseButton = document.createElement('span');
 modaleCloseButton.id = "close-modale";
 modaleCloseButton.innerHTML = "&times;";
+modaleCloseButton.setAttribute('aria-label', 'Close dialog');
+// Carroussel Complet
 const modaleMediaCarroussel = document.createElement('div');
 modaleMediaCarroussel.id = "carroussel";
 // Bouton <Gauche>
@@ -19,6 +21,7 @@ modaleMediaAngleGauche.id = "angle-gauche";
 modaleMediaAngleGauche.classList.add('fa-sharp');
 modaleMediaAngleGauche.classList.add('fa-solid');
 modaleMediaAngleGauche.classList.add('fa-angle-left');
+modaleMediaAngleGauche.setAttribute('aria-label', 'Previous image');
 // Media Affiché
 const modaleMediaBG = document.createElement('div');
 modaleMediaBG.id = "modale-media-bg";
@@ -34,6 +37,7 @@ modaleMediaAngleDroit.id = "angle-droite";
 modaleMediaAngleDroit.classList.add('fa-sharp');
 modaleMediaAngleDroit.classList.add('fa-solid');
 modaleMediaAngleDroit.classList.add('fa-angle-right');
+modaleMediaAngleDroit.setAttribute('aria-label', 'Next image');
 // INITIALISATION MODALE
 main.before(modaleMedia);
 modaleMedia.appendChild(modaleMediaContent);

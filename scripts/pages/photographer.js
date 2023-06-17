@@ -51,6 +51,7 @@ function filterMediasById(medias) {
     // <div> dropdown
     const dropdown = document.createElement('div');
     dropdown.classList.add('dropdown');
+    dropdown.setAttribute("role", "menubar");
     // Menu dropdown (Filtres + Logo)
     const menuDropdown = document.createElement('div');
     menuDropdown.classList.add('menu-dropdown');
@@ -59,15 +60,18 @@ function filterMediasById(medias) {
     Popularite.classList.add('menu-filter');
     Popularite.classList.add('style-bouton-popularite');
     Popularite.textContent = "Popularité";
+    Popularite.setAttribute("role", "menuitem");
     // Filtre Date
     const DateFiltre = document.createElement('button');
     DateFiltre.classList.add('menu-filter');
     DateFiltre.textContent = "Date";
+    DateFiltre.setAttribute("role", "menuitem");
     // Filtre Titre
     const Titre = document.createElement('button');
     Titre.classList.add('menu-filter');
     Titre.classList.add('style-bouton-titre');
     Titre.textContent = "Titre";
+    Titre.setAttribute("role", "menuitem");
     // Logo Triangle
     const logoTriangle = document.createElement('i');
     logoTriangle.classList.add("fa-sharp");
