@@ -67,6 +67,18 @@ modaleCloseButton.onclick = function() {
     displayedMediaTitleValue.remove();
     modaleMedia.style.display = "none";
 }
+// ESCAPE MODALE
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        let displayedMediaDIV = document.querySelector(".mediaModale");
+        let displayedMediaTitleValue = document.querySelector(".mediaTitle");
+        displayedMediaDIV.remove();
+        displayedMediaTitleValue.remove();
+        modaleMedia.style.display = "none";
+    };
+});
+
+
 // WINDOW FERMER MODALE ---------------------------------------------------------------------------
 window.onclick = function(event) {
     // console.log(event.target);

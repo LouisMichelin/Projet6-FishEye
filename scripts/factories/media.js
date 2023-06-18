@@ -7,8 +7,8 @@ function mediaFactory(data) {
     let prenom = name.split(" ")[0].replace("-", " ");
     
     // Source dynamique vers les medias :
-    const imageSource = `/FishEye - Photos/Sample Photos/${prenom}/${image}`;
-    const videoSource = `/FishEye - Photos/Sample Photos/${prenom}/${video}`;
+    const imageSource = `./FishEye - Photos/Sample Photos/${prenom}/${image}`;
+    const videoSource = `./FishEye - Photos/Sample Photos/${prenom}/${video}`;
     
     function getMediaCardDOM() {
         const allCardContainer = document.createElement('div');

@@ -52,6 +52,24 @@ function filterMediasById(medias) {
     const dropdown = document.createElement('div');
     dropdown.classList.add('dropdown');
     dropdown.setAttribute("role", "menubar");
+
+    dropdown.addEventListener("keypress", function(e) {
+        let dropdownMenu = document.querySelector('.menu-dropdown');
+        if (e.key == "Enter") {
+            dropdownMenu.style.visibility = "visible";
+            dropdownMenu.style.opacity = 1;
+            dropdownMenu.style.transform = "translateY(0%)";
+        };
+    });
+    //     var div = document.getElementsByTagName('div');
+    // div[0].addEventListener('keypress', function(e) {
+    //     if(e.keyCode == 13) {
+    //         alert('div focused');   
+    //     }
+    // });
+
+
+
     // Menu dropdown (Filtres + Logo)
     const menuDropdown = document.createElement('div');
     menuDropdown.classList.add('menu-dropdown');
@@ -61,17 +79,20 @@ function filterMediasById(medias) {
     Popularite.classList.add('style-bouton-popularite');
     Popularite.textContent = "Popularité";
     Popularite.setAttribute("role", "menuitem");
+    Popularite.setAttribute("type", "button");
     // Filtre Date
     const DateFiltre = document.createElement('button');
     DateFiltre.classList.add('menu-filter');
     DateFiltre.textContent = "Date";
     DateFiltre.setAttribute("role", "menuitem");
+    DateFiltre.setAttribute("type", "button");
     // Filtre Titre
     const Titre = document.createElement('button');
     Titre.classList.add('menu-filter');
     Titre.classList.add('style-bouton-titre');
     Titre.textContent = "Titre";
     Titre.setAttribute("role", "menuitem");
+    Titre.setAttribute("type", "button");
     // Logo Triangle
     const logoTriangle = document.createElement('i');
     logoTriangle.classList.add("fa-sharp");
