@@ -184,6 +184,9 @@ PARTIE MEDIA CARDS >>>>>>>>>>>>> Pour le Lightbox aussi !
     overflow: hidden;
     max-width: 350px;
     max-height: 350px;
+    border: none;
+    background-color: white;
+    padding: 0px;
 }
 .media-container {
     width: 350px;

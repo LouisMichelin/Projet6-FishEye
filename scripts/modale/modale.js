@@ -6,10 +6,19 @@ modaleMedia.id = "modale";
 const modaleMediaContent = document.createElement('div');
 modaleMediaContent.id = "modale-content";
 // Bouton Close
-const modaleCloseButton = document.createElement('span');
+const modaleCloseButton = document.createElement('button');
 modaleCloseButton.id = "close-modale";
 modaleCloseButton.innerHTML = "&times;";
 modaleCloseButton.setAttribute('aria-label', 'Close dialog');
+modaleCloseButton.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === "Space") {
+        let displayedMediaDIV = document.querySelector(".mediaModale");
+        let displayedMediaTitleValue = document.querySelector(".mediaTitle");
+        displayedMediaDIV.remove();
+        displayedMediaTitleValue.remove();
+        modaleMedia.style.display = "none";
+    };
+});
 // Carroussel Complet
 const modaleMediaCarroussel = document.createElement('div');
 modaleMediaCarroussel.id = "carroussel";
@@ -69,7 +78,7 @@ modaleCloseButton.onclick = function() {
 }
 // ESCAPE MODALE
 document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
+    if (e.key === "Escape" && modaleMedia.style.display === "block") {
         let displayedMediaDIV = document.querySelector(".mediaModale");
         let displayedMediaTitleValue = document.querySelector(".mediaTitle");
         displayedMediaDIV.remove();
@@ -77,7 +86,6 @@ document.addEventListener("keydown", (e) => {
         modaleMedia.style.display = "none";
     };
 });
-
 
 // WINDOW FERMER MODALE ---------------------------------------------------------------------------
 window.onclick = function(event) {

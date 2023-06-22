@@ -11,7 +11,7 @@ function mediaFactory(data) {
     const videoSource = `./FishEye - Photos/Sample Photos/${prenom}/${video}`;
     
     function getMediaCardDOM() {
-        const allCardContainer = document.createElement('div');
+        let allCardContainer = document.createElement('button');
         allCardContainer.classList.add('media-card');
         allCardContainer.setAttribute("data-id", id);
 

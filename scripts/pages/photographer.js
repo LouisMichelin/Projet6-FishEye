@@ -52,7 +52,7 @@ function filterMediasById(medias) {
     const dropdown = document.createElement('div');
     dropdown.classList.add('dropdown');
     dropdown.setAttribute("role", "menubar");
-
+    // DROPDOWN MENU w/ TAB + ENTER
     dropdown.addEventListener("keypress", function(e) {
         let dropdownMenu = document.querySelector('.menu-dropdown');
         if (e.key == "Enter") {
@@ -61,12 +61,7 @@ function filterMediasById(medias) {
             dropdownMenu.style.transform = "translateY(0%)";
         };
     });
-    //     var div = document.getElementsByTagName('div');
-    // div[0].addEventListener('keypress', function(e) {
-    //     if(e.keyCode == 13) {
-    //         alert('div focused');   
-    //     }
-    // });
+ 
 
 
 
