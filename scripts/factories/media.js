@@ -14,7 +14,7 @@ function mediaFactory(data) {
         let allCardContainer = document.createElement('button');
         allCardContainer.classList.add('media-card');
         allCardContainer.setAttribute("data-id", id);
-
+        
         const mediaContainer = document.createElement('a');
         mediaContainer.classList.add('media-container');
         mediaContainer.setAttribute("data-id", id);
@@ -31,7 +31,9 @@ function mediaFactory(data) {
             });
             mediaImage.setAttribute("alt", `${title}`);
             mediaContainer.appendChild(mediaImage);
+            
         };
+        
         if (video) {
             const mediaVideo = document.createElement('video');
             mediaVideo.classList.add('media');
@@ -44,8 +46,10 @@ function mediaFactory(data) {
                 const mediaModal = getMediaModalDOM(video);
                 toggleCarroussel(mediaModal);
             });
+            mediaVideo.setAttribute("alt", `${title}`);
             mediaContainer.appendChild(mediaVideo);
         };
+        
         // Zone [Titre + (Nb likes & Logo Coeur)]
         const titleContainer = document.createElement('div');
         titleContainer.classList.add('card-title-area');

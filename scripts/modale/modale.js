@@ -198,3 +198,14 @@ modaleMediaAngleGauche.addEventListener("click", function(event) {
     event.stopPropagation();
     displayprevious()
 });
+
+// TOGGLE ARROWS WITH KEYBOARD ---------------------------------------------------------------------------
+let modaleToggled = document.getElementById('modale');
+    document.addEventListener("keydown", function(e) {
+        if (e.key == 'ArrowLeft') {
+            displayprevious();
+        };
+        if (e.key == 'ArrowRight') {
+            displaynext();
+        };
+    });
