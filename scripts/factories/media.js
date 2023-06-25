@@ -11,10 +11,10 @@ function mediaFactory(data) {
     const videoSource = `./FishEye - Photos/Sample Photos/${prenom}/${video}`;
     
     function getMediaCardDOM() {
-        let allCardContainer = document.createElement('button');
+        let allCardContainer = document.createElement('div');
         allCardContainer.classList.add('media-card');
         allCardContainer.setAttribute("data-id", id);
-        
+        allCardContainer.setAttribute("tabIndex" , 0);
         const mediaContainer = document.createElement('a');
         mediaContainer.classList.add('media-container');
         mediaContainer.setAttribute("data-id", id);
@@ -31,7 +31,6 @@ function mediaFactory(data) {
             });
             mediaImage.setAttribute("alt", `${title}`);
             mediaContainer.appendChild(mediaImage);
-            
         };
         
         if (video) {
@@ -64,10 +63,17 @@ function mediaFactory(data) {
         nbLikesAndHeart.addEventListener("click", function(event) {
             event.preventDefault();
             event.stopPropagation();
-            mediaLikes.textContent++;
             let totalLikesUpdate =  document.getElementById('total-likes');
-            totalLikesUpdate.textContent++;
-        }, {once : true});
+           // AJOUTER - ENLEVER Likes
+            if (mediaLikes.textContent == likes+1) {
+                mediaLikes.textContent--;
+                totalLikesUpdate.textContent--;
+            }
+           else {
+           mediaLikes.textContent++;
+             totalLikesUpdate.textContent++;
+           }
+        });
 
         // Likes
         let mediaLikes = document.createElement('p');
@@ -81,6 +87,26 @@ function mediaFactory(data) {
         heartLogo.classList.add("fa-heart");
         heartLogo.classList.add("fa-lg");
         heartLogo.setAttribute('style', "color: #901C1C");
+
+        // LIKES ACCESSIBLES EN TABULATION
+        // heartLogo.setAttribute("tabIndex" , 0);
+        // heartLogo.addEventListener("keydown", function(e) {
+        //     e.preventDefault();
+        //     e.stopPropagation();
+        //     if (e.key == 'Enter') {
+        //         console.log('je suis ENTER heart');
+        //         let totalLikesUpdate =  document.getElementById('total-likes');
+        //         if (mediaLikes.textContent == likes+1) {
+        //             mediaLikes.textContent--;
+        //             totalLikesUpdate.textContent--;
+        //         }
+        //         else {
+        //             mediaLikes.textContent++;
+        //             totalLikesUpdate.textContent++;
+        //         }
+        //     }
+        // });
+
         // MISE EN PAGE
         allCardContainer.appendChild(mediaContainer);
         allCardContainer.appendChild(titleContainer);
@@ -88,6 +114,19 @@ function mediaFactory(data) {
         titleContainer.appendChild(nbLikesAndHeart);
         nbLikesAndHeart.appendChild(mediaLikes);
         nbLikesAndHeart.appendChild(heartLogo);
+        allCardContainer.addEventListener("keydown", function(e) {
+            if (e.key == 'Enter') {
+            e.preventDefault();
+            e.stopPropagation();
+            let mediaModal = null;
+            // LES IF sans { } exécutent UNIQUEMENT la 1ère ligne sous eux
+            if (image)
+            mediaModal = getMediaModalDOM(image);
+            else 
+            mediaModal = getMediaModalDOM(video);
+            toggleCarroussel(mediaModal);
+        }});
+
         return allCardContainer;
     }
 
@@ -121,7 +160,7 @@ function mediaFactory(data) {
             displayedVideo.controls = true;
             displayedMediaTitle.appendChild(displayedMediaTitleValue).textContent = `${title}`;
         };
-        
+
         return displayedMediaDIV;
     }
 

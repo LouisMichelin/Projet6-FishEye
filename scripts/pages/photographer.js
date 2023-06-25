@@ -52,19 +52,22 @@ function filterMediasById(medias) {
     const dropdown = document.createElement('div');
     dropdown.classList.add('dropdown');
     dropdown.setAttribute("role", "menubar");
+    dropdown.setAttribute("tabIndex", 0);
     // DROPDOWN MENU w/ TAB + ENTER
-    dropdown.addEventListener("keypress", function(e) {
+    dropdown.addEventListener("keydown", function(e) {
         let dropdownMenu = document.querySelector('.menu-dropdown');
         if (e.key == "Enter") {
             dropdownMenu.style.visibility = "visible";
             dropdownMenu.style.opacity = 1;
             dropdownMenu.style.transform = "translateY(0%)";
         };
+        if (e.key == "Escape") {
+            dropdownMenu.style.visibility = "hidden";
+            dropdownMenu.style.opacity = 0;
+            dropdownMenu.style.transform = "translateY(-50%)";
+        };
     });
  
-
-
-
     // Menu dropdown (Filtres + Logo)
     const menuDropdown = document.createElement('div');
     menuDropdown.classList.add('menu-dropdown');

@@ -115,6 +115,7 @@ function toggleCarroussel(mediaModal) {
     modale_media.appendChild(mediaModal);
 }
 
+
 // FLECHE DE DROITE ---------------------------------------------------------------------------
 function displaynext() {
     let displayedMediaDIV = document.querySelector(".mediaModale");
@@ -200,12 +201,14 @@ modaleMediaAngleGauche.addEventListener("click", function(event) {
 });
 
 // TOGGLE ARROWS WITH KEYBOARD ---------------------------------------------------------------------------
-let modaleToggled = document.getElementById('modale');
-    document.addEventListener("keydown", function(e) {
-        if (e.key == 'ArrowLeft') {
-            displayprevious();
-        };
-        if (e.key == 'ArrowRight') {
-            displaynext();
-        };
-    });
+// let modaleToggled = document.getElementById('modale');
+document.addEventListener("keydown", function(e) {
+    if(modaleMedia.style.display === "block"){
+    if (e.key == 'ArrowLeft') {
+        displayprevious();
+    }
+    if (e.key == 'ArrowRight') {
+        displaynext();
+    }
+}
+});
