@@ -88,7 +88,7 @@ function mediaFactory(data) {
         heartLogo.classList.add("fa-lg");
         heartLogo.setAttribute('style', "color: #901C1C");
 
-        // LIKES ACCESSIBLES EN TABULATION
+    // LIKES ACCESSIBLES EN TABULATION
         // heartLogo.setAttribute("tabIndex" , 0);
         // heartLogo.addEventListener("keydown", function(e) {
         //     e.preventDefault();
@@ -124,6 +124,7 @@ function mediaFactory(data) {
             mediaModal = getMediaModalDOM(image);
             else 
             mediaModal = getMediaModalDOM(video);
+            mediaModal.setAttribute("tabindex", 1);
             toggleCarroussel(mediaModal);
         }});
 

@@ -22,6 +22,7 @@ modaleCloseButton.addEventListener("keydown", (e) => {
 // Carroussel Complet
 const modaleMediaCarroussel = document.createElement('div');
 modaleMediaCarroussel.id = "carroussel";
+modaleMediaCarroussel.setAttribute("tabIndex" , 1);
 // Bouton <Gauche>
 const modaleMediaFlecheGauche = document.createElement('div');
 modaleMediaFlecheGauche.id = "fleche-gauche";
@@ -56,6 +57,7 @@ modaleMediaContent.appendChild(modaleMediaCarroussel);
 // Bouton Gauche
 modaleMediaCarroussel.appendChild(modaleMediaFlecheGauche);
 modaleMediaFlecheGauche.appendChild(modaleMediaAngleGauche);
+modaleMediaFlecheGauche.setAttribute("tabIndex" , 1);
 // Media Displayed
 modaleMediaCarroussel.appendChild(modaleMediaBG);
 modaleMediaBG.appendChild(modaleMediaDisplayed);
@@ -63,7 +65,7 @@ modaleMediaBG.appendChild(modaleMediaSousTitre);
 // Bouton Droite
 modaleMediaCarroussel.appendChild(modaleMediaFlecheDroite);
 modaleMediaFlecheDroite.appendChild(modaleMediaAngleDroit);
-
+modaleMediaFlecheDroite.setAttribute("tabIndex" , 1);
 // ##################################################################################################################
 
 // MODALE ---------------------------------------------------------------------------
@@ -113,6 +115,14 @@ function toggleCarroussel(mediaModal) {
     // Affiche le Media sélectionné dans la Modale
     let modale_media = document.getElementById('modale-media');
     modale_media.appendChild(mediaModal);
+    modaleMedia.setAttribute("tabindex", 1);
+    modaleMedia.addEventListener("keydown", function(e) {
+        if (e.key == 'Enter') {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log("je suis dasn lamodale click  entree")
+}
+});
 }
 
 
