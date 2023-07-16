@@ -144,7 +144,7 @@ function displaynext() {
         // Incrémenter ID
         nextPos += 1;
         console.log("ID ACTUEL = ", pos);
-        console.log("ID PRECEDENT = ", nextPos);
+        console.log("ID SUIVANT = ", nextPos);
         // Edit le Media à la [ID + 1]
         let nextMedia = mediaFactory(photographerMedia[nextPos]);
         console.log("NEXT MEDIA = ", nextMedia);
@@ -203,12 +203,12 @@ modaleMediaAngleGauche.addEventListener("click", function(event) {
 // TOGGLE ARROWS WITH KEYBOARD ---------------------------------------------------------------------------
 // let modaleToggled = document.getElementById('modale');
 document.addEventListener("keydown", function(e) {
-    if(modaleMedia.style.display === "block"){
-    if (e.key == 'ArrowLeft') {
-        displayprevious();
+    if (modaleMedia.style.display === "block") {
+        if (e.key == 'ArrowLeft') {
+            displayprevious();
+        }
+        if (e.key == 'ArrowRight') {
+            displaynext();
+        }
     }
-    if (e.key == 'ArrowRight') {
-        displaynext();
-    }
-}
 });
