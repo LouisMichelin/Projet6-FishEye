@@ -232,8 +232,10 @@ function displaySortedElements(arraySorted){
     let positionReference = 0;
     // Réorganisation des Médias triés par leur Popularité (sans supprimer ce qui est déjà affiché !) :
     arraySorted.forEach(element => {
-        const arrayCreatedElement = Array.prototype.slice.call(wrapper.childNodes);
-    
+        // console.log(wrapper.childNodes);
+        const arrayCreatedElement = Array.prototype.slice.call(wrapper.childNodes); // Convertir une NodeList vers un tableau d'éléments HTML
+        // console.log(arrayCreatedElement);
+
         let positionElement = arrayCreatedElement.findIndex((mediaContainer) =>
             (mediaContainer.dataset.id == element.id)
         );
