@@ -25,6 +25,13 @@ function closeModal() {
     modal.style.display = "none";
 }
 
+// ESCAPE MODAL ------------------------------------------------------------
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.style.display === "block") {
+        modal.style.display = "none";
+    };
+});
+
 // ENVOYER FORMULAIRE ------------------------------------------------------------
 // Données renseignées
 let userPrenom = document.getElementById('user_prenom');
